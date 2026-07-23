@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Rigor"
+  short_description: "Human-led, evidence-gated research support"
+  default_prompt: "Use $research-rigor to audit this researcher-directed project and support only the next evidence-justified step."

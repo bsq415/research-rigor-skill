@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "project_title": "__PROJECT_TITLE__",
+  "created_utc": "__CREATED_UTC__",
+  "updated_utc": "__CREATED_UTC__",
+  "authoritative_spec": "00_CONSTRAINTS.md",
+  "current_stage": "G0",
+  "stage_status": "not_started",
+  "privacy": {
+    "classification": "__PRIVACY_CLASSIFICATION__",
+    "export_policy": "__EXPORT_POLICY__",
+    "release_scan_passed": false,
+    "semantic_review_passed": false
+  },
+  "literature_policy": {
+    "verified_deep_read_min": __DEEP_READ_MIN__,
+    "forensic_neighbor_min": 30,
+    "independent_audit_fraction": 0.1
+  },
+  "frozen": {
+    "claims": false,
+    "protocol": false,
+    "test_touched": false,
+    "submission_ready": false
+  },
+  "gates": [
+    {
+      "id": "G0",
+      "name": "orientation_privacy_constraints",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G1",
+      "name": "problem_value",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G2",
+      "name": "literature_novelty",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G3",
+      "name": "claim_theory_contract",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G4",
+      "name": "evidence_experiment_design",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G5",
+      "name": "reproducible_implementation",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G6",
+      "name": "brittle_path_pilot",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G7",
+      "name": "frozen_full_execution",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G8",
+      "name": "result_statistical_audit",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G9",
+      "name": "paper_visual_evidence",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G10",
+      "name": "reviewer_red_team",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    },
+    {
+      "id": "G11",
+      "name": "submission_release_archive",
+      "status": "not_started",
+      "evidence": [],
+      "blockers": []
+    }
+  ]
+}

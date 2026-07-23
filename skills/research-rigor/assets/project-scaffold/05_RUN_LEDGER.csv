@@ -1,0 +1,1 @@
+run_id,planned_cell,protocol_version,started_at,finished_at,source_commit,config_hash,data_hash,seed,hardware,status,raw_artifact,artifact_hash,completion_manifest,parent_artifacts,failure_code,notes

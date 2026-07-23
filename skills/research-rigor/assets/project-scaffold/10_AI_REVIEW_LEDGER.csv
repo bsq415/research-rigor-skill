@@ -1,0 +1,1 @@
+review_id,round,service,service_url,accessed_at,manuscript_path,manuscript_sha256,page_count,bytes,target_venue,coverage_limit,privacy_terms_checked,privacy_terms_status,terms_snapshot_path,terms_snapshot_sha256,upload_authorized_by,submitted_at,review_received_at,raw_review_path,raw_review_sha256,status,limitations,notes
