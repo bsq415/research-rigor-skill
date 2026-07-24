@@ -1,8 +1,8 @@
 <div align="center">
 
-# Research Rigor
+# Research Rigor · 严谨科研助手
 
-**面向 Codex 与 Claude Code 的人主导科研辅助 Skill。**
+**面向 Codex 与 Claude Code 的人主导、证据门控科研辅助 Skill。**
 
 [![Human-led](https://img.shields.io/badge/research-human--led-2f6f6d)](#人的主导权)
 [![Codex](https://img.shields.io/badge/skill-Codex-111827)](#安装)
@@ -21,9 +21,9 @@
 
 </div>
 
-## Research Rigor 是什么？
+## 严谨科研助手是什么？
 
-Research Rigor 是一个可移植的 Agent Skill，用来辅助研究者组织、审计、恢复和记录科研工作。它可以服务于问题定义、文献检索、创新性审查、理论与实验、结果分析、论文写作、审稿整改、发布和复盘等阶段，但不会代替人决定“什么是科学事实”。
+Research Rigor（中文展示名：**严谨科研助手**）是一个可移植的 Agent Skill，用来辅助研究者组织、审计、恢复和记录科研工作。它可以服务于问题定义、文献检索、创新性审查、理论与实验、结果分析、论文写作、审稿整改、发布和复盘等阶段，但不会代替人决定“什么是科学事实”。
 
 它提供的是证据门、来源记录、科研账本和 fail-closed 停止规则。研究问题、方法、证据标准、解释、主张、署名、伦理和公开发布始终由人决定。
 
