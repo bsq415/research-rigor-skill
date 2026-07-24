@@ -1,6 +1,6 @@
 <div align="center">
 
-# Research Rigor
+# Rigorous Research Assistant
 
 **A human-led research support skill for Codex and Claude Code.**
 
@@ -13,17 +13,17 @@
 </div>
 
 > [!IMPORTANT]
-> Research Rigor is a research support tool, not an autonomous scientist. It does not certify scientific validity, replace expert judgment or peer review, or guarantee novelty, correctness, reproducibility, publication, or acceptance. The human research team remains responsible for every research decision and output.
+> Rigorous Research Assistant is a research support tool, not an autonomous scientist. It does not certify scientific validity, replace expert judgment or peer review, or guarantee novelty, correctness, reproducibility, publication, or acceptance. The human research team remains responsible for every research decision and output.
 
 <div align="center">
 
-[简体中文](README.zh-CN.md) · [Why Research Rigor](#why) · [Evidence gates](#the-twelve-evidence-gates) · [Installation](#installation) · [Disclaimer](DISCLAIMER.md) · [Compatibility](docs/PLATFORM_COMPATIBILITY.md)
+[简体中文](README.zh-CN.md) · [Why it exists](#why) · [Evidence gates](#the-twelve-evidence-gates) · [Installation](#installation) · [Disclaimer](DISCLAIMER.md) · [Compatibility](docs/PLATFORM_COMPATIBILITY.md)
 
 </div>
 
-## What is Research Rigor?
+## What is Rigorous Research Assistant?
 
-Research Rigor is a portable Agent Skill that helps researchers structure, audit, recover, and document work across the research lifecycle—from question framing and literature review to experiments, writing, review, release, and postmortem.
+Rigorous Research Assistant is a portable Agent Skill that helps researchers structure, audit, recover, and document work across the research lifecycle—from question framing and literature review to experiments, writing, review, release, and postmortem.
 
 It adds explicit evidence gates, provenance records, reusable ledgers, and fail-closed stop rules to an AI-assisted workflow. It does not decide what is scientifically true. Humans choose the question, methods, evidence threshold, interpretation, claims, authorship, ethics, and release.
 
@@ -45,11 +45,11 @@ AI assistants can produce code and prose quickly, but speed can hide scientific 
 - plots and prose that drift away from raw results;
 - private manuscript content sent to an external service without an explicit decision.
 
-Research Rigor makes these boundaries visible and auditable.
+Rigorous Research Assistant makes these boundaries visible and auditable.
 
 ## What it is—and what it is not
 
-| Research Rigor helps with | Research Rigor does not provide |
+| Rigorous Research Assistant helps with | Rigorous Research Assistant does not provide |
 |---|---|
 | A structured assistant for researcher-directed work | A fully autonomous research pipeline |
 | A set of evidence gates, templates, and local audit tools | A scientific authority or correctness oracle |
@@ -64,7 +64,7 @@ The researcher remains the decision owner throughout the workflow.
 ```mermaid
 flowchart LR
     H["Human researcher<br/>owns questions, methods, claims, and release"]:::human
-    R["Research Rigor<br/>structures evidence and checks gates"]:::tool
+    R["Rigorous Research Assistant<br/>structures evidence and checks gates"]:::tool
     P1["Scope & privacy"]
     P2["Literature & claims"]
     P3["Protocol & pilot"]
@@ -85,7 +85,7 @@ flowchart LR
     classDef tool fill:#e8f1ee,color:#17342f,stroke:#5d8c7f,stroke-width:2px;
 ```
 
-Research Rigor may prepare options, checks, artifacts, and handoffs. It must stop when progress requires a new scientific claim, changed protocol, exposed test set, ethics decision, authorship decision, confidential disclosure, paid resource, external upload, or other human-only authority.
+Rigorous Research Assistant may prepare options, checks, artifacts, and handoffs. It must stop when progress requires a new scientific claim, changed protocol, exposed test set, ethics decision, authorship decision, confidential disclosure, paid resource, external upload, or other human-only authority.
 
 ## The twelve evidence gates
 
@@ -104,7 +104,20 @@ Research Rigor may prepare options, checks, artifacts, and handoffs. It must sto
 | G10 | Review, red-team, and remediation |
 | G11 | Submission, public release, and archive |
 
-A gate may be `passed`, `failed`, `blocked`, `paused`, `deferred`, or `killed`. Failure is preserved as research information; it is not repaired by changing the story.
+Gate states are explicit:
+
+| State | Meaning |
+|---|---|
+| `not_started` | Work on the gate has not begun |
+| `in_progress` | Work is active, but the gate has not passed |
+| `passed` | Required evidence exists and has been checked |
+| `failed` | A required scientific criterion did not survive |
+| `blocked` | Progress requires missing evidence, access, or human authority |
+| `paused` | Work is deliberately stopped pending a decision or reassessment |
+| `deferred` | The direction remains viable but is currently infeasible |
+| `killed` | The direction is falsified, non-novel, or deliberately terminated |
+
+Failure is preserved as research information; it is not repaired by changing the story.
 
 ## Included
 
@@ -164,7 +177,7 @@ Invoke it explicitly with:
 /research-rigor Audit this research workspace. Do not change any frozen protocol or claim.
 ```
 
-Claude Code discovers personal skills at `~/.claude/skills/<skill-name>/SKILL.md` and project skills at `.claude/skills/<skill-name>/SKILL.md`. Research Rigor uses the same canonical skill files for both Claude Code and Codex.
+Claude Code discovers personal skills at `~/.claude/skills/<skill-name>/SKILL.md` and project skills at `.claude/skills/<skill-name>/SKILL.md`. Rigorous Research Assistant uses the same canonical skill files for both Claude Code and Codex.
 
 ### Manual installation
 
@@ -195,7 +208,7 @@ Verify every citation and do not accept the review score as scientific evidence.
 
 ## External AI reviewers
 
-Research Rigor can prepare a manuscript hash, upload checklist, and remediation ledger for services such as an agentic paper reviewer. It never treats those services as authoritative peer review and must not upload a private manuscript automatically.
+Rigorous Research Assistant can prepare a manuscript hash, upload checklist, and remediation ledger for services such as an agentic paper reviewer. It never treats those services as authoritative peer review and must not upload a private manuscript automatically.
 
 Before a human uploads anything, check the service's current privacy, retention, deletion, data-use, and venue-policy terms. Preserve the exact reviewed file and raw response, verify every factual or citation-related suggestion, and route accepted changes through normal no-regression checks.
 
@@ -229,7 +242,7 @@ research-rigor-skill/
 
 ## Limitations
 
-Research Rigor is domain-agnostic. It cannot supply missing subject-matter knowledge, data rights, ethical approval, experimental resources, or independent replication. Structural checks can detect missing files and inconsistent records; they cannot prove a theorem, validate a causal claim, certify novelty, or determine whether a paper should be accepted.
+Rigorous Research Assistant is domain-agnostic. It cannot supply missing subject-matter knowledge, data rights, ethical approval, experimental resources, or independent replication. Structural checks can detect missing files and inconsistent records; they cannot prove a theorem, validate a causal claim, certify novelty, or determine whether a paper should be accepted.
 
 Read the full [project disclaimer](DISCLAIMER.md) before use.
 
@@ -246,8 +259,8 @@ Do not submit private manuscripts, unpublished project details, personal data, c
 
 ## License
 
-Research Rigor is released under the [MIT License](LICENSE).
+Rigorous Research Assistant is released under the [MIT License](LICENSE).
 
 ## Origin
 
-Research Rigor was distilled from generalized workflow lessons across multiple completed, incomplete, failed, and paused research efforts. The public repository contains no private paper content, project-specific results, personal identity, or proprietary case study.
+Rigorous Research Assistant was distilled from generalized workflow lessons across multiple completed, incomplete, failed, and paused research efforts. The public repository contains no private paper content, project-specific results, personal identity, or proprietary case study.

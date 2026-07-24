@@ -1,6 +1,6 @@
 # Platform compatibility
 
-Research Rigor keeps one canonical skill at `skills/research-rigor/`.
+Rigorous Research Assistant keeps one canonical skill at `skills/research-rigor/`.
 
 ## Codex
 

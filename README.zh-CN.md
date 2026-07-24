@@ -1,6 +1,6 @@
 <div align="center">
 
-# Research Rigor · 严谨科研助手
+# Rigorous Research Assistant · 严谨科研助手
 
 **面向 Codex 与 Claude Code 的人主导、证据门控科研辅助 Skill。**
 
@@ -13,7 +13,7 @@
 </div>
 
 > [!IMPORTANT]
-> Research Rigor 是科研辅助工具，不是“自动科学家”。它不承担科研责任，不认证科学有效性，不能替代领域专家、共同作者或同行评审，也不保证创新性、正确性、可复现性、发表或录用。所有科研决策与产出均由研究者负责。
+> 严谨科研助手是科研辅助工具，不是“自动科学家”。它不承担科研责任，不认证科学有效性，不能替代领域专家、共同作者或同行评审，也不保证创新性、正确性、可复现性、发表或录用。所有科研决策与产出均由研究者负责。
 
 <div align="center">
 
@@ -23,7 +23,7 @@
 
 ## 严谨科研助手是什么？
 
-Research Rigor（中文展示名：**严谨科研助手**）是一个可移植的 Agent Skill，用来辅助研究者组织、审计、恢复和记录科研工作。它可以服务于问题定义、文献检索、创新性审查、理论与实验、结果分析、论文写作、审稿整改、发布和复盘等阶段，但不会代替人决定“什么是科学事实”。
+Rigorous Research Assistant（中文名：**严谨科研助手**）是一个可移植的 Agent Skill，用来辅助研究者组织、审计、恢复和记录科研工作。它可以服务于问题定义、文献检索、创新性审查、理论与实验、结果分析、论文写作、审稿整改、发布和复盘等阶段，但不会代替人决定“什么是科学事实”。
 
 它提供的是证据门、来源记录、科研账本和 fail-closed 停止规则。研究问题、方法、证据标准、解释、主张、署名、伦理和公开发布始终由人决定。
 
@@ -45,11 +45,11 @@ AI 可以快速生成代码和文字，但速度也容易掩盖科研风险：
 - 图表与正文逐渐脱离原始结果；
 - 未经人工决定就把私密稿件上传到外部服务。
 
-Research Rigor 的作用是让这些边界可见、可查、可追责。
+严谨科研助手的作用是让这些边界可见、可查、可追责。
 
 ## 它是什么、不是什么
 
-| Research Rigor 可以辅助 | Research Rigor 不提供 |
+| 严谨科研助手可以辅助 | 严谨科研助手不提供 |
 |---|---|
 | 研究者主导工作中的结构化助手 | 全自动科研流水线 |
 | 证据门、模板、账本和本地审计工具 | 科学权威或正确性裁判 |
@@ -62,7 +62,7 @@ Research Rigor 的作用是让这些边界可见、可查、可追责。
 ```mermaid
 flowchart LR
     H["人类研究者<br/>拥有问题、方法、主张和发布决定权"]:::human
-    R["Research Rigor<br/>组织证据并检查阶段门"]:::tool
+    R["严谨科研助手<br/>组织证据并检查阶段门"]:::tool
     P1["范围与隐私"]
     P2["文献与主张"]
     P3["协议与 pilot"]
@@ -83,7 +83,7 @@ flowchart LR
     classDef tool fill:#e8f1ee,color:#17342f,stroke:#5d8c7f,stroke-width:2px;
 ```
 
-Research Rigor 可以准备选项、检查、artifact 和 handoff；一旦涉及新科学主张、冻结协议变更、test set 暴露、伦理与署名、机密披露、付费资源或外部上传，就必须停下来交由人决定。
+严谨科研助手可以准备选项、检查、artifact 和 handoff；一旦涉及新科学主张、冻结协议变更、test set 暴露、伦理与署名、机密披露、付费资源或外部上传，就必须停下来交由人决定。
 
 ## 十二个证据门
 
@@ -102,7 +102,20 @@ Research Rigor 可以准备选项、检查、artifact 和 handoff；一旦涉及
 | G10 | Review、red-team 与整改 |
 | G11 | 投稿、公开发布与归档 |
 
-Gate 可以是 `passed`、`failed`、`blocked`、`paused`、`deferred` 或 `killed`。失败必须作为科研信息保留，不能靠改写故事消失。
+每个 Gate 的状态与含义如下：
+
+| 状态 | 含义 |
+|---|---|
+| `not_started` | 尚未开始处理该 Gate |
+| `in_progress` | 正在处理，但尚未通过 |
+| `passed` | 所需证据已经存在并完成核验 |
+| `failed` | 必要的科学判据未能成立 |
+| `blocked` | 缺少证据、访问条件或人工授权 |
+| `paused` | 等待人工决定或重新评估而主动暂停 |
+| `deferred` | 方向仍可行，但当前条件不足 |
+| `killed` | 方向已被否证、不再新颖或明确终止 |
+
+失败必须作为科研信息保留，不能靠改写故事消失。
 
 ## 内含组件
 
@@ -164,7 +177,7 @@ Claude Code 的用户级目录是 `~/.claude/skills/research-rigor/`，项目级
 
 ## 外部 AI reviewer
 
-Research Rigor 可以为 Stanford Agentic Reviewer 一类服务准备稿件 hash、人工上传检查表和 remediation ledger，但不会自动上传私密稿件，也不会把外部 AI reviewer 当成正式同行评审。
+严谨科研助手可以为 Stanford Agentic Reviewer 一类服务准备稿件 hash、人工上传检查表和 remediation ledger，但不会自动上传私密稿件，也不会把外部 AI reviewer 当成正式同行评审。
 
 人工上传前应检查服务当日的 privacy、retention、deletion、data-use 条款与 venue policy。必须保存被审 PDF 的准确副本和原始 review，逐项核验事实及引用，并让所有接受的修改重新经过证据和 no-regression 检查。
 
@@ -178,7 +191,7 @@ Research Rigor 可以为 Stanford Agentic Reviewer 一类服务准备稿件 hash
 
 ## 局限
 
-Research Rigor 是通用工具，不能补足缺失的领域知识、数据权利、伦理批准、实验资源或独立复现。结构审计可以发现缺文件和记录冲突，但不能证明定理、验证因果关系、认证创新性或判断论文是否应该录用。
+严谨科研助手是通用工具，不能补足缺失的领域知识、数据权利、伦理批准、实验资源或独立复现。结构审计可以发现缺文件和记录冲突，但不能证明定理、验证因果关系、认证创新性或判断论文是否应该录用。
 
 使用前请阅读[完整免责声明](DISCLAIMER.md)。
 
@@ -195,8 +208,8 @@ Research Rigor 是通用工具，不能补足缺失的领域知识、数据权�
 
 ## License
 
-Research Rigor 使用 [MIT License](LICENSE)。
+严谨科研助手使用 [MIT License](LICENSE)。
 
 ## 来源说明
 
-Research Rigor 来自多个已完成、未完成、失败和暂停科研项目中的通用流程经验。公开仓库不包含任何私密论文内容、项目专属结果、个人身份或专有案例。
+严谨科研助手来自多个已完成、未完成、失败和暂停科研项目中的通用流程经验。公开仓库不包含任何私密论文内容、项目专属结果、个人身份或专有案例。

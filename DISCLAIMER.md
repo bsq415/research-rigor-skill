@@ -2,7 +2,7 @@
 
 ## English
 
-Research Rigor is an experimental research support tool. It is not an autonomous scientist, scientific authority, peer reviewer, legal adviser, medical adviser, ethics board, statistical certifier, or publication service.
+Rigorous Research Assistant is an experimental research support tool. It is not an autonomous scientist, scientific authority, peer reviewer, legal adviser, medical adviser, ethics board, statistical certifier, or publication service.
 
 The software, templates, prompts, checks, and model-assisted outputs are provided **"as is"**, without warranties of any kind. They may be incomplete, incorrect, outdated, biased, misleading, insecure, or unsuitable for a particular research domain.
 
@@ -20,13 +20,13 @@ Users and their research teams are solely responsible for:
 
 The maintainers do not endorse, verify, or assume responsibility for research content or conclusions produced with the tool. A passing structural audit or privacy scan does not establish scientific validity, novelty, reproducibility, anonymity, security, compliance, or acceptance.
 
-Research Rigor's bundled scripts do not automatically upload manuscripts. If a user chooses to use an external AI reviewer, repository, cloud service, model provider, or submission portal, that user is responsible for checking the current terms, privacy policy, retention and deletion rules, data-use policy, venue policy, and authorization before transferring any material.
+Rigorous Research Assistant's bundled scripts do not automatically upload manuscripts. If a user chooses to use an external AI reviewer, repository, cloud service, model provider, or submission portal, that user is responsible for checking the current terms, privacy policy, retention and deletion rules, data-use policy, venue policy, and authorization before transferring any material.
 
-To the maximum extent permitted by applicable law, the authors and contributors are not liable for any claim, loss, liability, rejection, retraction, disclosure, data incident, compliance failure, or other consequence arising from use of, inability to use, or reliance on Research Rigor.
+To the maximum extent permitted by applicable law, the authors and contributors are not liable for any claim, loss, liability, rejection, retraction, disclosure, data incident, compliance failure, or other consequence arising from use of, inability to use, or reliance on Rigorous Research Assistant.
 
 ## 中文
 
-Research Rigor 是实验性的科研辅助工具，不是自动科学家、科学权威、同行评审人、法律或医疗顾问、伦理委员会、统计认证机构或投稿服务。
+严谨科研助手是实验性的科研辅助工具，不是自动科学家、科学权威、同行评审人、法律或医疗顾问、伦理委员会、统计认证机构或投稿服务。
 
 本项目的软件、模板、提示、检查和模型辅助输出均按**“原样”**提供，不作任何形式的保证。它们可能不完整、不正确、过时、带有偏差、具有误导性、不安全，或不适合特定科研领域。
 
@@ -44,6 +44,6 @@ Research Rigor 是实验性的科研辅助工具，不是自动科学家、科�
 
 维护者不认可、不验证，也不承担使用本工具生成的科研内容或结论责任。结构审计或隐私扫描通过，不代表科学有效性、创新性、可复现性、匿名性、安全性、合规性或录用可能性已经得到证明。
 
-Research Rigor 随附脚本不会自动上传稿件。如果使用者主动采用外部 AI reviewer、代码仓库、云服务、模型提供商或投稿系统，使用者必须在传输材料前自行核查当日条款、隐私政策、保留与删除规则、数据使用政策、venue policy 及相应授权。
+严谨科研助手随附脚本不会自动上传稿件。如果使用者主动采用外部 AI reviewer、代码仓库、云服务、模型提供商或投稿系统，使用者必须在传输材料前自行核查当日条款、隐私政策、保留与删除规则、数据使用政策、venue policy 及相应授权。
 
-在适用法律允许的最大范围内，本项目作者和贡献者不对因使用、无法使用或依赖 Research Rigor 而产生的索赔、损失、责任、拒稿、撤稿、信息披露、数据事件、合规失败或其他后果承担责任。
+在适用法律允许的最大范围内，本项目作者和贡献者不对因使用、无法使用或依赖严谨科研助手而产生的索赔、损失、责任、拒稿、撤稿、信息披露、数据事件、合规失败或其他后果承担责任。

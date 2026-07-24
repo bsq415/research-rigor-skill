@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Install the canonical Research Rigor skill for Codex or Claude Code."""
+"""Install the canonical Rigorous Research Assistant skill for Codex or Claude Code."""
 
 from __future__ import annotations
 
@@ -15,7 +15,7 @@ SKILL_NAME = "research-rigor"
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Install Research Rigor without overwriting an existing skill."
+        description="Install Rigorous Research Assistant without overwriting an existing skill."
     )
     parser.add_argument("--host", choices=("codex", "claude-code"), required=True)
     parser.add_argument("--scope", choices=("user", "project"), default="user")
@@ -83,7 +83,7 @@ def main() -> int:
     shutil.copytree(source, target)
 
     invocation = "$research-rigor" if args.host == "codex" else "/research-rigor"
-    print(f"Installed Research Rigor. Invoke it with {invocation}.")
+    print(f"Installed Rigorous Research Assistant. Invoke it with {invocation}.")
     return 0
 
 

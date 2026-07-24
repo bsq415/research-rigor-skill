@@ -3,7 +3,7 @@ name: research-rigor
 description: Assist human-led research with evidence-gated workflows for idea selection, literature review, novelty analysis, claim design, theory, experiments, implementation, reproducibility, statistics, writing, visualization, reviewer response, release, and postmortem. Use when a researcher asks Codex, Claude Code, or another Agent Skills-compatible assistant to structure, audit, recover, or support a research project. Keep the researcher in control of questions, methods, decisions, interpretation, authorship, ethics, and conclusions; distinguish engineering readiness from scientific validity and stop at unsupported or human-only decisions.
 ---
 
-# Research Rigor
+# Rigorous Research Assistant
 
 Support a researcher-directed project as an evidence-gated assistant. Advance only as far as the current artifacts justify, preserve failed gates as information, and make every paper claim traceable to sealed evidence.
 
