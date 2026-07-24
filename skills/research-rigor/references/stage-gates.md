@@ -30,6 +30,9 @@ For every gate, record:
 - failure, kill, defer, or redesign condition;
 - downstream artifacts invalidated by a failure.
 
+In full-cycle mode, also checkpoint the active task, evidence, next action,
+acceptance condition, and human-decision flag in `RESEARCH_CYCLE_LOG.csv`.
+
 Treat a deadline as a scope or venue constraint, never as permission to lower a scientific gate.
 
 ## G0: Orientation, privacy, and constraints
@@ -46,6 +49,7 @@ Freeze:
 Pass evidence:
 
 - completed `00_CONSTRAINTS.md`;
+- completed `00_AUTONOMY_CONTRACT.md`, including execution scope and human-only decisions;
 - initialized `research_state.json`;
 - explicit privacy and export policy;
 - current-state audit for an existing project.
@@ -59,6 +63,7 @@ Define the decision owner, costly failure, unit of analysis, and why a valid pos
 Pass evidence:
 
 - completed problem card;
+- compared candidates in `01_IDEA_CANDIDATES.csv`;
 - concrete decision consequence;
 - explicit scope and non-goals;
 - plausible evidence path under G0 constraints.
@@ -87,6 +92,7 @@ Pass evidence:
 - nearest-neighbor matrix and strongest already-done argument;
 - independent novelty attack;
 - exact, technically consequential delta.
+- exactly one selected candidate with an explicit decision owner and evidence path.
 
 Kill if the exact question, unit or shift, and required evidence already exist without a meaningful delta.
 
@@ -123,6 +129,7 @@ Estimate coverage at every step, shared denominators, compute, wall-clock time, 
 Pass evidence:
 
 - completed experiment protocol;
+- claim-linked `04_EXPERIMENT_MATRIX.csv`;
 - coverage and failure premortem;
 - fair baseline and ablation plan;
 - predefined pass, kill, redesign, and defer thresholds;
@@ -164,6 +171,10 @@ Pass evidence:
 - written go, redesign, defer, or kill decision.
 
 If a parser, prompt, grader, metric, filter, or protocol changes after pilot inspection, version it and validate on fresh held-out evidence. Preserve the original pilot.
+
+Record every scientific protocol change in `04_PROTOCOL_AMENDMENTS.csv`, including
+the trigger, changed fields, authorization basis, invalidated artifacts, and
+fresh validation evidence.
 
 ## G7: Frozen full execution
 
@@ -215,6 +226,7 @@ Draft from sealed facts, not memory or hand-copied numbers. Link every quantitat
 Pass evidence:
 
 - paper claim map;
+- completed `07_MANUSCRIPT_AUDIT.csv` with no open fatal or major findings;
 - figures and tables generated from sealed data;
 - claim, citation, notation, and limitation audit;
 - compiled and visually rendered manuscript;

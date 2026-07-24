@@ -1,11 +1,22 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "project_title": "__PROJECT_TITLE__",
   "created_utc": "__CREATED_UTC__",
   "updated_utc": "__CREATED_UTC__",
   "authoritative_spec": "00_CONSTRAINTS.md",
   "current_stage": "G0",
   "stage_status": "not_started",
+  "execution": {
+    "mode": "__EXECUTION_MODE__",
+    "status": "waiting_human",
+    "current_gate": "G0",
+    "active_task": "",
+    "last_checkpoint_id": "",
+    "last_checkpoint_utc": "",
+    "next_action": "Complete the G0 constraints and autonomy contract",
+    "acceptance_condition": "G0 evidence exists and the structural audit passes",
+    "requires_human": true
+  },
   "privacy": {
     "classification": "__PRIVACY_CLASSIFICATION__",
     "export_policy": "__EXPORT_POLICY__",
@@ -14,8 +25,8 @@
   },
   "literature_policy": {
     "verified_deep_read_min": __DEEP_READ_MIN__,
-    "forensic_neighbor_min": 30,
-    "independent_audit_fraction": 0.1
+    "forensic_neighbor_min": __FORENSIC_NEIGHBOR_MIN__,
+    "independent_audit_fraction": __INDEPENDENT_AUDIT_FRACTION__
   },
   "frozen": {
     "claims": false,

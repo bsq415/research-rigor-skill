@@ -55,6 +55,11 @@ Freeze:
 - raw-scale metrics plus task-relevant tail, calibration, subgroup, spatial, temporal, trajectory, or peak diagnostics;
 - failure taxonomy and missingness policy.
 
+Expand the frozen claims into `04_EXPERIMENT_MATRIX.csv`. Every required cell
+must name its claim, scientific role, method, comparator, metric, valid
+denominator, pass threshold, redesign or kill threshold, and planned artifact.
+The matrix is the executable coverage contract; a prose protocol alone is not.
+
 Use a common evaluation interface. Do not rank heterogeneous models with a metric that only some models define. Report coverage together with interval width, accuracy together with calibration, and aggregate results together with critical slices.
 
 Construct the strongest baseline in the same feasible action space. Do not forbid revisits, information, tuning, or resources for a baseline merely to manufacture an advantage. Separate scheduler-, model-, data-, and backbone-level gains.
@@ -118,6 +123,23 @@ During a frozen run:
 - stop on leakage, canary failure, corruption, provenance mismatch, or contract violation.
 
 Engineering faults may be fixed under a versioned protocol if the change cannot select on outcomes. Scientific redesign creates a new protocol and requires new confirmation data.
+
+Classify the failure before changing anything:
+
+- environment or transient tool failure: preserve logs, repair the environment,
+  and retry the unchanged frozen cell;
+- implementation defect: quarantine dependent artifacts, add a regression test,
+  fix the code, and regenerate from unchanged upstream inputs;
+- measurement or protocol defect: create a versioned
+  `04_PROTOCOL_AMENDMENTS.csv` row, identify invalidated artifacts, obtain the
+  required authorization, and validate on fresh held-out evidence;
+- valid scientific failure: preserve it and fail, narrow, defer, or kill the
+  affected claim; do not “repair” the outcome;
+- resource, authority, privacy, or external-state block: record the blocker and
+  exact handoff without substituting a different scientific question.
+
+For the complete routing and gate-reopen procedure, follow
+`full-cycle-execution.md`.
 
 When an implementation bug is found, preserve raw upstream artifacts, quarantine affected derived outputs, fix the code, add a regression test for the observed pattern, and regenerate derived artifacts from unchanged raw inputs. Do not edit reported rows in place. Distinguish a code defect from a valid structural failure such as undefined output or a model that never reaches an answer.
 

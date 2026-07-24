@@ -2,147 +2,179 @@
 
 # Rigorous Research Assistant
 
-**A human-led research support skill for Codex and Claude Code.**
+### From a research question to an auditable submission package
 
-[![Human-led](https://img.shields.io/badge/research-human--led-2f6f6d)](#human-control)
+**Human-led, evidence-gated research execution for Codex and Claude Code.**
+
+[![Validate](https://github.com/bsq415/research-rigor-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/bsq415/research-rigor-skill/actions/workflows/validate.yml)
+[![Human-led](https://img.shields.io/badge/research-human--led-2f6f6d)](#human-control-is-a-feature)
 [![Codex](https://img.shields.io/badge/skill-Codex-111827)](#installation)
 [![Claude Code](https://img.shields.io/badge/skill-Claude%20Code-d97706)](#installation)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-3776ab)](#requirements)
 [![License: MIT](https://img.shields.io/badge/license-MIT-4c1)](LICENSE)
 
+[简体中文](README.zh-CN.md) · [Capabilities](#what-it-can-actually-do) · [How it works](#bounded-autonomous-execution) · [Install](#installation) · [Disclaimer](DISCLAIMER.md)
+
 </div>
 
 > [!IMPORTANT]
-> Rigorous Research Assistant is a research support tool, not an autonomous scientist. It does not certify scientific validity, replace expert judgment or peer review, or guarantee novelty, correctness, reproducibility, publication, or acceptance. The human research team remains responsible for every research decision and output.
+> Rigorous Research Assistant is a research support tool, not an autonomous scientist or a scientific authority. It can execute a long research workflow, but it cannot guarantee novelty, correctness, validity, reproducibility, publication, or acceptance. The human research team owns the question, methods, interpretation, claims, authorship, ethics, privacy, disclosure, submission, and every resulting research output.
 
-<div align="center">
+## What is it?
 
-[简体中文](README.zh-CN.md) · [Why it exists](#why) · [Evidence gates](#the-twelve-evidence-gates) · [Installation](#installation) · [Disclaimer](DISCLAIMER.md) · [Compatibility](docs/PLATFORM_COMPATIBILITY.md)
+Rigorous Research Assistant is a portable Agent Skill that lets Codex, Claude Code, or another compatible coding agent help carry a researcher-directed project across the full lifecycle:
 
-</div>
+`question selection → literature and novelty → claim design → experiments → execution → result audit → correction or redesign → paper writing → manuscript audit → review → release`
 
-## What is Rigorous Research Assistant?
+It does more than return a plan. In **full-cycle mode**, it is instructed to inspect the live workspace, create the required artifacts, implement and run permitted work, verify outputs, persist its state, and continue to the next evidence-justified task without waiting for a new prompt after every routine step.
 
-Rigorous Research Assistant is a portable Agent Skill that helps researchers structure, audit, recover, and document work across the research lifecycle—from question framing and literature review to experiments, writing, review, release, and postmortem.
+| Evidence-gated | Persistent | Fail-closed | Local-first | Cross-host |
+|---|---|---|---|---|
+| Claims advance only with traceable evidence | Work resumes from files, not chat memory | Missing or contradictory evidence blocks a pass | Private work stays local unless a human authorizes release | One canonical Skill for Codex and Claude Code |
 
-It adds explicit evidence gates, provenance records, reusable ledgers, and fail-closed stop rules to an AI-assisted workflow. It does not decide what is scientifically true. Humans choose the question, methods, evidence threshold, interpretation, claims, authorship, ethics, and release.
+> **Core principle:** engineering readiness and scientific validity are different. Passing tests proves that a pipeline runs; it does not prove a research claim.
 
-| **Evidence-gated** | **Human-led** | **Local-first** | **Portable** |
-|---|---|---|---|
-| Claims advance only with traceable evidence | Humans own methods, interpretation, and release | Private work stays local unless a human approves disclosure | One canonical skill for Codex and Claude Code |
+## What it can actually do
 
-> **Core principle:** engineering readiness and scientific validity are different. A passing test proves that a pipeline runs; it does not prove a research claim.
+The exact reach depends on the host's tools, source access, data, compute, credentials, and the authority granted by the researcher. Within those limits, the Skill can drive the following loop.
 
-## Why?
+| Research phase | What the assistant can actively do | Auditable output or stop condition |
+|---|---|---|
+| **Recover and orient** | Inspect the real repository, instructions, dirty state, prior runs, constraints, privacy boundary, budgets, and frozen decisions; determine the earliest unpassed gate | Persistent stage, active task, blockers, next action, and acceptance condition |
+| **Select a research question** | Generate technically distinct candidates; compare decision value, novelty risk, evidence feasibility, resource fit, falsifiers, and kill criteria; reject weak “method X + domain Y” ideas; recommend the strongest surviving candidate | Candidate ledger plus an explicit human-owned selection decision |
+| **Review literature and attack novelty** | Search permitted sources, deduplicate records, perform source-anchored deep reading, build a forensic nearest-neighbor matrix, and construct the strongest “already done” argument | Search log, verified literature ledger, nearest-neighbor audit; `selected`, `deferred`, or `killed` outcome |
+| **Design claims and theory** | Freeze at most three headline claims; define falsifiers, non-claims, baselines, denominators, effect thresholds, uncertainty, assumptions, boundary cases, counterexamples, and proof obligations | Claim-evidence matrix and theorem contract |
+| **Design experiments** | Expand each claim into required baseline, ablation, control, boundary, seed, metric, denominator, pass, redesign, and kill cells; estimate coverage, failure rates, runtime, and cost; freeze a test policy | Executable experiment matrix, protocol, and coverage premortem |
+| **Implement and execute** | Build the smallest complete pipeline; add provenance, hashes, deterministic IDs, interruption semantics, leakage/corruption tests, and append-only run records; pilot the most brittle path; run the frozen matrix when resources exist | Source and environment lock, tests, raw outputs, run ledger, manifests, and explicit partial/failure states |
+| **Check results** | Verify planned versus produced coverage before headline effects; inspect provenance, raw-scale behavior, tails, peaks, trajectories, calibration, subgroups, missingness, denominators, uncertainty, power, baselines, counterexamples, and robustness | Sealed result-facts table with claim-level verdicts and limitations |
+| **Correct experiments honestly** | Distinguish a transient environment fault, implementation bug, protocol or measurement defect, valid scientific failure, and authority/resource block; retry, quarantine and regenerate, reopen gates, redesign with fresh evidence, downgrade, defer, or kill as appropriate | Versioned amendment, invalidation record, regression test, fresh-validation evidence, or honest terminal result |
+| **Write the paper** | Build the one-page argument, draft from sealed fact IDs, generate evidence-linked tables and figures, preserve contrary results and non-claims, compile and render the actual manuscript | Paper claim map connecting each statement to evidence tier, denominator, limitation, and source hash |
+| **Audit the paper** | Check claims, citations, novelty positioning, notation, theory boundaries, baseline fidelity, numbers, units, statistics, figures, limitations, privacy, disclosure, reproducibility, build logs, page limits, and visual rendering | Manuscript-audit ledger; open fatal or major findings block progress |
+| **Red-team and revise** | Simulate demanding reviewer perspectives, classify every request, turn accepted feedback into evidence or text changes, and rerun no-regression checks | Review-remediation matrix and preserved unresolved limitations |
+| **Package and archive** | Build from an isolated source package, inspect every rendered page, scan for likely privacy leaks, create and verify a SHA-256 manifest, and record the canonical archive | Human-approved release checklist and reproducible archive, or a documented blocker |
 
-AI assistants can produce code and prose quickly, but speed can hide scientific failure modes:
+The assistant can repeat `design → execute → inspect → correct → re-execute → re-inspect` when the correction is scientifically legitimate. It is explicitly forbidden to keep rerunning, changing metrics, deleting failures, or rewriting the story merely to obtain a preferred result.
 
-- a runnable pipeline mistaken for a validated result;
-- test leakage or selection after seeing the test set;
-- silent protocol, metric, or baseline changes;
-- partial and failed runs promoted as complete evidence;
-- theorem narratives that survive after a counterexample;
-- plots and prose that drift away from raw results;
-- private manuscript content sent to an external service without an explicit decision.
+## Bounded autonomous execution
 
-Rigorous Research Assistant makes these boundaries visible and auditable.
-
-## What it is—and what it is not
-
-| Rigorous Research Assistant helps with | Rigorous Research Assistant does not provide |
-|---|---|
-| A structured assistant for researcher-directed work | A fully autonomous research pipeline |
-| A set of evidence gates, templates, and local audit tools | A scientific authority or correctness oracle |
-| A way to preserve failures, provenance, and decision history | A system for manufacturing positive results |
-| A guardrail for claims, experiments, writing, and release | A replacement for domain experts, coauthors, or reviewers |
-| Compatible with Codex and Claude Code | A promise of publication or acceptance |
-
-## Human control
-
-The researcher remains the decision owner throughout the workflow.
+“Full-cycle” means autonomous continuation of **authorized research work**. It does not mean autonomous scientific authority.
 
 ```mermaid
 flowchart LR
-    H["Human researcher<br/>owns questions, methods, claims, and release"]:::human
-    R["Rigorous Research Assistant<br/>structures evidence and checks gates"]:::tool
-    P1["Scope & privacy"]
-    P2["Literature & claims"]
-    P3["Protocol & pilot"]
-    P4["Frozen execution"]
-    P5["Audit & writing"]
-    P6["Review & release"]
-
-    H --> R
-    R --> P1 --> P2 --> P3 --> P4 --> P5 --> P6
-    P1 -. decision .-> H
-    P2 -. decision .-> H
-    P3 -. go / stop .-> H
-    P4 -. exceptions .-> H
-    P5 -. interpretation .-> H
-    P6 -. approval .-> H
-
-    classDef human fill:#153b4f,color:#ffffff,stroke:#0b2533,stroke-width:2px;
-    classDef tool fill:#e8f1ee,color:#17342f,stroke:#5d8c7f,stroke-width:2px;
+    A["Recover durable state"] --> B["Choose smallest evidence-producing task"]
+    B --> C["Implement or execute"]
+    C --> D["Verify raw outputs and gate evidence"]
+    D --> E{"Classify outcome"}
+    E -->|"Gate passes"| F["Checkpoint and advance"]
+    F --> B
+    E -->|"Environment or code defect"| G["Repair, regress, regenerate"]
+    G --> D
+    E -->|"Protocol defect"| H["Version amendment + human approval + fresh evidence"]
+    H --> B
+    E -->|"Valid scientific failure"| I["Downgrade, defer, or kill"]
+    E -->|"Human-only decision"| J["Exact handoff and pause"]
 ```
 
-Rigorous Research Assistant may prepare options, checks, artifacts, and handoffs. It must stop when progress requires a new scientific claim, changed protocol, exposed test set, ethics decision, authorship decision, confidential disclosure, paid resource, external upload, or other human-only authority.
+The durable controller records:
 
-## The twelve evidence gates
+- current gate and status;
+- active task and last checkpoint;
+- evidence paths;
+- blockers;
+- next action;
+- acceptance condition;
+- whether an authorized human is required.
 
-| Gate | Research checkpoint |
+This lets a later turn—or another compatible agent—resume from inspectable artifacts instead of reconstructing the project from conversational memory.
+
+## The experiment repair router
+
+| Observed failure | Allowed response | Forbidden response |
+|---|---|---|
+| Environment or transient tool fault | Preserve logs, repair the environment, rerun the unchanged frozen cell | Quietly change model, data, metric, or budget |
+| Implementation defect | Quarantine downstream artifacts, add a regression test, fix code, regenerate from unchanged upstream inputs | Edit reported rows in place |
+| Measurement or protocol defect | Create a versioned amendment, identify invalidated artifacts, obtain required approval, validate on fresh held-out evidence, reopen dependent gates | Reuse contaminated evidence as confirmation |
+| Valid scientific failure | Preserve it; narrow only with independent support; otherwise fail, defer, or kill | Label the result a “bug” because it is inconvenient |
+| Missing authority, resource, privacy clearance, or external state | Record the exact blocker and prepare a reproducible handoff | Invent access, silently substitute a weaker study, or simulate completion |
+
+## Human control is a feature
+
+The assistant may autonomously handle reversible implementation details inside the signed execution contract. It must stop for decisions that materially change the research:
+
+- final question, interpretation, claims, conclusions, authorship, or submission;
+- ethics, consent, license, disclosure, privacy, or external release;
+- uploading unpublished material to an external service;
+- changing a frozen protocol after confirmatory results were inspected;
+- selecting again after a locked test set was exposed;
+- material spending, production changes, or destructive cleanup;
+- two defensible paths that imply different scientific questions, risks, or conclusions.
+
+Humans do not need to approve routine file naming, local diagnostics, test organization, or equivalent reversible implementation choices that leave the scientific contract unchanged.
+
+## Twelve evidence gates
+
+| Gate | Decision checkpoint |
 |---|---|
-| G0 | Orientation, constraints, authority, privacy |
-| G1 | Problem definition and value |
-| G2 | Literature coverage and novelty attack |
+| G0 | Orientation, constraints, authority, privacy, autonomy contract |
+| G1 | Problem value and candidate screening |
+| G2 | Literature coverage, nearest neighbors, and novelty attack |
 | G3 | Claim and theory contract |
-| G4 | Evidence and experimental design |
+| G4 | Evidence and experiment design |
 | G5 | Reproducible implementation |
-| G6 | Brittle-path end-to-end pilot |
+| G6 | Brittle-path end-to-end pilot and protocol freeze |
 | G7 | Frozen full execution |
 | G8 | Result and statistical audit |
-| G9 | Evidence-linked paper and visuals |
-| G10 | Review, red-team, and remediation |
-| G11 | Submission, public release, and archive |
+| G9 | Evidence-linked paper, figures, and manuscript audit |
+| G10 | Reviewer red team and remediation |
+| G11 | Submission package, privacy review, release, and archive |
 
 Gate states are explicit:
 
-| State | Meaning |
-|---|---|
-| `not_started` | Work on the gate has not begun |
-| `in_progress` | Work is active, but the gate has not passed |
-| `passed` | Required evidence exists and has been checked |
-| `failed` | A required scientific criterion did not survive |
-| `blocked` | Progress requires missing evidence, access, or human authority |
-| `paused` | Work is deliberately stopped pending a decision or reassessment |
-| `deferred` | The direction remains viable but is currently infeasible |
-| `killed` | The direction is falsified, non-novel, or deliberately terminated |
+`not_started · in_progress · passed · failed · blocked · paused · deferred · killed`
 
-Failure is preserved as research information; it is not repaired by changing the story.
+A failed gate remains part of the research record. A later discovery can reopen an earlier gate and invalidate every dependent stage without deleting historical artifacts.
 
-## Included
+## What is included
 
-- A private-by-default `.research/` project scaffold.
-- Claim–evidence, theorem, literature, nearest-neighbor, coverage, run, result, paper, and review ledgers.
-- Protocols for idea selection, literature review, theory checks, experiments, statistics, paper writing, reviewer response, privacy, and archival.
-- Local Python tools to initialize a project, audit state, seal an artifact package, verify hashes, and scan a release for likely privacy leaks.
-- Manual-only handling for external AI reviewers.
+- A private-by-default `.research/` project control layer.
+- Persistent full-cycle state and an append-only research-cycle log.
+- Autonomy contract, question-candidate ledger, literature records, claim contract, experiment matrix, protocol-amendment ledger, run ledger, result-facts table, paper claim map, manuscript audit, reviewer remediation, and submission checklist.
+- Protocols for question selection, literature, novelty, theory, experimental design, execution, statistics, correction, writing, review, privacy, release, and postmortem.
+- Local Python tools to initialize or resume a project, enforce safe gate transitions, audit structure, seal artifacts, verify hashes, and scan releases.
+- Human-operated workflows for external AI pre-review services.
+- Cross-platform lifecycle tests on Windows and Linux.
+
+## Tested behavior
+
+The repository includes privacy-safe synthetic tests that verify:
+
+- full-cycle initialization and persistent resume state;
+- real Codex and Claude Code installation copies that can initialize and audit a project;
+- automatic rollback when a gate is passed without evidence;
+- automatic rollback when the human authority contract is incomplete;
+- explicit reopening and invalidation of dependent gates;
+- fresh held-out validation for an applied protocol amendment;
+- preservation of a valid negative scientific outcome as `killed`, not `passed`;
+- a complete synthetic G0 → G11 run;
+- rejection of an unsupported manuscript claim until the major audit finding is resolved.
+
+GitHub Actions runs the lifecycle suite on Windows and Linux with Python 3.11 and 3.13. These tests demonstrate workflow mechanics and fail-closed behavior; they do not certify the scientific validity of a user's project.
 
 ## Requirements
 
-- Python 3.10 or newer for the bundled audit utilities.
-- Codex, Claude Code, or another host that supports directory-based Agent Skills with a `SKILL.md` entrypoint.
-- Human review and domain expertise appropriate to the project.
+- Python 3.10 or newer for the bundled local utilities.
+- Codex, Claude Code, or another directory-based Agent Skills host with a `SKILL.md` entrypoint.
+- The data, literature access, compute, tools, and credentials required by the specific project.
+- Appropriate human domain expertise, supervision, and authorization.
 
 ## Installation
-
-Clone the repository:
 
 ```bash
 git clone https://github.com/bsq415/research-rigor-skill.git
 cd research-rigor-skill
 ```
 
-The installer refuses to overwrite an existing skill directory.
+The installer refuses to overwrite an existing Skill directory.
 
 ### Codex
 
@@ -150,11 +182,21 @@ The installer refuses to overwrite an existing skill directory.
 python install.py --host codex --scope user
 ```
 
-Invoke it explicitly with:
+Start a full-cycle project:
 
 ```text
-$research-rigor Audit this research workspace. Report the current gate, verified evidence,
-scientific gaps, engineering gaps, blockers, and the next justified action.
+$research-rigor Work in full-cycle mode on this researcher-directed project.
+Recover the live state, complete every reversible and authorized evidence-justified
+step, implement and run permitted work, checkpoint artifacts, audit every result,
+and stop only at a human-only decision or a documented blocker.
+```
+
+Request a narrower audit:
+
+```text
+$research-rigor Audit this workspace only. Report the current gate, verified evidence,
+scientific gaps, engineering gaps, blockers, claim downgrades, and exact next action.
+Do not mutate the project.
 ```
 
 ### Claude Code
@@ -165,23 +207,24 @@ Install for the current user:
 python install.py --host claude-code --scope user
 ```
 
-Or install only for one repository:
+Or install for one repository:
 
 ```bash
 python install.py --host claude-code --scope project --project-dir /path/to/project
 ```
 
-Invoke it explicitly with:
+Start the same full-cycle workflow:
 
 ```text
-/research-rigor Audit this research workspace. Do not change any frozen protocol or claim.
+/research-rigor Work in full-cycle mode on this researcher-directed project.
+Continue through topic screening, experiment design and execution, result checking,
+legitimate correction or redesign, writing, and manuscript audit. Preserve failures
+and stop at every human-only boundary.
 ```
 
-Claude Code discovers personal skills at `~/.claude/skills/<skill-name>/SKILL.md` and project skills at `.claude/skills/<skill-name>/SKILL.md`. Rigorous Research Assistant uses the same canonical skill files for both Claude Code and Codex.
+Claude Code uses the same `SKILL.md`, references, templates, and scripts as Codex. See [platform compatibility](docs/PLATFORM_COMPATIBILITY.md).
 
 ### Manual installation
-
-Copy `skills/research-rigor/` to one of these locations:
 
 | Host | Destination | Invocation |
 |---|---|---|
@@ -189,77 +232,88 @@ Copy `skills/research-rigor/` to one of these locations:
 | Claude Code, user | `~/.claude/skills/research-rigor/` | `/research-rigor` |
 | Claude Code, project | `<project>/.claude/skills/research-rigor/` | `/research-rigor` |
 
-## Example requests
+## Direct project controls
 
-```text
-Use $research-rigor to initialize a private research control layer in this project.
-Stop after reporting the proposed constraints and decisions that require my approval.
+Initialize:
+
+```bash
+python skills/research-rigor/scripts/init_research_project.py /path/to/project --mode full-cycle
 ```
 
-```text
-/research-rigor Diagnose whether these experiments support the draft's main claims.
-Treat passing tests and smoke runs as engineering evidence only.
+Inspect resumable state:
+
+```bash
+python skills/research-rigor/scripts/research_cycle.py status /path/to/project
 ```
 
-```text
-/research-rigor Convert this external review into a remediation ledger.
-Verify every citation and do not accept the review score as scientific evidence.
+Run the structural audit:
+
+```bash
+python skills/research-rigor/scripts/audit_research_state.py /path/to/project
 ```
+
+See command schemas:
+
+```bash
+python skills/research-rigor/scripts/research_cycle.py checkpoint --help
+python skills/research-rigor/scripts/research_cycle.py transition --help
+```
+
+The structural audit checks records and invariants. It is deliberately not a novelty, theorem, statistics, or scientific-validity oracle.
 
 ## External AI reviewers
 
-Rigorous Research Assistant can prepare a manuscript hash, upload checklist, and remediation ledger for services such as an agentic paper reviewer. It never treats those services as authoritative peer review and must not upload a private manuscript automatically.
+Rigorous Research Assistant can prepare the exact manuscript hash, privacy and upload checklist, raw-review record, and remediation ledger for a human-operated service such as Stanford Agentic Reviewer. It never uploads a private or unpublished manuscript automatically and never treats an AI score as peer-review authority.
 
-Before a human uploads anything, check the service's current privacy, retention, deletion, data-use, and venue-policy terms. Preserve the exact reviewed file and raw response, verify every factual or citation-related suggestion, and route accepted changes through normal no-regression checks.
+Before any upload, an authorized human must check the service's current privacy, retention, deletion, data-use, and venue-policy terms. Every factual criticism and suggested citation still requires independent verification.
 
 ## Privacy and release safety
 
-- Bundled scripts operate on local files and do not upload manuscripts.
+- Bundled scripts process local files and do not upload manuscripts.
 - `.research/` is private by default.
-- Public packages should exclude identities, private paths, unpublished results, distinctive unpublished ideas, credentials, and project-specific examples.
-- `scan_release.py` checks common leak patterns and private deny terms without printing the matched sensitive values.
-- A clean automated scan is not proof of anonymity; a human semantic review is still required.
+- Public artifacts should exclude identities, private paths, unpublished results, distinctive unpublished ideas, credentials, and project-specific case material.
+- `scan_release.py` checks common leak patterns and private deny terms without printing matched sensitive values.
+- A clean automated scan is not proof of anonymity; a human semantic review remains mandatory.
 
 ## Repository layout
 
 ```text
 research-rigor-skill/
+├── .github/workflows/validate.yml
 ├── README.md
 ├── README.zh-CN.md
 ├── DISCLAIMER.md
 ├── LICENSE
 ├── install.py
-├── docs/
-│   └── PLATFORM_COMPATIBILITY.md
-└── skills/
-    └── research-rigor/
-        ├── SKILL.md
-        ├── agents/
-        ├── assets/project-scaffold/
-        ├── references/
-        └── scripts/
+├── tests/
+└── skills/research-rigor/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    ├── assets/project-scaffold/
+    ├── references/
+    └── scripts/
 ```
 
-## Limitations
+## Limits and responsibility
 
-Rigorous Research Assistant is domain-agnostic. It cannot supply missing subject-matter knowledge, data rights, ethical approval, experimental resources, or independent replication. Structural checks can detect missing files and inconsistent records; they cannot prove a theorem, validate a causal claim, certify novelty, or determine whether a paper should be accepted.
+The Skill cannot supply missing subject-matter expertise, lawful data access, ethics approval, experimental resources, independent replication, or truthful external systems. Its structural checks cannot prove a theorem, certify novelty, validate a causal claim, or decide whether a paper deserves acceptance.
 
-Read the full [project disclaimer](DISCLAIMER.md) before use.
+All generated code, searches, analyses, statistics, figures, prose, and decisions must be reviewed at the level appropriate to the research risk. Read the full [Disclaimer](DISCLAIMER.md).
 
 ## Contributing
 
-Privacy-safe contributions are welcome. Useful contributions include:
+Privacy-safe contributions are welcome:
 
 - a general failure mode with a synthetic regression case;
-- a stronger evidence or provenance check;
-- a domain module that preserves the human-control contract;
-- documentation or compatibility improvements.
+- a stronger evidence, provenance, or manuscript check;
+- a domain module that preserves human ownership and fail-closed gates;
+- compatibility, documentation, or test improvements.
 
 Do not submit private manuscripts, unpublished project details, personal data, credentials, proprietary datasets, or identifiable case material.
 
 ## License
 
-Rigorous Research Assistant is released under the [MIT License](LICENSE).
+Released under the [MIT License](LICENSE).
 
 ## Origin
 

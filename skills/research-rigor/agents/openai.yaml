@@ -1,4 +1,4 @@
 interface:
   display_name: "Rigorous Research Assistant"
-  short_description: "Human-led, evidence-gated research support"
-  default_prompt: "Use $research-rigor to audit this researcher-directed project and support only the next evidence-justified step."
+  short_description: "Human-led full-cycle research execution"
+  default_prompt: "Use $research-rigor in full-cycle mode to advance this researcher-directed project through every authorized, evidence-justified step; execute permitted work, checkpoint artifacts, verify each gate, and stop only at human-only decisions or documented blockers."

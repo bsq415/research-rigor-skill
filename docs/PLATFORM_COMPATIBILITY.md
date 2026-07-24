@@ -27,6 +27,8 @@ Claude Code documents these personal and project skill locations in its official
 - All bundled resource links are relative to `SKILL.md`.
 - Script instructions define `<SKILL_DIR>` rather than assuming the research project contains the skill's scripts.
 - The canonical skill is copied at install time; there are no platform-specific forks to keep in sync.
+- The persistent cycle controller and project scaffold use only Python's standard
+  library and portable paths; neither depends on a Codex-only or Claude-only API.
 
 ## Compatibility test
 
@@ -35,7 +37,14 @@ A release is compatible only if all of the following pass:
 1. `SKILL.md` frontmatter validates and the directory name matches `research-rigor`.
 2. Every linked reference, script, and scaffold file exists.
 3. A clean install reaches the expected Codex and Claude Code target directories.
-4. The installed skill can initialize a disposable project scaffold.
+4. The installed skill can initialize a disposable full-cycle project scaffold.
 5. The state audit accepts the untouched scaffold.
-6. The release privacy scan passes.
-7. No instructions imply autonomous scientific authority or bypass a human-only gate.
+6. Checkpoint, rollback, gate transition, dependent-gate reopening, and terminal
+   scientific-failure behavior pass.
+7. A privacy-safe synthetic project reaches G11, while an unsupported manuscript
+   claim is blocked until remediated.
+8. The release privacy scan passes.
+9. No instructions imply autonomous scientific authority or bypass a human-only gate.
+
+The repository runs the lifecycle suite on Windows and Linux with Python 3.11
+and 3.13 in GitHub Actions.

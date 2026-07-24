@@ -22,6 +22,13 @@ Write the problem before the method. Record:
 
 Reject weak formulations such as “apply method X to domain Y,” “combine several signals,” or “compare more models” unless the combination enables a new scientific answer.
 
+Generate several technically distinct candidates and record them in
+`01_IDEA_CANDIDATES.csv`. For each one, precommit decision value, exact delta,
+strongest already-done argument, evidence feasibility, resource and privacy fit,
+falsifier, and kill criteria. A full-cycle assistant may rank and reject
+candidates, but the selected row must name the human decision owner and the
+evidence used for selection.
+
 ## Build an auditable literature corpus
 
 Use at least three independent discovery paths:
@@ -88,6 +95,7 @@ Before freezing, require:
 - explicit falsifier and non-claims;
 - viable evidence path under available resources;
 - independent novelty and evidence sign-off.
+- exactly one `selected` row in `01_IDEA_CANDIDATES.csv`.
 
 Use these outcomes:
 

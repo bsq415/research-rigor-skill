@@ -4,6 +4,11 @@
 
 Rigorous Research Assistant is an experimental research support tool. It is not an autonomous scientist, scientific authority, peer reviewer, legal adviser, medical adviser, ethics board, statistical certifier, or publication service.
 
+Its full-cycle mode can continue authorized tasks without repeated prompts, but
+that convenience does not transfer scientific responsibility, decision
+authority, or liability from the user or research team to the software,
+maintainers, model provider, or contributors.
+
 The software, templates, prompts, checks, and model-assisted outputs are provided **"as is"**, without warranties of any kind. They may be incomplete, incorrect, outdated, biased, misleading, insecure, or unsuitable for a particular research domain.
 
 Users and their research teams are solely responsible for:
@@ -27,6 +32,8 @@ To the maximum extent permitted by applicable law, the authors and contributors 
 ## 中文
 
 严谨科研助手是实验性的科研辅助工具，不是自动科学家、科学权威、同行评审人、法律或医疗顾问、伦理委员会、统计认证机构或投稿服务。
+
+Full-cycle 模式可以在不反复等待提示的情况下继续执行已授权任务，但这种便利不代表科研责任、决策权或法律责任从使用者或研究团队转移给软件、维护者、模型提供方或贡献者。
 
 本项目的软件、模板、提示、检查和模型辅助输出均按**“原样”**提供，不作任何形式的保证。它们可能不完整、不正确、过时、带有偏差、具有误导性、不安全，或不适合特定科研领域。
 

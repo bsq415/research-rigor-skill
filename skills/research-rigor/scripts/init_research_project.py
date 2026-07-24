@@ -52,8 +52,11 @@ def initialize(args: argparse.Namespace) -> int:
         "__PROJECT_TITLE__": title,
         "__CREATED_UTC__": created_utc,
         "__DEEP_READ_MIN__": str(args.deep_read_min),
+        "__FORENSIC_NEIGHBOR_MIN__": str(args.forensic_neighbor_min),
+        "__INDEPENDENT_AUDIT_FRACTION__": str(args.independent_audit_fraction),
         "__PRIVACY_CLASSIFICATION__": args.classification,
         "__EXPORT_POLICY__": args.export_policy,
+        "__EXECUTION_MODE__": args.mode,
     }
 
     control.mkdir(parents=True, exist_ok=True)
@@ -92,6 +95,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--title", help="human-readable project title; defaults to directory name")
     parser.add_argument("--control-dir", default=".research")
     parser.add_argument("--deep-read-min", type=int, default=300)
+    parser.add_argument("--forensic-neighbor-min", type=int, default=30)
+    parser.add_argument("--independent-audit-fraction", type=float, default=0.1)
+    parser.add_argument(
+        "--mode",
+        choices=("guided", "full-cycle"),
+        default="guided",
+        help="guided waits for requested units; full-cycle continues through authorized gates",
+    )
     parser.add_argument(
         "--classification",
         choices=("private", "internal", "public"),
@@ -111,6 +122,10 @@ def main() -> int:
     args = parser.parse_args()
     if args.deep_read_min < 0:
         parser.error("--deep-read-min must be non-negative")
+    if args.forensic_neighbor_min < 0:
+        parser.error("--forensic-neighbor-min must be non-negative")
+    if not 0 <= args.independent_audit_fraction <= 1:
+        parser.error("--independent-audit-fraction must be between 0 and 1")
     try:
         return initialize(args)
     except (FileExistsError, FileNotFoundError, ValueError, json.JSONDecodeError) as exc:

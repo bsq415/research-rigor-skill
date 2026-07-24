@@ -72,6 +72,12 @@ Run separate audits for:
 - anonymity, privacy, ethics, conflicts, and disclosure;
 - compilation logs, references, floats, fonts, page limits, and visual layout.
 
+Write every checked surface or finding to `07_MANUSCRIPT_AUDIT.csv`, including
+location, audit type, severity, evidence IDs, required action, status, and
+resolution evidence. An audit with no defect should still record the checked
+surface as `not_applicable`; otherwise the absence of rows is not evidence that
+the audit happened. Open `fatal` or `major` findings block G9.
+
 A polished PDF is presentation evidence, not scientific evidence.
 
 ## Address reviewer feedback

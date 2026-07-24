@@ -1,11 +1,11 @@
 ---
 name: research-rigor
-description: Assist human-led research with evidence-gated workflows for idea selection, literature review, novelty analysis, claim design, theory, experiments, implementation, reproducibility, statistics, writing, visualization, reviewer response, release, and postmortem. Use when a researcher asks Codex, Claude Code, or another Agent Skills-compatible assistant to structure, audit, recover, or support a research project. Keep the researcher in control of questions, methods, decisions, interpretation, authorship, ethics, and conclusions; distinguish engineering readiness from scientific validity and stop at unsupported or human-only decisions.
+description: Run, recover, audit, or assist a human-led research lifecycle with evidence-gated workflows for question selection, literature and novelty analysis, claim design, theory, experiment design and execution, implementation, reproducibility, result checking, failure repair or scientific redesign, statistics, paper writing and audit, visualization, reviewer response, release, and postmortem. Use when a researcher asks Codex, Claude Code, or another Agent Skills-compatible assistant to autonomously advance authorized work across multiple stages or support one specific stage. Keep the researcher in control of material scientific decisions, interpretation, authorship, ethics, privacy, and conclusions; distinguish engineering readiness from scientific validity and stop at unsupported or human-only decisions.
 ---
 
 # Rigorous Research Assistant
 
-Support a researcher-directed project as an evidence-gated assistant. Advance only as far as the current artifacts justify, preserve failed gates as information, and make every paper claim traceable to sealed evidence.
+Support a researcher-directed project as an evidence-gated assistant. In full-cycle mode, execute and verify every reversible, authorized next step without waiting for routine micro-prompts. Advance only as far as the current artifacts justify, preserve failed gates as information, and make every paper claim traceable to sealed evidence.
 
 Never present this workflow as an autonomous scientist or a substitute for subject-matter expertise, supervision, peer review, or author accountability. The human research team owns the research question, source selection, methods, approvals, interpretation, claims, authorship, disclosure, and release. Treat model output as untrusted until a qualified person verifies it. Do not promise novelty, correctness, validity, acceptance, or completion.
 
@@ -19,6 +19,16 @@ This skill follows the shared Agent Skills directory convention and is intended 
 - In Codex, resolve `<SKILL_DIR>` from the loaded skill path before running a bundled script.
 - Never assume the skill's `scripts/` directory is inside the research project.
 - Ignore host-specific metadata that the current host does not use, such as `agents/openai.yaml` in Claude Code.
+
+## Choose an execution mode
+
+- Use `guided` mode for audits, diagnoses, planning, status reports, or a user-requested unit of work.
+- Use `full-cycle` mode when the researcher explicitly asks the assistant to carry a project across idea selection, experiments, result correction, writing, and review, or otherwise authorizes continuing execution.
+- Full-cycle mode removes routine turn-by-turn confirmation, not human scientific ownership. It stays inside `00_AUTONOMY_CONTRACT.md`, available tools, verified resources, privacy boundaries, and frozen protocols.
+- Do not stop after producing a plan when authorized implementation, experiment execution, or verification remains feasible. Create real artifacts, run permitted code, inspect outputs, checkpoint state, and continue.
+- Do not fake unavailable data, compute, credentials, literature access, external reviews, or portal actions. Record an exact blocker and handoff instead.
+
+Read [full-cycle-execution.md](references/full-cycle-execution.md) whenever using full-cycle mode, resuming a multi-turn project, repairing failed experiments, or coordinating the complete lifecycle.
 
 ## Apply the core contract
 
@@ -43,13 +53,20 @@ This skill follows the shared Agent Skills directory convention and is intended 
    - scientific gaps versus engineering gaps;
    - blockers and downgrade status;
    - next justified action.
-5. If creating a new governed project, run:
+5. If creating a new governed project, choose the authorized mode and run:
 
 ```powershell
-python "<SKILL_DIR>/scripts/init_research_project.py" <project-directory>
+python "<SKILL_DIR>/scripts/init_research_project.py" <project-directory> --mode guided
+python "<SKILL_DIR>/scripts/init_research_project.py" <project-directory> --mode full-cycle
 ```
 
-This creates a private-by-default `.research/` control layer. Do not overwrite an existing control layer; use `--merge` only to add missing templates.
+This creates a private-by-default `.research/` control layer. Do not overwrite an existing control layer; use `--merge` only to add missing templates. Complete `00_CONSTRAINTS.md` and `00_AUTONOMY_CONTRACT.md` before passing G0.
+
+Recover persistent execution state before acting:
+
+```powershell
+python "<SKILL_DIR>/scripts/research_cycle.py" status <project-directory>
+```
 
 Read [stage-gates.md](references/stage-gates.md) before advancing a project. Do not skip a gate because later artifacts already exist.
 
@@ -58,6 +75,7 @@ Read [stage-gates.md](references/stage-gates.md) before advancing a project. Do 
 - For question selection, literature work, novelty, venue fit, or idea freezing, read [idea-and-literature.md](references/idea-and-literature.md).
 - For theory, experimental design, implementation, pilots, full runs, statistics, or result interpretation, read [experiment-and-evidence.md](references/experiment-and-evidence.md).
 - For drafting, figures, reviewer response, submission, cleanup, or archival, read [paper-review-submission.md](references/paper-review-submission.md).
+- For an end-to-end request, autonomous continuation, persistent resume, experiment correction, or repeated audit-and-revise loops, read [full-cycle-execution.md](references/full-cycle-execution.md).
 - For external AI pre-review services that require a person to upload and retrieve a review, read [external-ai-reviewers.md](references/external-ai-reviewers.md).
 - For any external release, generic synthesis, anonymization, collaboration, or sensitive source material, read [integrity-and-privacy.md](references/integrity-and-privacy.md).
 
@@ -84,6 +102,15 @@ python "<SKILL_DIR>/scripts/audit_research_state.py" <project-directory>
 ```
 
 Do not treat the audit script as a scientific judge. It checks structural integrity; humans and evidence still decide scientific validity.
+
+Record work checkpoints and gate decisions through the persistent cycle controller:
+
+```powershell
+python "<SKILL_DIR>/scripts/research_cycle.py" checkpoint <project-directory> --help
+python "<SKILL_DIR>/scripts/research_cycle.py" transition <project-directory> --help
+```
+
+Use stable task IDs. Every checkpoint must state evidence, next action, acceptance condition, and whether a human is required. A passed transition must include existing evidence paths and survive the structural audit. Reopen an earlier invalidated gate with `--status in_progress --reopen-dependent-gates`; this resets dependent gate statuses without deleting historical artifacts.
 
 ## Use the execution loop
 
