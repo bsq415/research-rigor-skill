@@ -70,12 +70,25 @@ class RepositoryIntegrityTests(unittest.TestCase):
             "01_IDEA_CANDIDATES.csv",
             "04_EXPERIMENT_MATRIX.csv",
             "04_PROTOCOL_AMENDMENTS.csv",
+            "07_FIGURE_AUDIT.csv",
             "07_MANUSCRIPT_AUDIT.csv",
+            "08_RESPONSE_LETTER.md",
+            "08_RESUBMISSION_HIGHLIGHTS.md",
+            "08_COVER_LETTER.md",
             "RESEARCH_CYCLE_LOG.csv",
         )
         scaffold = SKILL_ROOT / "assets" / "project-scaffold"
         self.assertTrue((SKILL_ROOT / "scripts" / "research_cycle.py").is_file())
+        self.assertTrue(
+            (SKILL_ROOT / "scripts" / "audit_revision_package.py").is_file()
+        )
         self.assertTrue((SKILL_ROOT / "references" / "full-cycle-execution.md").is_file())
+        self.assertTrue(
+            (SKILL_ROOT / "references" / "reviewer-red-team-and-resubmission.md").is_file()
+        )
+        self.assertTrue(
+            (SKILL_ROOT / "references" / "figures-and-layout.md").is_file()
+        )
         for name in expected:
             self.assertTrue((scaffold / name).is_file(), name)
 

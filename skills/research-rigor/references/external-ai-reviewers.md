@@ -84,6 +84,12 @@ The public pages describe the workflow and technical limitations but must not be
 
 ## Review intake and remediation
 
+Route the preserved raw review through
+`reviewer-red-team-and-resubmission.md`. AI comments use the same stable IDs,
+reviewer-intent analysis, evidence requirements, response anchors, citation
+verification, and no-regression gates as human reviewer comments; the service's
+score or wording receives no special authority.
+
 For each review point:
 
 1. quote or identify the point without altering its meaning;

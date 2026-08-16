@@ -152,7 +152,11 @@ class ResearchCycleTests(unittest.TestCase):
             "01_IDEA_CANDIDATES.csv",
             "04_EXPERIMENT_MATRIX.csv",
             "04_PROTOCOL_AMENDMENTS.csv",
+            "07_FIGURE_AUDIT.csv",
             "07_MANUSCRIPT_AUDIT.csv",
+            "08_RESPONSE_LETTER.md",
+            "08_RESUBMISSION_HIGHLIGHTS.md",
+            "08_COVER_LETTER.md",
             "RESEARCH_CYCLE_LOG.csv",
         ):
             self.assertTrue((control / name).is_file(), name)
@@ -162,6 +166,46 @@ class ResearchCycleTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "full-cycle")
         self.assertEqual(payload["current_gate"], "G0")
         self.assertTrue(payload["structural_audit_ok"])
+
+    def test_legacy_review_matrix_remains_structurally_auditable(self) -> None:
+        control = self.initialize()
+        legacy_headers = [
+            "comment_id",
+            "reviewer_request",
+            "type",
+            "severity",
+            "scientific_validity",
+            "action",
+            "evidence_needed",
+            "artifact_or_diff",
+            "regression_checks",
+            "unresolved_limitation",
+            "status",
+            "response_text",
+        ]
+        with (control / "08_REVIEW_REMEDIATION.csv").open(
+            "w", encoding="utf-8", newline=""
+        ) as handle:
+            writer = csv.DictWriter(handle, fieldnames=legacy_headers)
+            writer.writeheader()
+            writer.writerow(
+                {
+                    "comment_id": "legacy-review-1",
+                    "reviewer_request": "Clarify scope",
+                    "type": "clarification",
+                    "severity": "minor",
+                    "scientific_validity": "No change",
+                    "action": "State the boundary",
+                    "evidence_needed": "Existing claim map",
+                    "artifact_or_diff": "07_ONE_PAGE_PAPER.md",
+                    "regression_checks": "Conclusion remains bounded",
+                    "unresolved_limitation": "External cases",
+                    "status": "resolved",
+                    "response_text": "The scope is now explicit.",
+                }
+            )
+        result = self.run_cli(AUDIT, self.project)
+        self.assertIn("legacy schema", result.stdout)
 
     def test_checkpoint_persists_resume_state(self) -> None:
         control = self.initialize()
@@ -619,17 +663,29 @@ class ResearchCycleTests(unittest.TestCase):
             ],
         )
 
+        review_source = self.project / "reviews" / "internal-review.md"
+        review_source.parent.mkdir(parents=True)
+        review_source.write_text(
+            "Clarify the evidence boundary for the synthetic cases.\n",
+            encoding="utf-8",
+        )
         self.append_csv_row(
             control,
             "08_REVIEW_REMEDIATION.csv",
             {
                 "comment_id": "review-1",
+                "source": "internal_red_team",
+                "source_record": "reviews/internal-review.md",
                 "reviewer_request": "Clarify the evidence boundary",
+                "reviewer_intent": "Prevent unsupported generalization",
                 "type": "clarification",
                 "severity": "major",
+                "assessment": "valid",
                 "scientific_validity": "No change",
                 "action": "State synthetic-case limitation",
-                "artifact_or_diff": "07_ONE_PAGE_PAPER.md",
+                "changed_locations": "Limitations paragraph",
+                "change_evidence": "07_ONE_PAGE_PAPER.md",
+                "response_anchor": "review-1",
                 "regression_checks": "claim map remains supported",
                 "unresolved_limitation": "Unknown corruptions",
                 "status": "resolved",

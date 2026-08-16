@@ -1,6 +1,6 @@
 ---
 name: research-rigor
-description: Run, recover, audit, or assist a human-led research lifecycle with evidence-gated workflows for question selection, literature and novelty analysis, claim design, theory, experiment design and execution, implementation, reproducibility, result checking, failure repair or scientific redesign, statistics, paper writing and audit, visualization, reviewer response, release, and postmortem. Use when a researcher asks Codex, Claude Code, or another Agent Skills-compatible assistant to autonomously advance authorized work across multiple stages or support one specific stage. Keep the researcher in control of material scientific decisions, interpretation, authorship, ethics, privacy, and conclusions; distinguish engineering readiness from scientific validity and stop at unsupported or human-only decisions.
+description: Run, recover, audit, or assist a human-led research lifecycle with evidence-gated workflows for question selection, literature and novelty analysis, claim design, theory, experiment design and execution, implementation, reproducibility, result checking, failure repair or scientific redesign, statistics, paper writing and audit, trustworthy figures and layout, reviewer red-teaming, rejection or revise-and-resubmit responses, revision highlights, cover letters, release, and postmortem. Use when a researcher asks Codex, Claude Code, or another Agent Skills-compatible assistant to autonomously advance authorized work across multiple stages or support one specific stage. Keep the researcher in control of material scientific decisions, interpretation, authorship, ethics, privacy, and conclusions; distinguish engineering readiness from scientific validity and stop at unsupported or human-only decisions.
 ---
 
 # Rigorous Research Assistant
@@ -75,6 +75,8 @@ Read [stage-gates.md](references/stage-gates.md) before advancing a project. Do 
 - For question selection, literature work, novelty, venue fit, or idea freezing, read [idea-and-literature.md](references/idea-and-literature.md).
 - For theory, experimental design, implementation, pilots, full runs, statistics, or result interpretation, read [experiment-and-evidence.md](references/experiment-and-evidence.md).
 - For drafting, figures, reviewer response, submission, cleanup, or archival, read [paper-review-submission.md](references/paper-review-submission.md).
+- For reviewer simulation, a decision letter, rejection or revise-and-resubmit work, point-by-point responses, revision highlights, or a new cover letter, read [reviewer-red-team-and-resubmission.md](references/reviewer-red-team-and-resubmission.md).
+- For figure size, clarity, vector or raster choice, effective DPI, fonts, axes, captions, float placement, or page-level visual QA, read [figures-and-layout.md](references/figures-and-layout.md).
 - For an end-to-end request, autonomous continuation, persistent resume, experiment correction, or repeated audit-and-revise loops, read [full-cycle-execution.md](references/full-cycle-execution.md).
 - For external AI pre-review services that require a person to upload and retrieve a review, read [external-ai-reviewers.md](references/external-ai-reviewers.md).
 - For any external release, generic synthesis, anonymization, collaboration, or sensitive source material, read [integrity-and-privacy.md](references/integrity-and-privacy.md).
@@ -122,10 +124,22 @@ Use stable task IDs. Every checkpoint must state evidence, next action, acceptan
 6. Run append-only; verify interrupted prefixes before resuming; never overwrite sealed artifacts.
 7. Audit coverage and failure taxonomy before reading headline effects.
 8. Produce a sealed result-facts table. Generate tables, figures, and prose from it.
-9. Red-team the paper for novelty, soundness, evidence sufficiency, reproducibility, scope, privacy, and venue fit.
-10. Build the submission from an isolated source package, render it, inspect it visually, and verify its manifest.
+9. Red-team the paper through assumption realism, optimizer and hyperparameter necessity, cost-normalized attribution, mechanism-aware robustness, citation positioning, cost-versus-gain, novelty dependence, model mismatch, alternative regimes, operating boundaries, and visual integrity.
+10. Convert every accepted reviewer point into evidence, analysis, manuscript changes, response anchors, limitations, and no-regression checks; prepare a point-by-point response, revision highlights, and cover letter when formally resubmitting.
+11. Build the submission from an isolated source package, render it, inspect it at final size page by page, and verify its manifest.
 
 Use external AI reviewers only as an additional, human-operated red-team surface. Never upload a private or unpublished manuscript automatically. Require explicit author approval, check the service's current privacy and data-use terms, hash the exact review copy, preserve the raw review, verify every suggested citation or factual criticism, and route accepted items through the same remediation and no-regression gates.
+
+For a formal revision package, run the dedicated structural audit after the
+response matrix and final-size figure ledger are complete:
+
+```powershell
+python "<SKILL_DIR>/scripts/audit_revision_package.py" <project-directory> --strict
+```
+
+Add `--expected-comments <count>` when the decision letter gives a countable set
+of actionable comments. This verifies coverage and package structure, not the
+scientific adequacy of the responses.
 
 For a selected artifact directory, create and verify a portable SHA-256 manifest:
 

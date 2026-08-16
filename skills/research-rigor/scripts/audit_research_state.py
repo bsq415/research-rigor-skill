@@ -54,7 +54,11 @@ V2_REQUIRED_FILES = (
     "01_IDEA_CANDIDATES.csv",
     "04_EXPERIMENT_MATRIX.csv",
     "04_PROTOCOL_AMENDMENTS.csv",
+    "07_FIGURE_AUDIT.csv",
     "07_MANUSCRIPT_AUDIT.csv",
+    "08_RESPONSE_LETTER.md",
+    "08_RESUBMISSION_HIGHLIGHTS.md",
+    "08_COVER_LETTER.md",
     "RESEARCH_CYCLE_LOG.csv",
 )
 REQUIRED_HEADERS = {
@@ -183,13 +187,42 @@ REQUIRED_HEADERS = {
         "status",
         "resolution_evidence",
     },
+    "07_FIGURE_AUDIT.csv": {
+        "figure_id",
+        "claim_id",
+        "content_type",
+        "source_data",
+        "generation_artifact",
+        "final_asset",
+        "final_render_evidence",
+        "format",
+        "vector_or_raster",
+        "target_width",
+        "effective_dpi",
+        "required_min_dpi",
+        "font_embedded_or_na",
+        "legible_at_final_size",
+        "line_and_marker_check",
+        "color_independent",
+        "crop_checked",
+        "axis_integrity",
+        "uncertainty_or_na",
+        "caption_check",
+        "final_render_checked",
+        "status",
+        "notes",
+    },
     "08_REVIEW_REMEDIATION.csv": {
         "comment_id",
         "reviewer_request",
         "type",
+        "severity",
+        "scientific_validity",
         "action",
         "regression_checks",
+        "unresolved_limitation",
         "status",
+        "response_text",
     },
     "10_AI_REVIEW_LEDGER.csv": {
         "review_id",
@@ -905,13 +938,211 @@ def audit_project(raw_root: Path) -> tuple[Audit, Path]:
             ids = [row.get("finding_id", "").strip() for row in unresolved_major]
             audit.error(f"G9 passed with unresolved fatal or major findings: {ids}")
 
+    figure_audit = csv_rows.get("07_FIGURE_AUDIT.csv", [])
+    if figure_audit:
+        _nonempty_ids(figure_audit, "figure_id", "07_FIGURE_AUDIT.csv", audit)
+    allowed_figure_statuses = {
+        "planned",
+        "in_progress",
+        "passed",
+        "failed",
+        "waived",
+        "not_applicable",
+    }
+    for row in figure_audit:
+        figure_id = row.get("figure_id", "").strip()
+        status = row.get("status", "").strip().lower()
+        if status not in allowed_figure_statuses:
+            audit.error(
+                f"figure audit {figure_id!r} has invalid status: {status!r}"
+            )
+        if status == "passed":
+            for field in (
+                "claim_id",
+                "source_data",
+                "generation_artifact",
+                "final_asset",
+                "final_render_evidence",
+                "format",
+                "vector_or_raster",
+                "target_width",
+                "axis_integrity",
+                "uncertainty_or_na",
+            ):
+                if not row.get(field, "").strip():
+                    audit.error(f"passed figure audit {figure_id!r} lacks {field}")
+            for field in (
+                "source_data",
+                "generation_artifact",
+                "final_asset",
+                "final_render_evidence",
+            ):
+                evidence_path = row.get(field, "").strip()
+                if evidence_path and not _evidence_exists(
+                    evidence_path, control, project
+                ):
+                    audit.error(
+                        f"passed figure audit {figure_id!r} has missing or nonportable {field}"
+                    )
+        if status in {"waived", "not_applicable"} and not row.get(
+            "notes", ""
+        ).strip():
+            audit.error(f"figure audit {figure_id!r} requires an explanatory note")
+    if "G9" in passed:
+        unfinished_figures = [
+            row.get("figure_id", "").strip()
+            for row in figure_audit
+            if row.get("status", "").strip().lower()
+            in {"planned", "in_progress", "failed"}
+        ]
+        if unfinished_figures:
+            audit.error(
+                f"G9 passed with non-ready figure audits: {unfinished_figures}"
+            )
+
     remediation = csv_rows.get("08_REVIEW_REMEDIATION.csv", [])
     if remediation:
         _nonempty_ids(
             remediation, "comment_id", "08_REVIEW_REMEDIATION.csv", audit
         )
+    extended_review_headers = {
+        "source",
+        "source_record",
+        "reviewer_intent",
+        "assessment",
+        "evidence_needed",
+        "evidence_ids",
+        "changed_locations",
+        "change_evidence",
+        "response_anchor",
+        "citation_checks",
+    }
+    extended_review_schema = bool(remediation) and extended_review_headers <= set(
+        remediation[0]
+    )
+    if remediation and not extended_review_schema:
+        audit.warn(
+            "08_REVIEW_REMEDIATION.csv uses the legacy schema; the general audit "
+            "preserves compatibility, but audit_revision_package.py --strict "
+            "requires the extended reviewer provenance columns"
+        )
+
+    allowed_review_types = {
+        "evidence",
+        "analysis",
+        "clarification",
+        "presentation",
+        "citation",
+        "policy",
+        "out-of-scope",
+    }
+    allowed_assessments = {
+        "valid",
+        "partially_valid",
+        "disputed",
+        "not_applicable",
+    }
+    allowed_review_statuses = {
+        "open",
+        "planned",
+        "in_progress",
+        "resolved",
+        "accepted_limitation",
+        "deferred_new_study",
+        "out_of_scope",
+    }
+    terminal_review_statuses = {
+        "resolved",
+        "accepted_limitation",
+        "deferred_new_study",
+        "out_of_scope",
+    }
+    for row in remediation:
+        comment_id = row.get("comment_id", "").strip()
+        label = f"review remediation {comment_id!r}"
+        status = row.get("status", "").strip().lower()
+        if status not in allowed_review_statuses:
+            audit.error(f"{label} has invalid status: {status!r}")
+        if not extended_review_schema:
+            continue
+
+        for field in (
+            "source",
+            "source_record",
+            "reviewer_request",
+            "reviewer_intent",
+            "type",
+            "severity",
+            "assessment",
+            "scientific_validity",
+            "action",
+            "response_anchor",
+            "status",
+        ):
+            if not row.get(field, "").strip():
+                audit.error(f"{label} lacks {field}")
+        source_record = row.get("source_record", "").strip()
+        if source_record and not _evidence_exists(source_record, control, project):
+            audit.error(f"{label} has missing or nonportable source_record")
+        types = {
+            item.strip().lower()
+            for item in re.split(r"[|;]", row.get("type", ""))
+            if item.strip()
+        }
+        if not types or not types <= allowed_review_types:
+            audit.error(f"{label} has invalid type values: {sorted(types)}")
+        severity = row.get("severity", "").strip().lower()
+        if severity not in allowed_severities:
+            audit.error(f"{label} has invalid severity: {severity!r}")
+        assessment = row.get("assessment", "").strip().lower()
+        if assessment not in allowed_assessments:
+            audit.error(f"{label} has invalid assessment: {assessment!r}")
+        if types & {"evidence", "analysis"} and not row.get(
+            "evidence_needed", ""
+        ).strip():
+            audit.error(f"{label} requests evidence or analysis but lacks evidence_needed")
+        if status == "resolved":
+            for field in (
+                "response_text",
+                "regression_checks",
+                "changed_locations",
+                "change_evidence",
+            ):
+                if not row.get(field, "").strip():
+                    audit.error(f"resolved {label} lacks {field}")
+            if types & {"evidence", "analysis"} and not row.get(
+                "evidence_ids", ""
+            ).strip():
+                audit.error(f"resolved {label} lacks evidence_ids")
+        elif status in terminal_review_statuses:
+            for field in (
+                "response_text",
+                "regression_checks",
+                "unresolved_limitation",
+                "change_evidence",
+            ):
+                if not row.get(field, "").strip():
+                    audit.error(f"terminal {label} lacks {field}")
+        if "citation" in types and status in terminal_review_statuses:
+            if not row.get("citation_checks", "").strip():
+                audit.error(f"terminal citation {label} lacks citation_checks")
+        change_evidence = row.get("change_evidence", "").strip()
+        if status in terminal_review_statuses and change_evidence:
+            if not _evidence_exists(change_evidence, control, project):
+                audit.error(f"{label} has missing or nonportable change_evidence")
     if "G10" in passed and not remediation:
         audit.error("G10 passed without reviewer-red-team or remediation rows")
+    if "G10" in passed:
+        unresolved_comments = [
+            row.get("comment_id", "").strip()
+            for row in remediation
+            if row.get("status", "").strip().lower()
+            not in terminal_review_statuses
+        ]
+        if unresolved_comments:
+            audit.error(
+                f"G10 passed with unresolved reviewer comments: {unresolved_comments}"
+            )
 
     ai_reviews = csv_rows.get("10_AI_REVIEW_LEDGER.csv", [])
     if ai_reviews:

@@ -50,10 +50,40 @@ The exact reach depends on the host's tools, source access, data, compute, crede
 | **Correct experiments honestly** | Distinguish a transient environment fault, implementation bug, protocol or measurement defect, valid scientific failure, and authority/resource block; retry, quarantine and regenerate, reopen gates, redesign with fresh evidence, downgrade, defer, or kill as appropriate | Versioned amendment, invalidation record, regression test, fresh-validation evidence, or honest terminal result |
 | **Write the paper** | Build the one-page argument, draft from sealed fact IDs, generate evidence-linked tables and figures, preserve contrary results and non-claims, compile and render the actual manuscript | Paper claim map connecting each statement to evidence tier, denominator, limitation, and source hash |
 | **Audit the paper** | Check claims, citations, novelty positioning, notation, theory boundaries, baseline fidelity, numbers, units, statistics, figures, limitations, privacy, disclosure, reproducibility, build logs, page limits, and visual rendering | Manuscript-audit ledger; open fatal or major findings block progress |
-| **Red-team and revise** | Simulate demanding reviewer perspectives, classify every request, turn accepted feedback into evidence or text changes, and rerun no-regression checks | Review-remediation matrix and preserved unresolved limitations |
+| **Red-team and revise** | Apply eleven adversarial lenses covering assumption realism, hyperparameters, cost-normalized attribution, mechanism-aware robustness, citations, cost-versus-gain, novelty dependence, model mismatch, alternative regimes, operating boundaries, and visual integrity; classify every request and execute the required evidence or manuscript work | Review-remediation matrix with raw-source coverage, evidence IDs, response anchors, exact changes, limitations, and no-regression checks |
+| **Respond and resubmit** | Triage a rejection or revise-and-resubmit decision; decompose changed results; draft a point-by-point response, revision highlights, and a new cover letter; audit every comment and document before handoff | Structurally audited response package, or an explicit unsupported/out-of-scope boundary |
 | **Package and archive** | Build from an isolated source package, inspect every rendered page, scan for likely privacy leaks, create and verify a SHA-256 manifest, and record the canonical archive | Human-approved release checklist and reproducible archive, or a documented blocker |
 
 The assistant can repeat `design → execute → inspect → correct → re-execute → re-inspect` when the correction is scientifically legitimate. It is explicitly forbidden to keep rerunning, changing metrics, deleting failures, or rewriting the story merely to obtain a preferred result.
+
+## Reviewer-to-resubmission workbench
+
+The Skill can turn a real decision letter into a countable, evidence-producing
+revision program:
+
+`raw comment → reviewer intent → validity assessment → required evidence → experiment or analysis → manuscript change → point-by-point response → no-regression audit`
+
+It includes an eleven-lens reviewer model distilled into general checks, not
+paper-specific examples. A formal revision can produce and audit:
+
+- one remediation row and stable response anchor per reviewer or editor point;
+- matched-budget ablations, sensitivity studies, model-mismatch tests, operating
+  boundaries, and cost-versus-gain evidence where the criticism requires them;
+- an explicit decomposition when revised numbers differ from the submitted ones;
+- a point-by-point response that separates answer, evidence, exact manuscript
+  changes, remaining limitation, and regression checks;
+- revision highlights that describe what changed instead of repeating the
+  original abstract;
+- a concise new cover letter with only human-confirmed policy declarations;
+- a final-size figure ledger covering column width, vector/raster choice,
+  effective DPI, embedded fonts, line and marker readability, color independence,
+  crop boxes, axes, captions, and rendered-page inspection.
+
+The deterministic package audit fails closed on missing comments, unfinished
+templates, unresolved evidence requests, absent response anchors, unverified
+citation handling, weak raster resolution, or unjustified axis truncation. It
+does not pretend that structural completeness proves the scientific answer is
+adequate.
 
 ## Bounded autonomous execution
 
@@ -139,6 +169,7 @@ A failed gate remains part of the research record. A later discovery can reopen 
 - A private-by-default `.research/` project control layer.
 - Persistent full-cycle state and an append-only research-cycle log.
 - Autonomy contract, question-candidate ledger, literature records, claim contract, experiment matrix, protocol-amendment ledger, run ledger, result-facts table, paper claim map, manuscript audit, reviewer remediation, and submission checklist.
+- Final-size figure audit, point-by-point response, revision-highlights, and resubmission-cover-letter templates.
 - Protocols for question selection, literature, novelty, theory, experimental design, execution, statistics, correction, writing, review, privacy, release, and postmortem.
 - Local Python tools to initialize or resume a project, enforce safe gate transitions, audit structure, seal artifacts, verify hashes, and scan releases.
 - Human-operated workflows for external AI pre-review services.
@@ -157,6 +188,8 @@ The repository includes privacy-safe synthetic tests that verify:
 - preservation of a valid negative scientific outcome as `killed`, not `passed`;
 - a complete synthetic G0 → G11 run;
 - rejection of an unsupported manuscript claim until the major audit finding is resolved.
+- rejection of an incomplete response package, unresolved reviewer evidence request,
+  missing response anchor, or unverified final-size figure record.
 
 GitHub Actions runs the lifecycle suite on Windows and Linux with Python 3.11 and 3.13. These tests demonstrate workflow mechanics and fail-closed behavior; they do not certify the scientific validity of a user's project.
 
@@ -251,6 +284,16 @@ Run the structural audit:
 ```bash
 python skills/research-rigor/scripts/audit_research_state.py /path/to/project
 ```
+
+Audit a formal revision or resubmission package:
+
+```bash
+python skills/research-rigor/scripts/audit_revision_package.py /path/to/project --strict --expected-comments 11
+```
+
+Omit `--expected-comments` when the decision does not provide a countable set.
+The command checks coverage, provenance, document completion, and figure records;
+it does not decide whether a response is scientifically adequate.
 
 See command schemas:
 

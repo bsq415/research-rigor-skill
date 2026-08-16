@@ -14,6 +14,8 @@
 - [ ] No validation or test selection leak remains.
 - [ ] No result is sourced from a partial, superseded, or invalid artifact.
 - [ ] Citations and nearest-neighbor positioning were rechecked.
+- [ ] Every formal reviewer/editor comment has a terminal remediation row, response anchor, evidence or scope boundary, exact manuscript locator, and no-regression check.
+- [ ] Materially changed results are decomposed against the submitted protocol and artifacts.
 
 ## Build
 
@@ -21,8 +23,11 @@
 - [ ] Build log has no fatal errors or unresolved references.
 - [ ] Page count and required sections pass.
 - [ ] Fonts, figures, tables, equations, and references pass mechanical checks.
+- [ ] Figure assets pass final-placement checks for physical width, vector/raster format, effective DPI, embedded fonts, line and marker readability, axes, crop, caption, and color-independent encoding.
 - [ ] Every rendered page was visually inspected.
 - [ ] Rebuilt output agrees with the canonical PDF by approved text or hash checks.
+- [ ] The response letter, revision highlights, cover letter, clean manuscript, and marked manuscript are internally consistent where required.
+- [ ] `audit_revision_package.py --strict` passes for a formal revision or is explicitly marked not applicable for an initial submission.
 
 ## Privacy and packaging
 
