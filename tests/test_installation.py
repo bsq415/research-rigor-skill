@@ -65,6 +65,9 @@ class InstallationTests(unittest.TestCase):
                 self.assertTrue(
                     (installed_skill / "scripts" / "research_cycle.py").is_file()
                 )
+                self.assertTrue(
+                    (installed_skill / "scripts" / "audit_revision_package.py").is_file()
+                )
                 synthetic_project = root / f"project-{installed_skill.parent.parent.name}"
                 self.run_command(
                     [
@@ -83,6 +86,16 @@ class InstallationTests(unittest.TestCase):
                 self.run_command(
                     [
                         str(installed_skill / "scripts" / "audit_research_state.py"),
+                        str(synthetic_project),
+                    ]
+                )
+                self.run_command(
+                    [
+                        str(
+                            installed_skill
+                            / "scripts"
+                            / "audit_revision_package.py"
+                        ),
                         str(synthetic_project),
                     ]
                 )

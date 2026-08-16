@@ -99,12 +99,19 @@ GATE_GUIDANCE = {
         [
             "07_ONE_PAGE_PAPER.md",
             "07_PAPER_CLAIM_MAP.csv",
+            "07_FIGURE_AUDIT.csv",
             "07_MANUSCRIPT_AUDIT.csv",
         ],
     ),
     "G10": (
-        "references/paper-review-submission.md",
-        ["08_REVIEW_REMEDIATION.csv", "10_AI_REVIEW_LEDGER.csv"],
+        "references/reviewer-red-team-and-resubmission.md",
+        [
+            "08_REVIEW_REMEDIATION.csv",
+            "08_RESPONSE_LETTER.md",
+            "08_RESUBMISSION_HIGHLIGHTS.md",
+            "08_COVER_LETTER.md",
+            "10_AI_REVIEW_LEDGER.csv",
+        ],
     ),
     "G11": (
         "references/paper-review-submission.md",

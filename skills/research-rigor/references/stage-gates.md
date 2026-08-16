@@ -226,6 +226,8 @@ Draft from sealed facts, not memory or hand-copied numbers. Link every quantitat
 Pass evidence:
 
 - paper claim map;
+- final-size figure audit with source data, generation artifact, asset, and
+  rendered-page evidence for every submitted figure;
 - completed `07_MANUSCRIPT_AUDIT.csv` with no open fatal or major findings;
 - figures and tables generated from sealed data;
 - claim, citation, notation, and limitation audit;
@@ -246,7 +248,15 @@ Attack:
 - ethics, privacy, and disclosure;
 - presentation and venue fit.
 
-Classify every request as evidence, analysis, clarification, presentation, policy, or out-of-scope extension. Do not answer an evidence request with wording alone. Do not fabricate a missing experiment.
+Apply the eleven adversarial lenses in
+`reviewer-red-team-and-resubmission.md`, including assumption realism,
+hyperparameters, cost-normalized attribution, mechanism-aware robustness,
+citation positioning, cost-versus-gain, novelty dependence, model mismatch,
+alternative regimes, operating boundaries, and visual integrity.
+
+Classify every request as evidence, analysis, clarification, presentation,
+citation, policy, or out-of-scope extension. Do not answer an evidence request
+with wording alone. Do not fabricate a missing experiment.
 
 Pass evidence:
 
@@ -255,6 +265,11 @@ Pass evidence:
 - response text linked to changes and evidence;
 - no-regression checks for earlier fixes;
 - unresolved limitations retained visibly.
+
+For a formal rejection/resubmission or revise-and-resubmit decision, also require
+a complete point-by-point response, revision highlights, a new cover letter, and
+a passing strict `audit_revision_package.py` run. Internal red-team rounds do not
+require portal documents.
 
 External AI review is optional, never a substitute for independent scientific review, and never permission to upload private material. If used, follow `external-ai-reviewers.md`.
 

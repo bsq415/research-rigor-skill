@@ -1,1 +1,1 @@
-comment_id,reviewer_request,type,severity,scientific_validity,action,evidence_needed,artifact_or_diff,regression_checks,unresolved_limitation,status,response_text
+comment_id,source,source_record,reviewer_request,reviewer_intent,type,severity,assessment,scientific_validity,action,evidence_needed,evidence_ids,changed_locations,change_evidence,response_anchor,regression_checks,citation_checks,unresolved_limitation,status,response_text

@@ -50,7 +50,8 @@
 | **诚实修正实验** | 区分环境故障、实现 bug、测量或 protocol 缺陷、真实科学失败、权限/资源阻塞；分别执行原协议重试、隔离重算、版本化修订与新证据验证、降级/延期/终止或人工交接 | 协议修订账本、失效产物清单、回归测试、新 held-out evidence，或诚实的终止结论 |
 | **论文撰写** | 先构造 one-page paper，再从 sealed fact IDs 生成正文、表格和图；保留相反证据、分母、限制和 non-claims；编译并渲染真实稿件 | 每个论文表述都连接 evidence tier、denominator、limitation 与 source hash 的 paper claim map |
 | **论文全文核查** | 核查主张、引用、创新性定位、符号、理论边界、基线公平性、数值、单位、统计、图表、限制、隐私、披露、可复现性、编译日志、页数和视觉效果 | Manuscript audit ledger；未解决的 `fatal` 或 `major` 问题会阻止过门 |
-| **Reviewer red-team 与整改** | 模拟严格 reviewer，从 novelty、soundness、evidence、reproducibility、scope 和 presentation 等角度攻击；分类每条意见；把接受的意见转化成证据或文本修改并执行 no-regression 检查 | Review-remediation matrix，以及明确保留的未解决限制 |
+| **Reviewer red-team 与整改** | 使用十一类对抗视角检查假设真实性、超参数、计算成本归因、机制内鲁棒性、引文、成本—收益、新颖性依赖、模型失配、替代建模、运行边界和视觉诚实性；分类每条意见并执行所需证据或稿件工作 | 含原始来源、证据 ID、回复锚点、准确改动、限制和回归检查的 review-remediation matrix |
+| **回复与重投** | 处理拒稿重投或 revise-and-resubmit 决定；分解结果变化原因；撰写逐条回复信、重投 highlights 和新 cover letter；交接前逐项审计 | 结构审计通过的重投稿件包，或明确的证据不足 / 超出范围边界 |
 | **投稿包与归档** | 在隔离目录重建 source package，检查每一页，扫描潜在隐私泄漏，生成并验证 SHA-256 manifest，记录 canonical archive | 人工确认后的发布检查表与可复现归档，或清晰的 blocker |
 
 只要修正是科学上正当的，它可以反复执行：
@@ -58,6 +59,24 @@
 `设计 → 执行 → 检查 → 修正 → 重新执行 → 再检查`
 
 但它被明确禁止为了得到“更好看”的结论而选择性重跑、偷换 metric、删除失败样本或改写研究故事。
+
+## 从审稿意见到重投稿件包
+
+这个 Skill 可以把真实 decision letter 转换成可计数、会产生证据的整改程序：
+
+`原始意见 → 审稿意图 → 有效性判断 → 所需证据 → 实验或分析 → 稿件改动 → 逐条回复 → no-regression 审计`
+
+它内置的是从实践中抽象出的十一类通用 reviewer 视角，而不是任何具体论文案例。正式 revision 可以生成并审计：
+
+- 每条 reviewer / editor 意见对应的一行 remediation 记录和稳定回复锚点；
+- 批评所要求的 matched-budget ablation、敏感性、模型失配、运行边界与成本—收益实验；
+- 修订结果与原投稿数值不同时的明确来源分解；
+- 将回答、证据、准确稿件位置、剩余限制和回归检查分开的逐条回复信；
+- 描述“此次改了什么”而不是重复原摘要的重投 highlights；
+- 只包含人工确认政策声明的新 cover letter；
+- 覆盖栏宽、矢量/位图选择、有效 DPI、字体嵌入、线与 marker 可读性、颜色独立性、裁剪框、坐标轴、caption 和整页渲染检查的最终尺寸图表账本。
+
+确定性审计会对漏掉的意见、未完成模板、未解决证据请求、缺失回复锚点、未经核验的引文处理、位图分辨率不足或无说明的截断坐标轴 fail closed；但它不会假装“结构完整”就等于科学回复充分。
 
 ## 有边界的自主执行
 
@@ -143,6 +162,7 @@ Gate 状态固定为：
 - 默认私有的 `.research/` 项目控制层；
 - 可断点续作的 full-cycle 状态与 append-only research-cycle log；
 - 自主边界契约、选题候选账本、文献账本、claim contract、实验矩阵、protocol amendment ledger、run ledger、result-facts table、paper claim map、manuscript audit、reviewer remediation 和 submission checklist；
+- 最终尺寸图表审计、逐条回复信、重投 highlights 和新 cover letter 模板；
 - 覆盖选题、文献、创新性、理论、实验设计、执行、统计、修正、写作、审稿、隐私、发布与复盘的协议；
 - 用于初始化、恢复、安全 Gate 转换、结构审计、artifact 密封、hash 验证和发布扫描的本地 Python 工具；
 - 面向外部 AI pre-review 服务的人工操作流程；
@@ -161,6 +181,7 @@ Gate 状态固定为：
 - 真实负面科研结果保持为 `killed`，不会变成 `passed`；
 - 一个完整的合成 G0 → G11 流程；
 - 论文存在无证据支撑的重大表述时拒绝过门，完成整改后才允许继续。
+- 回复包不完整、审稿证据请求未解决、回复锚点缺失或图表最终尺寸记录未核验时拒绝通过。
 
 GitHub Actions 会在 Windows、Linux 以及 Python 3.11、3.13 上运行生命周期测试。这些测试证明的是工作流机制和 fail-closed 行为，不是对使用者科研项目的科学有效性认证。
 
@@ -254,6 +275,15 @@ python skills/research-rigor/scripts/research_cycle.py status /path/to/project
 ```bash
 python skills/research-rigor/scripts/audit_research_state.py /path/to/project
 ```
+
+审计正式 revision / resubmission 包：
+
+```bash
+python skills/research-rigor/scripts/audit_revision_package.py /path/to/project --strict --expected-comments 11
+```
+
+如果 decision letter 没有可数的意见总数，就省略 `--expected-comments`。
+该命令检查覆盖、provenance、文档完成度和图表记录，不会替代对回复科学充分性的人工判断。
 
 查看 checkpoint 和 transition 参数：
 

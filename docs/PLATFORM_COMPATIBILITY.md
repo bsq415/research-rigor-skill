@@ -43,8 +43,10 @@ A release is compatible only if all of the following pass:
    scientific-failure behavior pass.
 7. A privacy-safe synthetic project reaches G11, while an unsupported manuscript
    claim is blocked until remediated.
-8. The release privacy scan passes.
-9. No instructions imply autonomous scientific authority or bypass a human-only gate.
+8. The installed revision-package audit rejects unresolved comments, missing
+   response anchors, unverified citations, and failed final-size figure checks.
+9. The release privacy scan passes.
+10. No instructions imply autonomous scientific authority or bypass a human-only gate.
 
 The repository runs the lifecycle suite on Windows and Linux with Python 3.11
 and 3.13 in GitHub Actions.
