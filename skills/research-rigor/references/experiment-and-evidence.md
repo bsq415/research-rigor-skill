@@ -24,7 +24,10 @@ For every headline claim, specify:
 - expected evidence tier;
 - explicit non-claims.
 
-Do not define the main claim after inspecting test results. Do not treat non-significance as equivalence without an equivalence design.
+Predefine confirmatory claims before test inspection. Discoveries from existing
+results can motivate a versioned exploratory claim, but do not relabel them as
+preplanned confirmation. Do not treat non-significance as equivalence without
+an equivalence design.
 
 ## Contract theory
 
@@ -40,6 +43,9 @@ Before naming a theorem or using it in the paper:
 8. ensure the narrative does not claim more than the formal statement.
 
 Do not transfer a guarantee from a surrogate to a target metric without proof. Do not turn an effective-rank, heuristic, or coding-gain quantity into a diversity order or causal mechanism.
+
+For support/degeneracy, mixture limits, two-sided orders, global bounds, and
+independent mathematical validation, use [theory and claim audit](theory-and-claim-audit.md).
 
 ## Plan fair experiments
 
@@ -177,5 +183,17 @@ Classify evidence:
 - unsupported or future work.
 
 Write claims at the weakest applicable tier. Preserve a strong competing result or failed ablation as a limitation. A valid negative result can be valuable; a broken measurement cannot.
+
+Audit the observation process itself. Similar missingness percentages across
+conditions do not prove ignorable missingness; compare available characteristics,
+failure mechanisms, and the population the observed denominator supports.
+Distinguish structural undefined metrics, policy exclusions, implementation
+failures, and uncomputed cells. Report effect sizes and intervals on the same
+eligible rows as headline counts, with explicit metric direction.
+
+Measure actual treatment/compression/budget compliance instead of assuming the
+nominal condition took effect. Separate within-condition performance from
+cross-condition transfer. A model's ability to generate outputs does not prove
+that its downstream grading, feature, split, fitting, and metric path works.
 
 Never smooth, envelope, reorder, censor, or post-process a curve to force monotonicity or a preferred trend. Explain finite-run or finite-sample irregularities and retain the raw values.

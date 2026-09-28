@@ -19,7 +19,10 @@
 
 ## Gate model
 
-Advance in order. A later artifact does not retroactively pass an earlier gate. Reopen earlier gates when new evidence changes novelty, assumptions, validity, or feasibility.
+These gates govern the optional bundled controller, not every scoped edit or
+native project workflow. Advance recorded gates in dependency order. Existing
+evidence can satisfy a historical gate without rerunning its work; a later
+artifact alone cannot. Reopen a gate when new evidence invalidates it.
 
 For every gate, record:
 
@@ -76,21 +79,20 @@ Build three distinct corpora:
 - verified full-text deep-reading corpus;
 - forensic nearest-neighbor set for claim-level comparison.
 
-For publication-oriented idea freezing, default to:
-
-- at least 300 unique verified full-text deep reads;
-- 30–50 forensic nearest neighbors;
-- at least 10% independent source audit;
-- no title/abstract-only item counted as a deep read.
-
-Change these defaults only through an explicit G0 contract. If the contract cannot be met, keep the idea provisional or defer it; never silently reduce the target.
+New projects use coverage-based review: resolve the exact nearest-neighbor
+challenge, document search scope/saturation and remaining risks, and check source
+anchors. Complete `02_NOVELTY_ASSESSMENT.json` with linked verified source IDs and
+a source audit whose independence is stated honestly. No title/abstract-only item
+counts as a deep read. Numerical minimums are optional additional requirements,
+not proof of novelty. Existing count-based policies remain binding until an
+explicitly recorded migration; `--merge` does not change them.
 
 Pass evidence:
 
 - search log and deduplicated corpus;
 - source-anchored annotations;
 - nearest-neighbor matrix and strongest already-done argument;
-- independent novelty attack;
+- source-grounded novelty attack, with the reviewer's independence stated honestly;
 - exact, technically consequential delta.
 - exactly one selected candidate with an explicit decision owner and evidence path.
 
@@ -98,7 +100,10 @@ Kill if the exact question, unit or shift, and required evidence already exist w
 
 ## G3: Claim and theory contract
 
-Freeze no more than three headline claims before full implementation. For each claim record:
+Keep a small, coherent set of headline claims; new projects have no arbitrary
+numeric cap. Honor `claim_policy.headline_max` when configured (legacy projects
+retain their former limit). Freeze confirmatory claims before full experiments;
+version exploratory findings separately. For each claim record:
 
 - exact wording and type;
 - falsifier;

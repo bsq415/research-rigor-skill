@@ -73,6 +73,16 @@ Release only after both mechanical and semantic review pass.
 
 ## Memory and handoff hygiene
 
+Record source kind and version: raw experiment, mathematical check, submitted
+paper, original review, response quoting a review, editorial notification, or
+agent summary. Source authority depends on the claim being established. A raw
+decision establishes editorial status, not scientific correctness. A source
+summary cannot supply missing reviewer wording or repair a contradictory result.
+
+Keep superseded instructions visible as history, with the replacement decision
+and evidence. Do not replay old "do not rerun" or "ready to submit" directions
+when the current request and later artifacts have superseded them.
+
 Store durable project decisions and state, not full transcripts or secrets. For a research project, preserve:
 
 - goal and core question;

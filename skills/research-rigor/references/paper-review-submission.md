@@ -34,7 +34,7 @@ Write the paper around the scientific question and evidence, not around the impl
 Before full drafting, prepare a one-page paper containing:
 
 - problem and exact delta;
-- at most three contributions;
+- a small coherent set of supported contributions;
 - strongest baseline;
 - expected main figure and denominator;
 - strongest limitation;
@@ -140,9 +140,36 @@ Use an isolated temporary directory:
 6. verify clean, conventional upload names;
 7. create and verify a portable manifest;
 8. run privacy and anonymity scans;
-9. obtain human confirmation for authorship, affiliations, funding, conflicts, ethics, and disclosure.
+9. check existing author-confirmed authorship, affiliation, funding, conflict,
+   ethics, and disclosure records; request only missing or changed attestations.
 
 Do not infer missing author or policy metadata.
+
+For a marked revision, compare against the manuscript actually reviewed, identified
+by archive/hash and equation or section anchors. An intermediate draft may hide
+the most consequential changes. Compare clean and marked scientific content;
+extraction-order artifacts need visual checking rather than blind text equality.
+Follow the current case-specific editorial request when it differs from an older
+upload guide, and check current venue policy for any unresolved conflict.
+
+## Accepted final files and production
+
+Treat the accepted version as a scientific baseline. Reconcile it with the
+submitted archive before changing filenames, formats, or figure assets. Re-export
+plots from unchanged data rather than rerun simulations for a graphics request.
+Check that a purported vector file contains vectors, embedded fonts, and legible
+final-size labels. For a redrawn system diagram, verify connection topology,
+counts, and labels against the original, not just appearance.
+
+Rebuild the exact source package in isolation, inspect all pages, and verify the
+archive contents/manifest. Record permitted presentation changes separately from
+scientific changes. Material errors discovered after acceptance need an explicit
+correction record and the appropriate author/editor handling, not silent repair.
+
+Record local package completion, portal upload, final submission, copyright or
+license paperwork, proofs, and publication as separate states. Do not claim the
+latter steps from a local build. Use the actual decision's deadline and required
+formats; do not bake one journal's instructions into this reusable workflow.
 
 ## Archive safely
 

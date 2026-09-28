@@ -22,6 +22,12 @@ Claude Code documents these personal and project skill locations in its official
 
 ## Shared-format decisions
 
+The [model adaptation reference](../skills/research-rigor/references/model-adaptation.md)
+records the September 2026 design guidance. Compatibility with Codex and Claude
+Code is a file/CLI contract, not a claim that GPT-6 Astra or Opus 5.5 has passed
+a comparative research benchmark. No model, account, pricing, or API setting is
+changed by installing this skill.
+
 - Frontmatter uses only the portable `name` and `description` fields.
 - Host-specific tool allowlists, forced subagent context, hooks, and dynamic shell injection are not required.
 - All bundled resource links are relative to `SKILL.md`.
@@ -46,7 +52,9 @@ A release is compatible only if all of the following pass:
 8. The installed revision-package audit rejects unresolved comments, missing
    response anchors, unverified citations, and failed final-size figure checks.
 9. The release privacy scan passes.
-10. No instructions imply autonomous scientific authority or bypass a human-only gate.
+10. Existing authorization is reused; scientific responsibility remains with the researcher.
+11. Coverage-based novelty rejects empty or unverified evidence and broken source links.
+12. Explicit quotas and legacy policies remain enforced; merging does not rewrite state.
 
 The repository runs the lifecycle suite on Windows and Linux with Python 3.11
 and 3.13 in GitHub Actions.

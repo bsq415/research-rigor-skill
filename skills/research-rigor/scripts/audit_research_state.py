@@ -387,6 +387,84 @@ def _evidence_exists(
     return (control / candidate).exists() or (project / candidate).exists()
 
 
+def _audit_novelty_coverage(
+    policy: dict[str, Any], control: Path,
+    verified: list[dict[str, str]], neighbors: list[dict[str, str]], audit: Audit,
+) -> None:
+    """Check evidence links, not whether a claimed contribution is novel."""
+    raw_path = policy.get("assessment_file", "02_NOVELTY_ASSESSMENT.json")
+    if not isinstance(raw_path, str) or not raw_path.strip():
+        audit.error("coverage policy requires a local assessment_file")
+        return
+    path = Path(raw_path)
+    if path.is_absolute() or ".." in path.parts or ":" in raw_path or "\\" in raw_path:
+        audit.error("novelty assessment_file must be a portable relative path")
+        return
+    resolved = (control / path).resolve()
+    if not resolved.is_relative_to(control.resolve()):
+        audit.error("novelty assessment_file escapes the control directory")
+        return
+    try:
+        assessment = json.loads(resolved.read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        audit.error(f"cannot read novelty coverage assessment: {exc}")
+        return
+    if not isinstance(assessment, dict):
+        audit.error("novelty coverage assessment must be an object")
+        return
+    if assessment.get("status") != "supported":
+        audit.error("G2 coverage assessment is not supported")
+    for field in ("search_scope", "search_saturation", "exact_delta",
+                  "strongest_counterargument", "evidence_feasibility", "decision_basis"):
+        value = assessment.get(field)
+        if not isinstance(value, str) or not value.strip() or PLACEHOLDER_RE.search(value):
+            audit.error(f"novelty coverage assessment lacks {field}")
+    risks = assessment.get("unresolved_risks")
+    if not isinstance(risks, list) or not all(isinstance(v, str) and v.strip() for v in risks):
+        audit.error("novelty unresolved_risks must be a list of nonempty strings (or empty)")
+
+    def ids(value: Any, label: str) -> set[str]:
+        if (not isinstance(value, list) or not value
+                or not all(isinstance(v, str) and v.strip() for v in value)):
+            audit.error(f"novelty {label} requires nonempty source IDs")
+            return set()
+        result = {v.strip() for v in value}
+        if len(result) != len(value):
+            audit.error(f"novelty {label} contains duplicate IDs")
+        return result
+
+    verified_ids = {row.get("paper_id", "").strip() for row in verified
+                    if row.get("anchors", "").strip()}
+    declared = ids(assessment.get("verified_source_ids"), "verified_source_ids")
+    closest = ids(assessment.get("nearest_neighbor_ids"), "nearest_neighbor_ids")
+    if declared - verified_ids:
+        audit.error("novelty assessment cites sources without verified full text and anchors")
+    complete_neighbors = set()
+    for row in neighbors:
+        completed = row.get("forensic_status", "").strip().lower() in {"verified", "passed", "complete"}
+        if completed and all(row.get(field, "").strip() for field in
+                             ("paper_id", "research_question", "unit_or_shift", "candidate_exact_delta",
+                              "strongest_already_done_argument", "anchors")):
+            complete_neighbors.add(row["paper_id"].strip())
+    if closest - (declared & complete_neighbors):
+        audit.error("novelty nearest neighbors need complete matrix rows and verified source links")
+    source_audit = assessment.get("source_audit")
+    if not isinstance(source_audit, dict):
+        audit.error("novelty source_audit must be an object")
+        return
+    if source_audit.get("kind") not in ("independent", "same-agent-source-check"):
+        audit.error("novelty source audit kind must identify independence honestly")
+    for field in ("auditor", "findings"):
+        value = source_audit.get(field)
+        if not isinstance(value, str) or not value.strip():
+            audit.error(f"novelty source audit lacks {field}")
+    checked = ids(source_audit.get("source_ids"), "source_audit.source_ids")
+    if checked - declared or not (checked & closest):
+        audit.error("novelty source audit must check a nearest neighbor from the declared sources")
+    if source_audit.get("kind") == "same-agent-source-check":
+        audit.warn("novelty source check is not independent scientific review")
+
+
 def audit_project(raw_root: Path) -> tuple[Audit, Path]:
     audit = Audit()
     control, project = _control_root(raw_root)
@@ -657,6 +735,9 @@ def audit_project(raw_root: Path) -> tuple[Audit, Path]:
         row for row in verified if row.get("audit_status", "").strip().lower() == "passed"
     ]
     policy = state.get("literature_policy") if isinstance(state.get("literature_policy"), dict) else {}
+    literature_mode = policy.get("mode", "quota")  # Preserve legacy contracts.
+    if literature_mode not in ("coverage", "quota"):
+        audit.error("literature_policy.mode must be coverage or quota")
     deep_min = _policy_int(
         policy.get("verified_deep_read_min", 0), "verified_deep_read_min", audit
     )
@@ -682,6 +763,7 @@ def audit_project(raw_root: Path) -> tuple[Audit, Path]:
         if any(not row.get("anchors", "").strip() for row in verified):
             audit.error("G2 passed but at least one verified deep read lacks source anchors")
     audit.details["literature"] = {
+        "mode": literature_mode,
         "rows": len(literature),
         "verified_deep_reads": len(verified),
         "forensic_neighbors": len(forensic),
@@ -707,6 +789,8 @@ def audit_project(raw_root: Path) -> tuple[Audit, Path]:
                 "nearest-neighbor rows are missing from the literature ledger: "
                 f"{unknown_neighbor_ids}"
             )
+        if literature_mode == "coverage":
+            _audit_novelty_coverage(policy, control, verified, neighbors, audit)
 
     claims = csv_rows.get("03_CLAIM_EVIDENCE_MATRIX.csv", [])
     if claims:
@@ -720,8 +804,16 @@ def audit_project(raw_root: Path) -> tuple[Audit, Path]:
     if "G3" in passed:
         if not frozen_claims:
             audit.error("G3 passed without a frozen claim")
-        if len(frozen_claims) > 3:
-            audit.error("G3 has more than three frozen headline claims")
+        claim_policy = state.get("claim_policy", {})
+        if not isinstance(claim_policy, dict):
+            audit.error("claim_policy must be an object")
+            claim_policy = {}
+        headline_max = claim_policy.get("headline_max", 3)  # Legacy limit is preserved.
+        if headline_max is not None:
+            if isinstance(headline_max, bool) or not isinstance(headline_max, int) or headline_max < 1:
+                audit.error("claim_policy.headline_max must be a positive integer or null")
+            elif len(frozen_claims) > headline_max:
+                audit.error(f"G3 exceeds the configured {headline_max} frozen headline claims")
         for row in frozen_claims:
             for field in ("exact_text", "falsifier", "strongest_baseline", "non_claims"):
                 if not row.get(field, "").strip():

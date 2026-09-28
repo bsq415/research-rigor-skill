@@ -31,7 +31,7 @@ evidence used for selection.
 
 ## Build an auditable literature corpus
 
-Use at least three independent discovery paths:
+Choose complementary discovery paths that resolve the claim, such as:
 
 1. official venues, proceedings, repositories, or standards;
 2. bibliographic and full-text search with synonyms;
@@ -47,7 +47,21 @@ Keep landscape discovery separate from verified deep reading. Count a paper as a
 
 Leave uncertain fields null. Never infer a missing detail merely to complete a table. Never invent a source.
 
-Use the configured minimum in `research_state.json`. For a default publication-grade idea freeze, use 300 verified deep reads, 30–50 forensic nearest neighbors, and a 10% independent source audit.
+For new projects, stop searching when coverage is justified relative to the
+actual novelty question, not when a universal paper count is reached. Record
+search scope, saturation evidence, exact delta, strongest counterargument,
+feasibility, remaining risks, and the decision basis in
+`02_NOVELTY_ASSESSMENT.json`. Link its verified sources and closest papers to the
+literature ledger and nearest-neighbor matrix; audit at least the consequential
+closest source. Label a same-agent source check honestly rather than calling it
+independent review. In coverage mode, closest-paper matrix rows need a completed
+`forensic_status` (`verified`, `passed`, or `complete`); pending work is not coverage.
+
+Honor configured numeric requirements in `research_state.json`. To explicitly
+use the legacy quota policy, initialize with `--literature-policy quota` and the
+desired `--deep-read-min`, `--forensic-neighbor-min`, and
+`--independent-audit-fraction`. Zero count defaults in coverage mode do not allow
+an empty evidence record to pass G2. Counts never certify originality.
 
 ## Perform forensic nearest-neighbor review
 
@@ -73,7 +87,10 @@ Search not only for the same keywords, but also:
 
 ## Attack novelty
 
-Create the strongest version of the candidate and the strongest “already done” argument independently. When one person performs both roles, use a separate context or independent reviewer and do not reveal the intended answer.
+Develop the strongest candidate and the strongest "already done" argument.
+Where independent review is available and authorized, give it source artifacts
+without the preferred answer. Otherwise perform a separate adversarial pass and
+record that it is not independent; do not block on an unavailable agent.
 
 Ask:
 
@@ -90,11 +107,11 @@ Novelty based only on scale, number of axes, or “first systematic study” is 
 Before freezing, require:
 
 - G0 constraints complete;
-- configured deep-reading and audit targets complete;
+- source-linked coverage assessment and any configured numeric targets complete;
 - exact nearest-neighbor matrix;
 - explicit falsifier and non-claims;
 - viable evidence path under available resources;
-- independent novelty and evidence sign-off.
+- explicit novelty/evidence assessment, including whether review was independent;
 - exactly one `selected` row in `01_IDEA_CANDIDATES.csv`.
 
 Use these outcomes:
@@ -105,3 +122,7 @@ Use these outcomes:
 - `KILLED`: already done, ill-posed, contradicted, or unable to produce meaningful evidence.
 
 Do not freeze a title or contribution list first and retrofit novelty later.
+
+Prior estimates of an attractive effect are planning hypotheses. A pilot's
+purpose is to establish measurement viability and information value; lack of a
+preferred positive effect alone need not kill a valid measurement question.

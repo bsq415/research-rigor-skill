@@ -36,6 +36,21 @@
 
 ## 它真正能做什么
 
+2026 年 9 月版把入口缩为按需加载：单独改一段论文，不必先跑完整套 Gate；
+已有项目可沿用自己的记录。会话里已给的授权继续有效，只有真正缺失且影响下一步的
+信息才需要追问。
+
+新增[三条可复制科研路径](skills/research-rigor/references/research-playbooks.md)、
+[理论与主张专项审计](skills/research-rigor/references/theory-and-claim-audit.md)和
+[模型适配说明](skills/research-rigor/references/model-adaptation.md)。
+实验、断点恢复、统计、图表、审稿回复、外部 AI 预审、密封与隐私扫描等功能均保留。
+中文用法见[工作流说明](docs/WORKFLOWS.zh-CN.md)。
+
+新项目按可核查的文献覆盖判断，不再统一要求读满 300 篇或最多三条主张。
+可配置配额仍受检查，`--merge` 不会改动旧项目要求。覆盖模式必须提供经过全文核查的
+来源、最近工作对照、检索充分性理由和注明独立性的原文复核；默认配额为零不代表
+允许没有证据就通过 G2。
+
 实际能力取决于宿主提供的工具、文献访问、数据、算力、凭据，以及研究者授予的操作范围。在这些边界内，它可以主动驱动以下工作。
 
 | 科研阶段 | 助手可以主动完成的工作 | 可审计产物或停止条件 |
@@ -43,7 +58,7 @@
 | **恢复与定向** | 检查真实仓库、项目指令、未提交修改、既有实验、隐私边界、预算和已经冻结的决定；找到最早尚未通过的 Gate | 当前阶段、活动任务、阻塞项、下一动作和验收条件 |
 | **合理选题** | 生成技术上不同的候选问题；比较决策价值、创新风险、证据可行性、资源适配、falsifier 与 kill criteria；否决单纯“方法 X + 领域 Y”的弱选题；推荐最有希望的候选 | 选题候选账本，以及由人类决策负责人确认的选择 |
 | **文献检索与创新性否证** | 在允许的数据源中检索、去重、深读并记录原文锚点；构造 forensic nearest-neighbor matrix；主动建立最强“已有人做过”论证 | 检索日志、文献账本、最近工作矩阵；得到 `selected`、`deferred` 或 `killed` |
-| **主张与理论设计** | 冻结不超过三条 headline claim；写明 falsifier、non-claims、强基线、有效分母、效应阈值、不确定性、假设、边界情形、反例和证明义务 | Claim-evidence matrix 与 theorem contract |
+| **主张与理论设计** | 冻结一组集中且可验证的确认性主张；写明 falsifier、non-claims、强基线、有效分母、效应阈值、不确定性、假设、边界情形、反例和证明义务 | Claim-evidence matrix 与 theorem contract |
 | **实验设计** | 把每条主张展开为基线、ablation、control、边界、seed、metric、denominator、pass、redesign 和 kill cells；估算 coverage、失败率、时间和成本；冻结 test policy | 可执行实验矩阵、实验协议和 coverage premortem |
 | **实现与实验执行** | 建立最小但完整的 pipeline；加入 provenance、hash、确定性 ID、断点恢复、泄漏/损坏测试和 append-only run ledger；先跑最脆弱路径的 pilot，再在资源允许时执行冻结矩阵 | 代码、环境锁、测试、原始输出、run ledger、manifest，以及明确的 partial / failed 状态 |
 | **结果核查** | 先检查 planned / produced / parsed / valid / paired / green / undefined / failed，再看 headline effect；核验 raw scale、tails、peaks、trajectory、calibration、subgroup、missingness、denominator、uncertainty、power、强基线、反例和 robustness | 密封的 result-facts table、逐主张 verdict 和限制 |
@@ -92,10 +107,10 @@ flowchart LR
     F --> B
     E -->|"环境或代码缺陷"| G["修复、回归测试、重新生成"]
     G --> D
-    E -->|"Protocol 缺陷"| H["版本化修订 + 人工批准 + 新证据"]
+    E -->|"Protocol 缺陷"| H["版本化修订 + 适用授权 + 新证据"]
     H --> B
     E -->|"真实科学失败"| I["降级、延期或终止"]
-    E -->|"人类专属决策"| J["精确交接并暂停"]
+    E -->|"确有缺失授权"| J["准备交接；仅暂停依赖动作"]
 ```
 
 持久化执行器会记录：
@@ -122,17 +137,11 @@ flowchart LR
 
 ## 人类主导是能力，不是限制
 
-在已经签订的 autonomy contract 内，助手可以自主处理可逆的实现细节。但下面这些决定必须停下来交给人：
+研究者对科学判断和外部决定负责。助手依据对话或项目中已有的范围和授权，完成分析、实现、基于证据的纠错及写作；局部任务不必先签一份新合同。
 
-- 最终研究问题、结果解释、主张、结论、署名或投稿；
-- 伦理、知情同意、license、披露、隐私与外部发布；
-- 把未公开材料上传到外部服务；
-- 看过 confirmatory results 后修改冻结 protocol；
-- 暴露 locked test set 后再次做选择；
-- 实质性付费、生产系统改动或破坏性清理；
-- 两条都合理、但会导向不同科学问题、风险或结论的路线。
+只有关键决定确实缺失，或下一步超出已有授权时，才需要询问。例如：尚未决定的研究问题变更，伦理、署名、隐私或发布声明，未获授权的外部上传和实质性支出，以及看过确认性结果或锁定测试集后的协议修订。已有授权无需重复索取；授权也不能把已暴露的数据重新变成独立确认性证据。
 
-普通文件命名、本地诊断、测试组织和不改变科研协议的等价实现细节，不需要逐项等待人工点击确认。
+只暂停依赖该决定的动作，继续范围内的有效工作。确需最终批准时，先把具体稿件、证据和提交包准备好。普通文件命名、本地诊断和等价的可逆实现选择，无需逐项确认。
 
 ## 十二个证据 Gate
 
@@ -213,7 +222,7 @@ python install.py --host codex --scope user
 $research-rigor 以 full-cycle 模式推进这个由我主导的科研项目。
 先恢复真实状态，然后持续完成所有可逆、已授权且有证据依据的步骤；
 实现并运行允许的任务，保存 checkpoint，核查每一轮结果。
-只在人类专属决定或已有明确 blocker 时停下来。
+只有缺失决定确实影响下一步时才追问，其余已授权工作继续执行。
 ```
 
 只做审计：
@@ -243,7 +252,7 @@ python install.py --host claude-code --scope project --project-dir /path/to/proj
 ```text
 /research-rigor 以 full-cycle 模式推进这个由我主导的科研项目。
 持续进行选题筛选、实验设计与执行、结果核查、正当修正或重设计、
-论文撰写和全文核查。保留失败，并在每个人类专属边界停下。
+论文撰写和全文核查。保留失败，沿用已有授权，仅暂停确有缺失依赖的动作。
 ```
 
 Claude Code 与 Codex 共用同一份 `SKILL.md`、references、templates 和 scripts。详见[平台兼容说明](docs/PLATFORM_COMPATIBILITY.md)。

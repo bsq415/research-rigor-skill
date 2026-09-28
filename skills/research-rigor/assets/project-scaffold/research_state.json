@@ -8,14 +8,14 @@
   "stage_status": "not_started",
   "execution": {
     "mode": "__EXECUTION_MODE__",
-    "status": "waiting_human",
+    "status": "ready",
     "current_gate": "G0",
     "active_task": "",
     "last_checkpoint_id": "",
     "last_checkpoint_utc": "",
-    "next_action": "Complete the G0 constraints and autonomy contract",
+    "next_action": "Recover existing authorization and complete the relevant G0 records",
     "acceptance_condition": "G0 evidence exists and the structural audit passes",
-    "requires_human": true
+    "requires_human": false
   },
   "privacy": {
     "classification": "__PRIVACY_CLASSIFICATION__",
@@ -24,9 +24,14 @@
     "semantic_review_passed": false
   },
   "literature_policy": {
+    "mode": "__LITERATURE_POLICY__",
+    "assessment_file": "02_NOVELTY_ASSESSMENT.json",
     "verified_deep_read_min": __DEEP_READ_MIN__,
     "forensic_neighbor_min": __FORENSIC_NEIGHBOR_MIN__,
     "independent_audit_fraction": __INDEPENDENT_AUDIT_FRACTION__
+  },
+  "claim_policy": {
+    "headline_max": null
   },
   "frozen": {
     "claims": false,

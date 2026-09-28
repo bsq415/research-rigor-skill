@@ -36,6 +36,24 @@ It does more than return a plan. In **full-cycle mode**, it is instructed to ins
 
 ## What it can actually do
 
+The entrypoint loads only the protocol needed for the requested stage. A narrow
+edit does not require the full controller. Existing projects can keep their own
+records, and authorization already given remains valid.
+
+The September 2026 revision adds [reusable research paths](skills/research-rigor/references/research-playbooks.md)
+for focused methods papers, empirical studies from idea to manuscript, and
+theory-paper rebuilding; a [theorem/claim audit](skills/research-rigor/references/theory-and-claim-audit.md);
+and [model adaptation](skills/research-rigor/references/model-adaptation.md) for
+current capable agents. The existing experiment, recovery, figure, revision,
+external pre-review, sealing, and privacy tools are retained.
+
+New projects evaluate literature by source-linked coverage, with optional numeric
+requirements. They no longer inherit a universal 300-paper requirement or a
+three-claim cap. Existing project policies remain unchanged on merge. A supported
+coverage assessment needs verified sources, nearest-neighbor comparisons,
+search-saturation reasoning, and an honestly labeled source check; zero default
+quotas do not allow an empty G2 record to pass.
+
 The exact reach depends on the host's tools, source access, data, compute, credentials, and the authority granted by the researcher. Within those limits, the Skill can drive the following loop.
 
 | Research phase | What the assistant can actively do | Auditable output or stop condition |
@@ -43,7 +61,7 @@ The exact reach depends on the host's tools, source access, data, compute, crede
 | **Recover and orient** | Inspect the real repository, instructions, dirty state, prior runs, constraints, privacy boundary, budgets, and frozen decisions; determine the earliest unpassed gate | Persistent stage, active task, blockers, next action, and acceptance condition |
 | **Select a research question** | Generate technically distinct candidates; compare decision value, novelty risk, evidence feasibility, resource fit, falsifiers, and kill criteria; reject weak “method X + domain Y” ideas; recommend the strongest surviving candidate | Candidate ledger plus an explicit human-owned selection decision |
 | **Review literature and attack novelty** | Search permitted sources, deduplicate records, perform source-anchored deep reading, build a forensic nearest-neighbor matrix, and construct the strongest “already done” argument | Search log, verified literature ledger, nearest-neighbor audit; `selected`, `deferred`, or `killed` outcome |
-| **Design claims and theory** | Freeze at most three headline claims; define falsifiers, non-claims, baselines, denominators, effect thresholds, uncertainty, assumptions, boundary cases, counterexamples, and proof obligations | Claim-evidence matrix and theorem contract |
+| **Design claims and theory** | Freeze a coherent set of confirmatory claims; define falsifiers, non-claims, baselines, denominators, effect thresholds, uncertainty, assumptions, boundary cases, counterexamples, and proof obligations | Claim-evidence matrix and theorem contract |
 | **Design experiments** | Expand each claim into required baseline, ablation, control, boundary, seed, metric, denominator, pass, redesign, and kill cells; estimate coverage, failure rates, runtime, and cost; freeze a test policy | Executable experiment matrix, protocol, and coverage premortem |
 | **Implement and execute** | Build the smallest complete pipeline; add provenance, hashes, deterministic IDs, interruption semantics, leakage/corruption tests, and append-only run records; pilot the most brittle path; run the frozen matrix when resources exist | Source and environment lock, tests, raw outputs, run ledger, manifests, and explicit partial/failure states |
 | **Check results** | Verify planned versus produced coverage before headline effects; inspect provenance, raw-scale behavior, tails, peaks, trajectories, calibration, subgroups, missingness, denominators, uncertainty, power, baselines, counterexamples, and robustness | Sealed result-facts table with claim-level verdicts and limitations |
@@ -99,10 +117,10 @@ flowchart LR
     F --> B
     E -->|"Environment or code defect"| G["Repair, regress, regenerate"]
     G --> D
-    E -->|"Protocol defect"| H["Version amendment + human approval + fresh evidence"]
+    E -->|"Protocol defect"| H["Version amendment + required authority + fresh evidence"]
     H --> B
     E -->|"Valid scientific failure"| I["Downgrade, defer, or kill"]
-    E -->|"Human-only decision"| J["Exact handoff and pause"]
+    E -->|"Missing authority"| J["Prepare handoff; pause dependent action"]
 ```
 
 The durable controller records:
@@ -129,17 +147,11 @@ This lets a later turn—or another compatible agent—resume from inspectable a
 
 ## Human control is a feature
 
-The assistant may autonomously handle reversible implementation details inside the signed execution contract. It must stop for decisions that materially change the research:
+The researcher remains accountable for scientific and external decisions. The assistant completes authorized analysis, implementation, evidence-based corrections, and drafting using the scope and authorization already recorded in the conversation or project. A new signed contract is not a prerequisite for a focused task.
 
-- final question, interpretation, claims, conclusions, authorship, or submission;
-- ethics, consent, license, disclosure, privacy, or external release;
-- uploading unpublished material to an external service;
-- changing a frozen protocol after confirmatory results were inspected;
-- selecting again after a locked test set was exposed;
-- material spending, production changes, or destructive cleanup;
-- two defensible paths that imply different scientific questions, risks, or conclusions.
+Ask only when a consequential decision is missing or the next action exceeds existing authorization. Examples include an unresolved change of research question; ethics, authorship, privacy, or release declarations; an unapproved external upload or material cost; and a protocol amendment after confirmatory results or a locked test set have been inspected. Existing authorization need not be requested again, and authorization cannot make exposed evidence fresh confirmation.
 
-Humans do not need to approve routine file naming, local diagnostics, test organization, or equivalent reversible implementation choices that leave the scientific contract unchanged.
+Pause the dependent action and continue useful work within scope. Prepare the concrete manuscript, evidence, and submission package before a genuinely required final approval. Routine file naming, local diagnostics, and equivalent reversible implementation choices need no separate confirmation.
 
 ## Twelve evidence gates
 
@@ -221,7 +233,7 @@ Start a full-cycle project:
 $research-rigor Work in full-cycle mode on this researcher-directed project.
 Recover the live state, complete every reversible and authorized evidence-justified
 step, implement and run permitted work, checkpoint artifacts, audit every result,
-and stop only at a human-only decision or a documented blocker.
+Ask only for missing decisions that affect the next action; continue other authorized work.
 ```
 
 Request a narrower audit:
@@ -252,7 +264,7 @@ Start the same full-cycle workflow:
 /research-rigor Work in full-cycle mode on this researcher-directed project.
 Continue through topic screening, experiment design and execution, result checking,
 legitimate correction or redesign, writing, and manuscript audit. Preserve failures
-and stop at every human-only boundary.
+Reuse existing authorization and pause only actions with a real missing dependency.
 ```
 
 Claude Code uses the same `SKILL.md`, references, templates, and scripts as Codex. See [platform compatibility](docs/PLATFORM_COMPATIBILITY.md).

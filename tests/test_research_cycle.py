@@ -41,7 +41,7 @@ class ResearchCycleTests(unittest.TestCase):
             )
         return result
 
-    def initialize(self) -> Path:
+    def initialize(self, literature_policy: str = "quota") -> Path:
         self.run_cli(
             INIT,
             self.project,
@@ -49,6 +49,8 @@ class ResearchCycleTests(unittest.TestCase):
             "Synthetic Evidence Study",
             "--mode",
             "full-cycle",
+            "--literature-policy",
+            literature_policy,
             "--deep-read-min",
             "0",
             "--forensic-neighbor-min",
@@ -166,6 +168,152 @@ class ResearchCycleTests(unittest.TestCase):
         self.assertEqual(payload["mode"], "full-cycle")
         self.assertEqual(payload["current_gate"], "G0")
         self.assertTrue(payload["structural_audit_ok"])
+
+    def prepare_coverage_gate(self) -> Path:
+        control = self.initialize("coverage")
+        self.complete_g0_contracts(control)
+        self.transition_g0(control)
+        self.append_csv_row(control, "01_IDEA_CANDIDATES.csv", {
+            "candidate_id": "idea-coverage", "research_question": "Can an audit detect stale summaries?",
+            "decision_value": "Prevents stale evidence use", "technical_delta": "Version-aware audit",
+            "strongest_already_done_argument": "Existing lineage tools may cover the question",
+            "evidence_feasibility": "Local synthetic artifact graph",
+            "falsifier": "Existing tool resolves every prespecified case",
+            "kill_criteria": "No unresolved scientific delta", "status": "selected",
+            "decision_owner": "synthetic owner", "decision_evidence": "01_PROBLEM_CARD.md",
+        })
+        self.transition("G1", evidence=["01_IDEA_CANDIDATES.csv"])
+        self.append_csv_row(control, "02_SEARCH_LOG.csv", {
+            "query_id": "q1", "searched_at": "2026-01-01", "source": "synthetic corpus",
+            "query": "stale summary lineage", "retrieved_ids": "p1",
+        })
+        self.append_csv_row(control, "02_LITERATURE_LOG.csv", {
+            "paper_id": "p1", "full_text_verified": "true", "forensic": "true",
+            "anchors": "Synthetic source section 2", "audit_status": "passed",
+        })
+        self.append_csv_row(control, "02_NEAREST_NEIGHBOR_MATRIX.csv", {
+            "paper_id": "p1", "research_question": "Artifact lineage",
+            "unit_or_shift": "Changed source version", "candidate_exact_delta": "Summary supersession",
+            "strongest_already_done_argument": "Version graphs may imply the proposed rule",
+            "anchors": "Synthetic source section 2", "forensic_status": "verified",
+        })
+        assessment = {
+            "status": "supported", "search_scope": "Synthetic fixture corpus only",
+            "search_saturation": "All fixture records and their references inspected",
+            "exact_delta": "The synthetic record omits summary supersession",
+            "strongest_counterargument": "Could be a direct application of lineage tracking",
+            "evidence_feasibility": "Bounded local fixture; no scientific novelty claim",
+            "unresolved_risks": ["Synthetic record cannot establish real-world novelty"],
+            "decision_basis": "Proceed only for testing structural coverage",
+            "verified_source_ids": ["p1"], "nearest_neighbor_ids": ["p1"],
+            "source_audit": {"kind": "same-agent-source-check", "auditor": "test fixture",
+                             "source_ids": ["p1"], "findings": "Anchors checked in the fixture"},
+        }
+        (control / "02_NOVELTY_ASSESSMENT.json").write_text(json.dumps(assessment), encoding="utf-8")
+        return control
+
+    def test_default_policy_uses_coverage_without_universal_counts(self) -> None:
+        self.run_cli(INIT, self.project)
+        state = json.loads((self.project / ".research" / "research_state.json").read_text(encoding="utf-8"))
+        self.assertEqual(state["literature_policy"]["mode"], "coverage")
+        self.assertEqual(state["literature_policy"]["verified_deep_read_min"], 0)
+        self.assertIsNone(state["claim_policy"]["headline_max"])
+        self.assertFalse(state["execution"]["requires_human"])
+        self.assertEqual(state["execution"]["status"], "ready")
+        self.run_cli(AUDIT, self.project)
+
+    def test_source_linked_coverage_can_pass_without_large_corpus(self) -> None:
+        control = self.prepare_coverage_gate()
+        self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"])
+        self.run_cli(AUDIT, self.project)
+        state = json.loads((control / "research_state.json").read_text(encoding="utf-8"))
+        self.assertEqual(state["gates"][2]["status"], "passed")
+
+    def test_coverage_rejects_empty_assessment_and_rolls_back(self) -> None:
+        control = self.prepare_coverage_gate()
+        (control / "02_NOVELTY_ASSESSMENT.json").write_text("{}", encoding="utf-8")
+        result = self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"], expected=2)
+        self.assertIn("coverage assessment", result.stderr + result.stdout)
+        state = json.loads((control / "research_state.json").read_text(encoding="utf-8"))
+        self.assertNotEqual(state["gates"][2]["status"], "passed")
+
+    def test_coverage_rejects_unverified_and_unlinked_sources(self) -> None:
+        control = self.prepare_coverage_gate()
+        self.replace_csv_rows(control, "02_LITERATURE_LOG.csv", [{
+            "paper_id": "p1", "full_text_verified": "false", "anchors": "Abstract only",
+            "forensic": "true", "audit_status": "passed",
+        }])
+        result = self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"], expected=2)
+        self.assertIn("verified full text", result.stderr + result.stdout)
+        self.replace_csv_rows(control, "02_LITERATURE_LOG.csv", [{
+            "paper_id": "p1", "full_text_verified": "true", "anchors": "Section 2",
+            "forensic": "true", "audit_status": "passed",
+        }])
+        self.replace_csv_rows(control, "02_NEAREST_NEIGHBOR_MATRIX.csv", [])
+        result = self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"], expected=2)
+        self.assertIn("complete matrix rows", result.stderr + result.stdout)
+
+    def test_coverage_honors_explicit_quota_and_merge_preserves_it(self) -> None:
+        control = self.prepare_coverage_gate()
+        state_path = control / "research_state.json"
+        state = json.loads(state_path.read_text(encoding="utf-8"))
+        state["literature_policy"]["verified_deep_read_min"] = 2
+        state_path.write_text(json.dumps(state), encoding="utf-8")
+        before = state_path.read_bytes()
+        self.run_cli(INIT, self.project, "--merge")
+        self.assertEqual(state_path.read_bytes(), before)
+        result = self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"], expected=2)
+        self.assertIn("requires 2", result.stderr + result.stdout)
+
+    def test_coverage_rejects_pending_nearest_neighbor(self) -> None:
+        control = self.prepare_coverage_gate()
+        path = control / "02_NEAREST_NEIGHBOR_MATRIX.csv"
+        with path.open(encoding="utf-8-sig", newline="") as handle:
+            rows = list(csv.DictReader(handle))
+        rows[0]["forensic_status"] = "pending"
+        self.replace_csv_rows(control, path.name, rows)
+        result = self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"], expected=2)
+        self.assertIn("complete matrix rows", result.stderr + result.stdout)
+
+    def test_claim_limit_is_optional_but_legacy_contract_is_preserved(self) -> None:
+        control = self.prepare_coverage_gate()
+        self.transition("G2", evidence=["02_NOVELTY_ASSESSMENT.json"])
+        for index in range(4):
+            self.append_csv_row(control, "03_CLAIM_EVIDENCE_MATRIX.csv", {
+                "claim_id": f"c{index}", "exact_text": f"Synthetic claim {index}",
+                "falsifier": "A contrary fixture", "strongest_baseline": "Existing lineage audit",
+                "non_claims": "No scientific conclusion from these fixtures", "status": "frozen",
+            })
+        self.transition("G3", evidence=["03_CLAIM_EVIDENCE_MATRIX.csv"])
+        path = control / "research_state.json"
+        state = json.loads(path.read_text(encoding="utf-8"))
+        state.pop("claim_policy")
+        path.write_text(json.dumps(state), encoding="utf-8")
+        result = self.run_cli(AUDIT, self.project, expected=1)
+        self.assertIn("configured 3 frozen headline claims", result.stdout + result.stderr)
+        state["claim_policy"] = {"headline_max": 4}
+        path.write_text(json.dumps(state), encoding="utf-8")
+        self.run_cli(AUDIT, self.project)
+
+    def test_legacy_policy_without_mode_keeps_quota_behavior(self) -> None:
+        control = self.prepare_coverage_gate()
+        path = control / "research_state.json"
+        state = json.loads(path.read_text(encoding="utf-8"))
+        del state["literature_policy"]["mode"]
+        state.pop("claim_policy")
+        path.write_text(json.dumps(state), encoding="utf-8")
+        (control / "02_NOVELTY_ASSESSMENT.json").unlink()
+        self.transition("G2", evidence=["02_SEARCH_LOG.csv"])
+        self.run_cli(AUDIT, self.project)
+
+    def test_coverage_assessment_rejects_path_escape(self) -> None:
+        control = self.prepare_coverage_gate()
+        path = control / "research_state.json"
+        state = json.loads(path.read_text(encoding="utf-8"))
+        state["literature_policy"]["assessment_file"] = "../elsewhere.json"
+        path.write_text(json.dumps(state), encoding="utf-8")
+        result = self.transition("G2", evidence=["02_SEARCH_LOG.csv"], expected=2)
+        self.assertIn("portable relative path", result.stderr + result.stdout)
 
     def test_legacy_review_matrix_remains_structurally_auditable(self) -> None:
         control = self.initialize()

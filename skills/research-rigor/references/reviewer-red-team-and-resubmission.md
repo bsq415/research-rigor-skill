@@ -54,6 +54,20 @@ countable.
 
 ## Read comments at two levels
 
+First register provenance: official editor decision, official reviewer report,
+AI pre-review, author response quoting a reviewer, or retrospective summary.
+Use `08_REVIEW_SOURCE_REGISTER.csv` when several sources/versions could be
+confused. Preserve original files and the reviewed manuscript identity. A response
+letter's quotation is not an independently available original report. If only a
+summary exists, request the missing original while continuing source-verifiable
+work; do not invent quotations, recommendation scores, or complete coverage.
+
+Record the decision's exact stage. Advancing to another review phase is not
+acceptance. Favorable simulated reviews do not establish formal reviewer support.
+An accepted manuscript does not establish which particular revision caused the
+decision. A notification carrying an older title needs version reconciliation,
+not an assumption that it describes the current local draft.
+
 For every comment, record both:
 
 - the **literal request**: what the reviewer explicitly asks for; and
@@ -104,6 +118,33 @@ decision. Three useful reviewer profiles are:
   compute fairness;
 - an editor or deployment reviewer who attacks significance, cost, scope,
   presentation, policy, and venue fit.
+
+### Learn the reviewer's reasoning without mind-reading
+
+Infer only from the text. Separate praise, a question, a correctable deficiency,
+a scope request, and an explicit negative recommendation. Polite language is
+not an acceptance vote. Keep the editor's synthesized reasons and each original
+comment separately addressable even when their evidence overlaps.
+
+For theory-intensive work, use [theory and claim audit](theory-and-claim-audit.md).
+Three tests are independent: **correctness, nontrivial novelty, and decision
+value**. Correct formulas can still leave a diffuse paper with no decisive result.
+Numerical thoroughness cannot compensate for a missing lower bound or a standard
+result relabeled as a new limit. A less technical readability question may expose
+an unresolved motivation or an ambiguous system model, not merely weak English.
+
+Prioritize by consequence and dependency, not comment order: invalid inference
+or counterexample; central novelty/value; missing decisive evidence; scope and
+positioning; presentation. For every major point ask what would distinguish the
+reviewer's alternative explanation from the paper's. Repair the upstream issue
+and propagate it to all affected claim surfaces. Do not add every suggested
+extension as a separate contribution to appease reviewers.
+
+Generalize a local finding by its mechanism: a special-case rank argument becomes
+a transformation-domain audit; a missing mixture term becomes a limiting-regime
+audit; a proxy/target mismatch becomes a guarantee-transfer audit; coupled
+parameters become an operating-regime audit. Do not turn one review into a
+universal requirement to use a particular method, model, citation, or plot scale.
 
 ## Convert comments into evidence work
 

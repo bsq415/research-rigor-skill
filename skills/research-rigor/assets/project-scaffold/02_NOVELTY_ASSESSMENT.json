@@ -1,0 +1,18 @@
+{
+  "status": "provisional",
+  "search_scope": "",
+  "search_saturation": "",
+  "exact_delta": "",
+  "strongest_counterargument": "",
+  "evidence_feasibility": "",
+  "unresolved_risks": [],
+  "decision_basis": "",
+  "verified_source_ids": [],
+  "nearest_neighbor_ids": [],
+  "source_audit": {
+    "kind": "not_performed",
+    "auditor": "",
+    "source_ids": [],
+    "findings": ""
+  }
+}

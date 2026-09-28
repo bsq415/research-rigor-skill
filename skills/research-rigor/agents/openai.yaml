@@ -1,4 +1,4 @@
 interface:
   display_name: "Rigorous Research Assistant"
   short_description: "Human-led full-cycle research execution"
-  default_prompt: "Use $research-rigor in full-cycle mode to advance this researcher-directed project through every authorized, evidence-justified step; execute permitted work, checkpoint artifacts, verify each gate, and stop only at human-only decisions or documented blockers."
+  default_prompt: "Use $research-rigor to complete the requested research work, verify its evidence and artifacts, and continue within the existing authorization until the stated completion boundary."

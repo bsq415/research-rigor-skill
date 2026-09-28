@@ -11,7 +11,7 @@ Created: __CREATED_UTC__
 - Maximum compute, API, and financial budget:
 - Maximum continuous runtime:
 
-`guided` means advance only when the researcher requests the next unit of work.
+`guided` means complete the requested unit, including necessary execution and verification.
 `full-cycle` means continue through every reversible, authorized, evidence-justified
 step without asking for routine micro-decisions. Both modes remain human-led.
 
@@ -29,7 +29,11 @@ step without asking for routine micro-decisions. Both modes remain human-led.
 
 ## Actions reserved for an authorized human
 
-- [ ] Final question, claim, interpretation, authorship, and submission decisions.
+Record decisions/authorization already given by the user; a checked record is
+not a new permission request. Preparing analysis, alternatives, and a reviewable
+package can continue while a genuinely missing external authorization is pending.
+
+- [ ] Author accountability for final question, claims, interpretation, authorship, and submission; drafting and evidence-based corrections may proceed within scope.
 - [ ] Ethics, privacy, license, disclosure, and external-release authorization.
 - [ ] Uploading unpublished material to external services or portals.
 - [ ] Purchasing resources, accepting material cost, or changing production systems.
@@ -37,6 +41,9 @@ step without asking for routine micro-decisions. Both modes remain human-led.
 - [ ] Destructive cleanup or deletion of material research artifacts.
 
 ## Stop and escalation rules
+
+Pause only the dependent action. Missing venue details need not block generic
+analysis; a failed hypothesis need not block authorized alternative exploration.
 
 - Missing authority, privacy rules, or resource limits:
 - Scientific result that fails a frozen pass or kill criterion:

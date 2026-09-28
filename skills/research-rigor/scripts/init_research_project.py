@@ -54,6 +54,7 @@ def initialize(args: argparse.Namespace) -> int:
         "__DEEP_READ_MIN__": str(args.deep_read_min),
         "__FORENSIC_NEIGHBOR_MIN__": str(args.forensic_neighbor_min),
         "__INDEPENDENT_AUDIT_FRACTION__": str(args.independent_audit_fraction),
+        "__LITERATURE_POLICY__": args.literature_policy,
         "__PRIVACY_CLASSIFICATION__": args.classification,
         "__EXPORT_POLICY__": args.export_policy,
         "__EXECUTION_MODE__": args.mode,
@@ -94,9 +95,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("project_directory", type=Path)
     parser.add_argument("--title", help="human-readable project title; defaults to directory name")
     parser.add_argument("--control-dir", default=".research")
-    parser.add_argument("--deep-read-min", type=int, default=300)
-    parser.add_argument("--forensic-neighbor-min", type=int, default=30)
-    parser.add_argument("--independent-audit-fraction", type=float, default=0.1)
+    parser.add_argument(
+        "--literature-policy", choices=("coverage", "quota"), default="coverage",
+        help="coverage requires a source-linked novelty assessment; quota retains count-based contracts",
+    )
+    parser.add_argument("--deep-read-min", type=int, default=0,
+                        help="optional additional minimum; not a universal quality target")
+    parser.add_argument("--forensic-neighbor-min", type=int, default=0)
+    parser.add_argument("--independent-audit-fraction", type=float, default=0.0)
     parser.add_argument(
         "--mode",
         choices=("guided", "full-cycle"),
