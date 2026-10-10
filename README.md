@@ -4,6 +4,10 @@
 
 ### From a research question to an auditable submission package
 
+The October 2026 update adds optional executable [SymPy checks and a Lean route](skills/research-rigor/references/machine-theory-verification.md),
+with explicit evidence tiers and reproducible records, plus a
+[wireless communications, signal processing and optimization playbook](skills/research-rigor/references/wireless-research-playbook.md).
+
 **Human-led, evidence-gated research execution for Codex and Claude Code.**
 
 [![Validate](https://github.com/bsq415/research-rigor-skill/actions/workflows/validate.yml/badge.svg)](https://github.com/bsq415/research-rigor-skill/actions/workflows/validate.yml)

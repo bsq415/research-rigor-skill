@@ -4,6 +4,12 @@ Use for mathematical claims, model-dependent guarantees, or a theory-heavy
 review. Record statement, quantifiers, assumptions, proof obligations,
 counterexamples, allowed wording, and downstream locations in a claim contract.
 
+For claims depending on algebra, transforms, limits, or matrix properties, use
+[machine verification](machine-theory-verification.md) when it can resolve a
+proof obligation. Tie outputs to the exact theorem contract; symbolic passes
+and finite cases do not automatically close the proof. For communication-system
+research, also use the [domain playbook](wireless-research-playbook.md).
+
 ## Audit the whole chain
 
 `physical object → model → assumptions → result → algorithm → metric → abstract`

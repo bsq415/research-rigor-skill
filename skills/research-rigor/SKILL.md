@@ -42,6 +42,8 @@ unresolved scientific question. Read only the matching reference(s):
 | Choose or challenge an idea; establish novelty | [Idea and literature](references/idea-and-literature.md) |
 | Design/run experiments; debug; interpret statistics | [Experiment and evidence](references/experiment-and-evidence.md) |
 | Check theorem scope, counterexamples, or a theory-heavy rejection | [Theory and claim audit](references/theory-and-claim-audit.md) |
+| Execute symbolic checks or formalize a core lemma | [Machine theory verification](references/machine-theory-verification.md) |
+| Research wireless communications, signal processing, or constrained optimization | [Wireless research playbook](references/wireless-research-playbook.md) |
 | Replicate a complete paper workflow or rebuild a rejected study | [Research playbooks](references/research-playbooks.md) |
 | Draft/audit a manuscript; prepare submission or accepted final files | [Paper and submission](references/paper-review-submission.md) |
 | Analyze reviewers; respond; prepare a formal revision | [Reviewer reasoning and resubmission](references/reviewer-red-team-and-resubmission.md) |
@@ -65,7 +67,8 @@ evidence; do not mark historical gates passed merely because a draft exists.
 
 `<SKILL_DIR>` is the directory containing this file, not the research workspace.
 Claude Code may expose it as `${CLAUDE_SKILL_DIR}`. The scripts use local files
-and Python's standard library; host-specific UI metadata is optional.
+and Python's standard library; the optional symbolic verification runner needs
+SymPy. Host-specific UI metadata is optional.
 
 ```text
 python "<SKILL_DIR>/scripts/init_research_project.py" <project> --mode full-cycle

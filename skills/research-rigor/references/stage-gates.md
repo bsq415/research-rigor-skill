@@ -117,6 +117,12 @@ version exploratory findings separately. For each claim record:
 
 For theoretical claims, also freeze definitions, assumptions, boundary cases, counterexamples, proof obligations, independent oracle checks, and numerical validation.
 
+When machine checks resolve a proof obligation, follow
+[machine theory verification](machine-theory-verification.md) and link the
+versioned output in `03_THEORY_VERIFICATION.csv` or equivalent records. Review
+statement translation, admissibility and evidence tier before using it at G3.
+The controller does not infer scientific validity from tool exit codes.
+
 Pass evidence:
 
 - frozen rows in `03_CLAIM_EVIDENCE_MATRIX.csv`;

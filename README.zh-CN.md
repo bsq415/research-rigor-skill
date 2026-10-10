@@ -36,6 +36,11 @@
 
 ## 它真正能做什么
 
+2026 年 10 月新增可执行的 [SymPy 理论验证与 Lean 进阶路径](skills/research-rigor/references/machine-theory-verification.md)，
+记录假设、源文件哈希、工具版本和分层结论；以及面向无线通信、信号处理与优化的
+[领域 playbook](skills/research-rigor/references/wireless-research-playbook.md)。
+SymPy 是按需安装的可选依赖；符号检查和有限算例通过不会自动成为一般定理的证明。
+
 2026 年 9 月版把入口缩为按需加载：单独改一段论文，不必先跑完整套 Gate；
 已有项目可沿用自己的记录。会话里已给的授权继续有效，只有真正缺失且影响下一步的
 信息才需要追问。

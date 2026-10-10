@@ -5,6 +5,10 @@ are not causal evidence that a workflow wins acceptance. Choose the path matchin
 the research; keep identities and original reviews in private records. Use only
 the stages that remain unresolved.
 
+For wireless communications, signal processing, and optimization, start with the
+[wireless domain playbook](wireless-research-playbook.md) and select the relevant
+branch below. It supplies domain-specific failure cases and evidence decisions.
+
 ## Focused methods paper: question to revision to final files
 
 | Decision | Work that changes the decision | Evidence to retain |
