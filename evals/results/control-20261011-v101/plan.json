@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "status": "frozen",
+  "created_utc": "2026-10-10T17:26:12.764827+00:00",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "seed": 20261011,
+  "design": "prompt-only, closed-book, paired, independent sessions",
+  "skill_files": {
+    "SKILL.md": "d8bf7369cb3fcfda9be53f8030c53e6ca54834e7c082e1563f2b26563268c36c",
+    "references/theory-and-claim-audit.md": "acbeae7f76b337ecc2788f8ca3f3764dbe9fbaf927cbff1fb6160bd3fe9d8fcb",
+    "references/experiment-and-evidence.md": "12369abbdd5a0c54fbc6db21391342e99863fb168fadca2dad6bb3e33ab649bd"
+  },
+  "frozen_hashes": {
+    "tasks.json": "e53705200589219386565913b495118dc145dae39cd837e8f624747c44955d82",
+    "rubric.private.json": "d9329b159d64540c68994058fcd9192fe3ce1edade0333579aa58c9bca235c38",
+    "answer-schema.json": "8abc13d14474e010175d51493d8e24806a75d1c7eb62ae20a3be15fd57ca3947",
+    "skill-context.txt": "c3b11e39d8dce5a4158f32bb1a8e488f865fa94798ce1c1b41234198795dfdfc"
+  },
+  "rows": [
+    {
+      "run_id": "run001",
+      "task_id": "T10",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run002",
+      "task_id": "T10",
+      "repeat": 1,
+      "condition": "skill"
+    }
+  ]
+}

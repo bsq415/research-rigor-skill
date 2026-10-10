@@ -26,6 +26,23 @@ with explicit evidence tiers and reproducible records, plus a
 
 ## What is it?
 
+The first principle is learning from the researcher's successful and failed projects,
+real reviewer and supervisor feedback, and executed corrections. Public guidance
+contains [de-identified lessons](skills/research-rigor/references/experience-derived-principles.md);
+private source records stay outside the repository. AI pre-reviews are labeled separately.
+
+The default initializer now creates just three records: claim/evidence matrix,
+run ledger and decision log. `--upgrade` adds the full workflow without overwriting
+existing records. New [citation metadata and manuscript-number checks](skills/research-rigor/references/manuscript-checks.md),
+finite-grid SymPy checks, a [generic domain playbook](skills/research-rigor/references/domain-playbook-template.md),
+and a [Claude plugin with a sealed-result guard and read-only reviewer](docs/CLAUDE_PLUGIN.md)
+are available.
+
+Evidence comes before promotion: the initial paired evaluation showed **no measured
+improvement** over the unassisted model. One control had a design defect and is
+reported separately with a corrected follow-up. See [tasks, scoring and complete results](evals/README.md).
+Functional checks measure tool behavior, not scientific validity or model improvement.
+
 Rigorous Research Assistant is a portable Agent Skill that lets Codex, Claude Code, or another compatible coding agent help carry a researcher-directed project across the full lifecycle:
 
 `question selection → literature and novelty → claim design → experiments → execution → result audit → correction or redesign → paper writing → manuscript audit → review → release`

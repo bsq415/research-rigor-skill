@@ -57,6 +57,23 @@ and dependent claims. Independently check admissibility of a counterexample.
 Reopen affected proofs/abstract/algorithms/figures; do not auto-pass G3 from an
 exit code. Freeze the contract before confirmation and retain failed versions.
 
+## Finite search and numeric diagnostics
+
+`counterexample_search(sp, claim_id, proposition, cases, admissible, assumptions)`
+checks a supplied finite grid and filters cases through the caller's domain predicate.
+An exact false proposition records an admissible counterexample; an exhausted grid
+returns `search_no_counterexample`, never a universal proof. Unknown admissibility
+or an empty valid domain is inconclusive. Independently justify the domain predicate.
+
+`numerical_check(sp, claim_id, lhs, rhs, cases, admissible, assumptions, atol, rtol, digits)`
+uses high-precision residuals and explicit absolute/relative tolerances. `numeric_pass`
+supports only those evaluated cases; `numeric_failure` is a diagnostic requiring
+exact analysis, not automatically an exact refutation. Nonfinite or unresolved values
+are inconclusive. Cancellation and inadequate precision still need human analysis.
+
+Try `assets/theory-checks/search_and_numeric.py` with the runner. It deliberately
+includes failing checks so that preservation of negative evidence can be inspected.
+
 ## Optional Lean route
 
 Use an existing Lean 4 project with pinned `lean-toolchain`, Lake dependency

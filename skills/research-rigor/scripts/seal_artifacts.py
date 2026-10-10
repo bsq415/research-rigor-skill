@@ -102,7 +102,7 @@ def _canonical_record_path(raw: object) -> str:
     if not isinstance(raw, str) or not raw:
         raise ValueError("manifest path is empty or non-string")
     path = PurePosixPath(raw)
-    if path.is_absolute() or ".." in path.parts or path.as_posix() != raw:
+    if path.is_absolute() or Path(raw).is_absolute() or "\\" in raw or ":" in raw or ".." in path.parts or path.as_posix() != raw:
         raise ValueError(f"manifest path is not canonical and relative: {raw!r}")
     return raw
 
@@ -137,7 +137,7 @@ def verify_manifest(args: argparse.Namespace) -> int:
             continue
         expected.add(relative)
         path = root / Path(relative)
-        if not path.is_file() or path.is_symlink():
+        if not path.resolve().is_relative_to(root) or not path.is_file() or path.is_symlink():
             errors.append(f"missing or nonportable file: {relative}")
             continue
         digest, size = _sha256_stable(path)
@@ -170,16 +170,43 @@ def verify_manifest(args: argparse.Namespace) -> int:
     return 0
 
 
+def protect_manifest(args: argparse.Namespace) -> int:
+    """Register a verified package for a loaded Claude plugin's tool guard."""
+    project = args.project.resolve()
+    root, manifest = args.root.resolve(), args.manifest.resolve()
+    if not root.is_relative_to(project) or not manifest.is_relative_to(project):
+        raise ValueError("protected package and manifest must be inside the selected project")
+    if root == project or root == project / ".research":
+        raise ValueError("seal a dedicated result directory, not the workspace/control layer")
+    args.strict, args.exclude = True, []
+    if verify_manifest(args) != 0:
+        return 1
+    registry = project / ".research" / "seals.json"
+    payload = json.loads(registry.read_text(encoding="utf-8")) if registry.exists() else {"schema_version": 1, "seals": []}
+    if payload.get("schema_version") != 1 or not isinstance(payload.get("seals"), list):
+        raise ValueError("invalid existing seal registry")
+    entry = dict(root=root.relative_to(project).as_posix(), manifest=manifest.relative_to(project).as_posix())
+    if entry not in payload["seals"]:
+        payload["seals"].append(entry)
+    registry.parent.mkdir(parents=True, exist_ok=True)
+    temporary = registry.with_suffix(".tmp")
+    temporary.write_text(json.dumps(payload, indent=2)+"\n", encoding="utf-8")
+    os.replace(temporary, registry)
+    print("Registered seal protection for a loaded Claude Code plugin; this is not an OS access control.")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     subparsers = parser.add_subparsers(dest="command", required=True)
-    for name in ("create", "verify"):
+    for name in ("create", "verify", "protect"):
         child = subparsers.add_parser(name)
         child.add_argument("root", type=Path)
         child.add_argument("manifest", type=Path)
         child.add_argument("--exclude", action="append", default=[])
     subparsers.choices["create"].add_argument("--replace", action="store_true")
     subparsers.choices["verify"].add_argument("--strict", action="store_true")
+    subparsers.choices["protect"].add_argument("--project", required=True, type=Path)
     return parser
 
 
@@ -188,6 +215,8 @@ def main() -> int:
     try:
         if args.command == "create":
             return create_manifest(args)
+        if args.command == "protect":
+            return protect_manifest(args)
         return verify_manifest(args)
     except (
         FileExistsError,

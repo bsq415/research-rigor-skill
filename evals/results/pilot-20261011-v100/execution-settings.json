@@ -1,0 +1,12 @@
+{
+  "client_date": "2026-10-11",
+  "timezone": "Asia/Kuala_Lumpur",
+  "cli_version": "codex-cli 0.162.0-alpha.17.2",
+  "skill_source_commit": "708718adacbcc4e8ff8fb8066690a98f8c955fca",
+  "sampling": "model defaults; sampling seed not controllable; plan seed affects order only",
+  "schema_mode": "Codex structured output for candidates; JSON-only instruction for graders",
+  "runner_sha256": "984e15e4bfe655adc2999215f267e197f6533a3c57fef9d01b1303d6cc876428",
+  "tools_policy": "closed-book; empty temporary cwd; ignore-user-config; ephemeral; shell_tool and apps disabled; skip_host_skill_discovery enabled",
+  "host_research_rigor_installed": false,
+  "grader": "same model and effort, separate context, condition labels hidden; no independent human raters"
+}

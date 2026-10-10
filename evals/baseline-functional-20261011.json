@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "suite": "functional-regression-v1",
+  "scientific_effect": "not_measured",
+  "created_utc": "2026-10-10T17:32:49.052613+00:00",
+  "checks": {
+    "citation_authenticity": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "number_consistency": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "light_upgrade": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "sealed_hook": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "theory_search": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "plugin_and_references": {
+      "status": "not_implemented",
+      "passed": false
+    },
+    "default_light_footprint": {
+      "passed": false,
+      "files": [
+        "00_AUTONOMY_CONTRACT.md",
+        "00_CONSTRAINTS.md",
+        "01_IDEA_CANDIDATES.csv",
+        "01_PROBLEM_CARD.md",
+        "02_LITERATURE_LOG.csv",
+        "02_NEAREST_NEIGHBOR_MATRIX.csv",
+        "02_NOVELTY_ASSESSMENT.json",
+        "02_SEARCH_LOG.csv",
+        "03_CLAIM_EVIDENCE_MATRIX.csv",
+        "03_THEOREM_CONTRACT.csv",
+        "03_THEORY_VERIFICATION.csv",
+        "04_COVERAGE_MODEL.csv",
+        "04_EXPERIMENT_MATRIX.csv",
+        "04_EXPERIMENT_PROTOCOL.md",
+        "04_PROTOCOL_AMENDMENTS.csv",
+        "05_RUN_LEDGER.csv",
+        "06_RESULT_FACTS.csv",
+        "07_FIGURE_AUDIT.csv",
+        "07_MANUSCRIPT_AUDIT.csv",
+        "07_ONE_PAGE_PAPER.md",
+        "07_PAPER_CLAIM_MAP.csv",
+        "08_COVER_LETTER.md",
+        "08_RESPONSE_LETTER.md",
+        "08_RESUBMISSION_HIGHLIGHTS.md",
+        "08_REVIEW_REMEDIATION.csv",
+        "08_REVIEW_SOURCE_REGISTER.csv",
+        "09_SUBMISSION_CHECKLIST.md",
+        "10_AI_REVIEW_LEDGER.csv",
+        "11_ARCHIVE_RECORD.md",
+        "BLOCKERS.md",
+        "DECISION_LOG.md",
+        "RESEARCH_CYCLE_LOG.csv",
+        "research_state.json"
+      ],
+      "file_count": 33
+    }
+  }
+}

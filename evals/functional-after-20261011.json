@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "suite": "functional-regression-v1",
+  "scientific_effect": "not_measured",
+  "created_utc": "2026-10-10T17:57:34.914075+00:00",
+  "checks": {
+    "citation_authenticity": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_braced_quotes_parentheses_and_conflicting_given_names (test_citation_verification.CitationVerificationTests.test_braced_quotes_parentheses_and_conflicting_given_names) ... ok\ntest_duplicate_keys_and_unbalanced_input_fail (test_citation_verification.CitationVerificationTests.test_duplicate_keys_and_unbalanced_input_fail) ... ok\ntest_matching_metadata_and_alternative_publication_year (test_citation_verification.CitationVerificationTests.test_matching_metadata_and_alternative_publication_year) ... ok\ntest_nested_braces_supported_and_macros_do_not_become_verified (test_citation_verification.CitationVerificationTests.test_nested_braces_supported_and_macros_do_not_become_verified) ... ok\ntest_provider_failure_and_truncated_authors_stay_unresolved (test_citation_verification.CitationVerificationTests.test_provider_failure_and_truncated_authors_stay_unresolved) ... ok\ntest_real_identifier_with_wrong_title_is_mismatch (test_citation_verification.CitationVerificationTests.test_real_identifier_with_wrong_title_is_mismatch) ... ok\ntest_wrong_author_and_year_are_not_verified (test_citation_verification.CitationVerificationTests.test_wrong_author_and_year_are_not_verified) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.928s\n\nOK\n",
+      "test_sha256": "750b18b791ceedf3ebb3b9aa7f1972ecf798f191ca49f5ac7ae7c5d803f273d5"
+    },
+    "number_consistency": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_escaping_include_is_rejected (test_manuscript_numbers.ManuscriptNumberTests.test_escaping_include_is_rejected) ... ok\ntest_includes_comments_and_sentence_punctuation (test_manuscript_numbers.ManuscriptNumberTests.test_includes_comments_and_sentence_punctuation) ... ok\ntest_matching_wrong_and_unclassified_numbers (test_manuscript_numbers.ManuscriptNumberTests.test_matching_wrong_and_unclassified_numbers) ... ok\ntest_no_precision_loss_and_thirty_display_decimals (test_manuscript_numbers.ManuscriptNumberTests.test_no_precision_loss_and_thirty_display_decimals) ... ok\ntest_percentage_scaling_and_decimal_rounding (test_manuscript_numbers.ManuscriptNumberTests.test_percentage_scaling_and_decimal_rounding) ... ok\ntest_stale_mapping_and_repeated_tokens_use_exact_location (test_manuscript_numbers.ManuscriptNumberTests.test_stale_mapping_and_repeated_tokens_use_exact_location) ... ok\ntest_strict_cli_rejects_unmapped_literal (test_manuscript_numbers.ManuscriptNumberTests.test_strict_cli_rejects_unmapped_literal) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.107s\n\nOK\n",
+      "test_sha256": "c536228d40efb174a4f333700940304028e96fcb8cdb2d68130516c6d323076e"
+    },
+    "light_upgrade": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_default_is_exactly_three_records (test_light_mode.LightModeTests.test_default_is_exactly_three_records) ... ok\ntest_existing_full_contract_is_preserved_by_light_merge (test_light_mode.LightModeTests.test_existing_full_contract_is_preserved_by_light_merge) ... ok\ntest_quoted_title_is_valid_json (test_light_mode.LightModeTests.test_quoted_title_is_valid_json) ... ok\ntest_upgrade_preserves_existing_records_and_starts_unpassed (test_light_mode.LightModeTests.test_upgrade_preserves_existing_records_and_starts_unpassed) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.568s\n\nOK\n",
+      "test_sha256": "52fd03fbf93028f78bb2226e0da376696eeed5ec3882fffba92ea95ce30367d4"
+    },
+    "sealed_hook": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_actual_hook_protocol_and_no_registry (test_sealed_hook.SealHookTests.test_actual_hook_protocol_and_no_registry) ... ok\ntest_guard_blocks_results_shell_registry_but_allows_source_and_reads (test_sealed_hook.SealHookTests.test_guard_blocks_results_shell_registry_but_allows_source_and_reads) ... ok\ntest_manifest_rejects_windows_absolute_and_nonportable_paths (test_sealed_hook.SealHookTests.test_manifest_rejects_windows_absolute_and_nonportable_paths) ... ok\ntest_protect_requires_matching_frozen_bytes (test_sealed_hook.SealHookTests.test_protect_requires_matching_frozen_bytes) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.360s\n\nOK\n",
+      "test_sha256": "545546ed6b6bdfa209a71996a7853489f9765d40db5e0794bd582238766cb161"
+    },
+    "theory_search": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_admissible_counterexample_and_excluded_cases (test_theory_search.TheorySearchTests.test_admissible_counterexample_and_excluded_cases) ... ok\ntest_empty_or_unknown_domain_is_inconclusive (test_theory_search.TheorySearchTests.test_empty_or_unknown_domain_is_inconclusive) ... ok\ntest_invalid_tolerance_rejected (test_theory_search.TheorySearchTests.test_invalid_tolerance_rejected) ... ok\ntest_numeric_fail_pass_nonfinite_and_underflow (test_theory_search.TheorySearchTests.test_numeric_fail_pass_nonfinite_and_underflow) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.019s\n\nOK\n",
+      "test_sha256": "2e562427103f4c62ca0718e0e3c4746525d14eefb508a7715212db367fc7e585"
+    },
+    "plugin_and_references": {
+      "status": "passed",
+      "passed": true,
+      "output": "test_compressed_instructions_reference_real_record_files (test_plugin_package.PluginPackageTests.test_compressed_instructions_reference_real_record_files) ... ok\ntest_default_discovery_and_hook_contract (test_plugin_package.PluginPackageTests.test_default_discovery_and_hook_contract) ... ok\ntest_progressive_disclosure_reference_budget (test_plugin_package.PluginPackageTests.test_progressive_disclosure_reference_budget) ... ok\ntest_published_evidence_preserves_frozen_bytes (test_plugin_package.PluginPackageTests.test_published_evidence_preserves_frozen_bytes) ... ok\ntest_reviewer_can_only_read (test_plugin_package.PluginPackageTests.test_reviewer_can_only_read) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.004s\n\nOK\n",
+      "test_sha256": "871e0072d7e6bfb00d1c6ed4b97f53ff9987006c9dbe984ddb1dfd802b7d5e55"
+    },
+    "default_light_footprint": {
+      "passed": true,
+      "files": [
+        "03_CLAIM_EVIDENCE_MATRIX.csv",
+        "05_RUN_LEDGER.csv",
+        "DECISION_LOG.md"
+      ],
+      "file_count": 3
+    }
+  },
+  "source_hash_encoding": "UTF-8 with normalized LF for cross-platform source comparisons",
+  "implementation_sha256": {
+    "hooks/guard_sealed.py": "ddb69845b7f699c0b27b227784eb7f428beb6cb05fa2185b7609830ed754dc46",
+    "skills/research-rigor/scripts/audit_manuscript_numbers.py": "f31572ddce7f2cf601cf05ba264e999ba2915938f30a6db8736128674a0dd1ef",
+    "skills/research-rigor/scripts/audit_research_state.py": "7abc9266beb45e68b278dacd90e277b74e4a124c224d5f0025e09884ee5bc36b",
+    "skills/research-rigor/scripts/audit_revision_package.py": "c6779bd6de14f1c48f756d087845cde2b4b7a4681b5ed1ecec4d0a8c91724c7c",
+    "skills/research-rigor/scripts/init_research_project.py": "1b4007dcb1332cc6f3bd38b56513d48f085f9bbc82f9e0f52cf23280461055ba",
+    "skills/research-rigor/scripts/research_cycle.py": "509075a327e7bce32a17649b06263cd0749eccfbe88352ffd8068a41660192cf",
+    "skills/research-rigor/scripts/rigor_eval.py": "97d21367dbff317e53dcc19ceb196567a3fa9877e797b3378469563f1aa165dd",
+    "skills/research-rigor/scripts/scan_release.py": "84cbbd6e434ee0f1f946994956561c8fc3270a755d32a9d31f9980a33c7526fc",
+    "skills/research-rigor/scripts/seal_artifacts.py": "f0090bd20163e6d44a3e004c67029f9ba389d244b6671f63060df9256bd49c31",
+    "skills/research-rigor/scripts/verify_citations.py": "17697d322a3ad4d19ef0447b6266f48e794a164574c5dacce21d797ab0a04170",
+    "skills/research-rigor/scripts/verify_theory.py": "cdfd237f3e19b6044591df5bd2bdf63e83cf231867a026af81a204ec0d0ecb55"
+  },
+  "comparison": {
+    "citation_authenticity": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "number_consistency": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "light_upgrade": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "sealed_hook": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "theory_search": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "plugin_and_references": {
+      "before": false,
+      "after": true,
+      "same_test": false
+    },
+    "default_light_footprint": {
+      "before": false,
+      "after": true,
+      "same_test": true
+    }
+  }
+}

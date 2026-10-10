@@ -1,0 +1,121 @@
+{
+  "scope": "Public bibliographic metadata and synthetic theory only; live network results are not deterministic regression scores",
+  "citation_auto": {
+    "schema_version": 1,
+    "mode": "online",
+    "retrieved_utc": "2026-10-10T17:51:51.317728+00:00",
+    "entries": [
+      {
+        "key": "shannon",
+        "status": "verified_metadata",
+        "reasons": [],
+        "matched_record": {
+          "source": "crossref",
+          "lookup_url": "https://api.crossref.org/works/10.1002%2Fj.1538-7305.1948.tb01338.x",
+          "identifier": "10.1002/j.1538-7305.1948.tb01338.x",
+          "doi": "10.1002/j.1538-7305.1948.tb01338.x",
+          "title": "A Mathematical Theory of Communication",
+          "authors": [
+            "Shannon, C. E."
+          ],
+          "years": [
+            1948,
+            2013
+          ]
+        },
+        "scope": "bibliographic metadata only; ordered author names allow corresponding initials, not conflicting full names; ambiguous publication versions need review"
+      },
+      {
+        "key": "attention",
+        "status": "verified_metadata",
+        "reasons": [],
+        "matched_record": {
+          "source": "arxiv",
+          "lookup_url": "https://export.arxiv.org/api/query?id_list=1706.03762",
+          "identifier": "1706.03762v7",
+          "title": "Attention Is All You Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "Niki Parmar",
+            "Jakob Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Lukasz Kaiser",
+            "Illia Polosukhin"
+          ],
+          "years": [
+            2017
+          ]
+        },
+        "scope": "bibliographic metadata only; ordered author names allow corresponding initials, not conflicting full names; ambiguous publication versions need review"
+      }
+    ],
+    "source_sha256": "2035340f26e4e93428046af5e9ea0bc53f035853e1282186126f54a21e330b67"
+  },
+  "citation_semantic_scholar": {
+    "schema_version": 1,
+    "mode": "online",
+    "retrieved_utc": "2026-10-10T17:52:48.313979+00:00",
+    "entries": [
+      {
+        "key": "shannon",
+        "status": "unresolved",
+        "reasons": [
+          "HTTPError: lookup unavailable; not proof of a fabricated source"
+        ]
+      },
+      {
+        "key": "attention",
+        "status": "verified_metadata",
+        "reasons": [],
+        "matched_record": {
+          "source": "semantic-scholar",
+          "lookup_url": "https://api.semanticscholar.org/graph/v1/paper/ARXIV%3A1706.03762?fields=title,authors,year,externalIds,url",
+          "identifier": "1706.03762",
+          "title": "Attention is All you Need",
+          "authors": [
+            "Ashish Vaswani",
+            "Noam Shazeer",
+            "N. Parmar",
+            "J. Uszkoreit",
+            "Llion Jones",
+            "Aidan N. Gomez",
+            "Lukasz Kaiser",
+            "I. Polosukhin"
+          ],
+          "years": [
+            2017
+          ],
+          "doi": ""
+        },
+        "scope": "bibliographic metadata only; ordered author names allow corresponding initials, not conflicting full names; ambiguous publication versions need review"
+      }
+    ],
+    "source_sha256": "2035340f26e4e93428046af5e9ea0bc53f035853e1282186126f54a21e330b67"
+  },
+  "theory": {
+    "schema_version": 1,
+    "backend": "sympy",
+    "status": "counterexample",
+    "created_utc": "2026-10-10T17:51:55.463656+00:00",
+    "python_version": "3.12.10",
+    "checks": [
+      {
+        "claim_id": "sqrt-square-unrestricted",
+        "assumptions": "x real; finite grid -2 to 2 with step 1/2",
+        "status": "counterexample",
+        "detail": "admissible substitution {x: -2}: False; tested=1, skipped=0"
+      },
+      {
+        "claim_id": "first-order-exp-approximation",
+        "assumptions": "0<=x<=1; first-order approximation tested pointwise",
+        "status": "numeric_failure",
+        "detail": "substitution={x: 1/10}, absolute_error=0.0051709180756476248117078264902466682245471947375166, allowed=0.0000021000000000000000000000000000000000000000000000000, digits=50; numeric diagnostic, not an exact refutation"
+      }
+    ],
+    "source_sha256": "6d366e9f729f29db48a37118e1c7bc7ce50c91cf71f3c48a3959e21185f568c0",
+    "backend_version": "1.14.0"
+  },
+  "claude_native_host": "unexecuted: Claude CLI unavailable"
+}

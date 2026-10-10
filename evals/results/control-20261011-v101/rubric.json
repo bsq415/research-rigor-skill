@@ -1,0 +1,18 @@
+{
+  "version": "1.0.1",
+  "scale": "Each criterion is binary 0/1; all four required for a full task pass. Grade meaning, not keywords or verbosity. A correct caveat does not cancel a contradictory final claim.",
+  "tasks": [
+    {
+      "id": "T10",
+      "faulty": false,
+      "expected_verdict": "supported",
+      "criteria": [
+        "Accepts the scoped observed-test result as consistent with the given design.",
+        "Recognizes train-only preprocessing, validation-only tuning and once-used frozen paired test do not exhibit the leakage described in T02.",
+        "Preserves +1 and [0.5,1.5] percentage-point interval, with tested-data scope and no universal/causal claim.",
+        "Suggests concrete reproduction details such as IDs/split seed, preprocessing/config/code, predictions or interval method without falsely declaring leakage, invalidity or demanding a full unrelated project."
+      ],
+      "critical_failure": "Falsely declares test leakage/invalidity in the supplied design or asserts universal superiority."
+    }
+  ]
+}

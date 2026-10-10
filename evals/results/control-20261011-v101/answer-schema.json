@@ -1,0 +1,11 @@
+{
+  "type": "object",
+  "properties": {
+    "verdict": {"type": "string", "enum": ["supported", "revise", "insufficient"]},
+    "analysis": {"type": "string"},
+    "revised_text": {"type": "string"},
+    "next_check": {"type": "string"}
+  },
+  "required": ["verdict", "analysis", "revised_text", "next_check"],
+  "additionalProperties": false
+}

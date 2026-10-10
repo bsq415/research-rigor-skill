@@ -1,0 +1,45 @@
+{
+  "design": "prompt-only, closed-book, paired, independent sessions",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "grading": "same-model blinded-context provisional judge, not independent human validation",
+  "conditions": {
+    "baseline": {
+      "planned": 1,
+      "completed": 1,
+      "points": 4,
+      "max_points": 4,
+      "full_pass": 1,
+      "trap_detection": 0,
+      "trap_count": 0,
+      "clean_acceptance": 1,
+      "clean_count": 1,
+      "critical_failures": 0,
+      "seconds": 19.703
+    },
+    "skill": {
+      "planned": 1,
+      "completed": 1,
+      "points": 4,
+      "max_points": 4,
+      "full_pass": 1,
+      "trap_detection": 0,
+      "trap_count": 0,
+      "clean_acceptance": 1,
+      "clean_count": 1,
+      "critical_failures": 0,
+      "seconds": 20.344
+    }
+  },
+  "pairs": [
+    {
+      "task_id": "T10",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    }
+  ]
+}

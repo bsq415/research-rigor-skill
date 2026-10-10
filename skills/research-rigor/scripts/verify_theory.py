@@ -9,6 +9,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import platform
 import runpy
@@ -33,6 +34,55 @@ def exact_case(sp, claim_id, proposition, assumptions):
                 detail=f"exact-case proposition: {result}")
 
 
+def counterexample_search(sp, claim_id, proposition, cases, admissible, assumptions):
+    """Exhaust a caller-owned finite grid, checking each case's admissibility."""
+    tested, skipped, undecided = 0, 0, 0
+    for case in cases:
+        valid = admissible(case)
+        if valid not in (True, sp.true):
+            if valid in (False, sp.false): skipped += 1
+            else: undecided += 1
+            continue
+        tested += 1
+        result = sp.simplify(proposition.subs(case))
+        if result == sp.false:
+            return dict(claim_id=claim_id, assumptions=assumptions, status="counterexample",
+                        detail=f"admissible substitution {case}: False; tested={tested}, skipped={skipped}")
+        if result != sp.true: undecided += 1
+    return dict(claim_id=claim_id, assumptions=assumptions,
+                status="search_no_counterexample" if tested and not undecided else "inconclusive",
+                detail=f"finite-grid search only: tested={tested}, skipped={skipped}, undecided={undecided}; no universal proof")
+
+
+def numerical_check(sp, claim_id, lhs, rhs, cases, admissible, assumptions, atol=1e-10, rtol=1e-8, digits=50):
+    """Pointwise finite-case residual checks; tolerances do not certify a theorem."""
+    if not all(math.isfinite(x) and x >= 0 for x in (atol, rtol)) or digits < 15:
+        raise ValueError("require finite nonnegative tolerances and at least 15 digits")
+    tested, worst, undecided = 0, 0.0, 0
+    for case in cases:
+        valid = admissible(case)
+        if valid not in (True, sp.true):
+            if valid not in (False, sp.false): undecided += 1
+            continue
+        try:
+            left, right = sp.N(lhs.subs(case), digits), sp.N(rhs.subs(case), digits)
+            error, scale = sp.Abs(left-right), sp.Abs(right)
+            if error.is_finite is not True or scale.is_finite is not True:
+                undecided += 1
+                continue
+            tested += 1
+            worst = max(worst, error)
+            allowed = sp.Float(str(atol), digits) + sp.Float(str(rtol), digits) * scale
+            if error > allowed:
+                return dict(claim_id=claim_id, assumptions=assumptions, status="numeric_failure",
+                            detail=f"substitution={case}, absolute_error={error}, allowed={allowed}, digits={digits}; numeric diagnostic, not an exact refutation")
+        except (TypeError, ValueError, OverflowError):
+            undecided += 1
+    return dict(claim_id=claim_id, assumptions=assumptions,
+                status="numeric_pass" if tested and not undecided else "inconclusive",
+                detail=f"finite cases: tested={tested}, undecided={undecided}, max_absolute_error={worst}, atol={atol}, rtol={rtol}, digits={digits}; no universal proof")
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("check_file", type=Path)
@@ -51,7 +101,8 @@ def main(argv=None):
         checks = list(module["run_checks"](sp))
         if not checks:
             raise ValueError("no checks were produced")
-        statuses = {"symbolic_pass", "case_pass", "counterexample", "inconclusive"}
+        statuses = {"symbolic_pass", "case_pass", "counterexample", "inconclusive",
+                    "search_no_counterexample", "numeric_pass", "numeric_failure"}
         ids = set()
         for check in checks:
             if not isinstance(check, dict):
@@ -65,7 +116,7 @@ def main(argv=None):
         report["checks"] = checks
         if any(c["status"] == "counterexample" for c in checks):
             report["status"], code = "counterexample", 1
-        elif any(c["status"] == "inconclusive" for c in checks):
+        elif any(c["status"] in {"inconclusive", "numeric_failure"} for c in checks):
             report["status"], code = "inconclusive", 1
         else:
             report["status"], code = "checks_passed", 0

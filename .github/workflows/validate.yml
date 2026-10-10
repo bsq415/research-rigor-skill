@@ -34,6 +34,9 @@ jobs:
       - name: Run lifecycle and fail-closed tests
         run: python -m unittest discover -s tests -v
 
+      - name: Compare functional evaluations with established regression baseline
+        run: python evals/run.py --compare evals/functional-after-20261011.json --output evals/current.local.json
+
       - name: Check Codex installation route
         run: python install.py --host codex --dry-run
 

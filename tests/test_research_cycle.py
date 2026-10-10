@@ -213,7 +213,7 @@ class ResearchCycleTests(unittest.TestCase):
         return control
 
     def test_default_policy_uses_coverage_without_universal_counts(self) -> None:
-        self.run_cli(INIT, self.project)
+        self.run_cli(INIT, self.project, "--mode", "guided")
         state = json.loads((self.project / ".research" / "research_state.json").read_text(encoding="utf-8"))
         self.assertEqual(state["literature_policy"]["mode"], "coverage")
         self.assertEqual(state["literature_policy"]["verified_deep_read_min"], 0)

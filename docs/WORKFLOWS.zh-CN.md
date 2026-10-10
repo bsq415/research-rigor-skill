@@ -7,6 +7,11 @@
 
 ## 三条路径
 
+默认记录只有三件套：`python <SKILL_DIR>/scripts/init_research_project.py <project>`。
+需要完整控制器时用 `--upgrade` 补齐，保留旧文件；`--mode full-cycle` 可直接建立完整新项目。
+引用与数字工具见[论文检查](../skills/research-rigor/references/manuscript-checks.md)，
+plugin 安装和封存保护见[宿主设置](CLAUDE_PLUGIN.md)，变更验证见[评测基线](../evals/README.md)。
+
 | 情境 | 可复制的过程 | 决定性检查 |
 |---|---|---|
 | 集中的方法论文 | 问题与模型一致 → 确认真实增量 → 理论条件与机制 → 公平实验 → 有效边界 → 成稿 → 逐点返修 → 终稿 | 图、公式、代码和基线是否描述同一系统；收益究竟由什么产生 |

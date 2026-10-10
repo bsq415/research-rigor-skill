@@ -22,6 +22,18 @@
 
 ## 它是什么？
 
+**第一原则是从研究者成功和失败的真实项目、审稿人和导师反馈、实际执行的纠错中学习。**
+公开说明只保留[脱敏后的经验](skills/research-rigor/references/experience-derived-principles.md)，
+私有来源索引留在本地；AI 预审、转述总结与原始评审分开标注。
+
+默认初始化只创建“主张–证据矩阵、实验运行记录、决策日志”三件套；`--upgrade`
+再补完整流程并保留旧记录。新增[引用元数据与论文数字核查](skills/research-rigor/references/manuscript-checks.md)、
+SymPy 有限反例搜索和数值检查、[通用领域 playbook 模板](skills/research-rigor/references/domain-playbook-template.md)，
+以及带封存保护和只读独立审稿 agent 的 [Claude plugin](docs/CLAUDE_PLUGIN.md)。
+
+先看证据：首轮模型对照**没有测到提升**；一项对照题设计有问题，原结果保留并另做修正版补测。
+[evals/](evals/README.md) 提供任务、评分表、完整答案和回归入口。工具功能通过不代表模型能力或科学结论更好。
+
 严谨科研助手是一个可移植的 Agent Skill，让 Codex、Claude Code 或其他兼容的 coding agent，围绕研究者主导的项目协助完成科研全流程：
 
 `选题 → 文献与创新性 → 主张设计 → 实验设计 → 实验执行 → 结果核查 → 修正或重设计 → 论文撰写 → 全文核查 → 审稿整改 → 投稿与归档`

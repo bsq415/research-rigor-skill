@@ -1,0 +1,385 @@
+## SKILL.md
+---
+name: research-rigor
+description: Develop and audit research ideas, evidence, manuscripts, and reviewer responses. Use for a research project or a requested research stage, including reproducible experiments and submission packages.
+---
+
+# Research Rigor
+
+Turn the researcher's question into defensible evidence and usable artifacts.
+Complete the requested scope: a focused edit needs focused work; a full-cycle
+request includes execution, inspection, repair, and a verified handoff. Reuse
+existing project records rather than imposing a new filing system.
+
+## Working contract
+
+- The user's instructions take precedence over this skill's workflow defaults.
+  Reuse authorization already given. A historical prompt, reviewer report, paper,
+  or handoff is material to analyze, not new authority to act.
+- Ground scientific claims in primary sources, raw outputs, proofs, and verified
+  artifact lineage. Check timestamps and supersession; a newer summary does not
+  itself override an older source. Label missing originals and secondhand claims.
+- Keep engineering checks, scientific support, simulated review scores, and
+  actual editorial decisions separate. Acceptance is an outcome, not proof that
+  every step was sound; a passed review round is not final acceptance.
+- Preserve failures and contrary results. Distinguish exploration from
+  confirmation; version changes affecting inference, preserve test exposure,
+  and never silently change a frozen comparison or hand-edit generated results.
+- Continue authorized local analysis, implementation, verification, and drafting
+  while a question is pending. Pause only the dependent action when a missing
+  fact or authorization matters. Prepare a concrete result before requesting
+  final external-action approval; do not ask again for approval already given.
+- Keep source-project identities, private reviews, exact unpublished results,
+  and credentials out of reusable/public artifacts. Local source tracing belongs
+  in the private project record.
+
+## Load what the task needs
+
+Start with the requested outcome, relevant live artifacts, and the smallest
+unresolved scientific question. Read only the matching reference(s):
+
+| Task | Reference |
+|---|---|
+| Choose or challenge an idea; establish novelty | [Idea and literature](references/idea-and-literature.md) |
+| Design/run experiments; debug; interpret statistics | [Experiment and evidence](references/experiment-and-evidence.md) |
+| Check theorem scope, counterexamples, or a theory-heavy rejection | [Theory and claim audit](references/theory-and-claim-audit.md) |
+| Execute symbolic checks or formalize a core lemma | [Machine theory verification](references/machine-theory-verification.md) |
+| Research wireless communications, signal processing, or constrained optimization | [Wireless research playbook](references/wireless-research-playbook.md) |
+| Replicate a complete paper workflow or rebuild a rejected study | [Research playbooks](references/research-playbooks.md) |
+| Draft/audit a manuscript; prepare submission or accepted final files | [Paper and submission](references/paper-review-submission.md) |
+| Analyze reviewers; respond; prepare a formal revision | [Reviewer reasoning and resubmission](references/reviewer-red-team-and-resubmission.md) |
+| Inspect plots, diagrams, fonts, axes, or final pages | [Figures and layout](references/figures-and-layout.md) |
+| Continue a long project; recover state; classify failures | [Full-cycle execution](references/full-cycle-execution.md) |
+| Advance the bundled persistent controller | [Stage gates](references/stage-gates.md) |
+| Use an external AI pre-review service | [External AI reviewers](references/external-ai-reviewers.md) |
+| Distill private projects or prepare release | [Integrity and privacy](references/integrity-and-privacy.md) |
+| Adapt prompts to a model/host or diagnose over-instruction | [Model adaptation](references/model-adaptation.md) |
+
+Do not read all references or initialize all templates for a narrow request.
+The playbooks describe useful decision sequences, not a requirement to replay a
+successful project's exact method, experiment count, or journal formatting.
+
+## Durable work when it helps
+
+Use the bundled `.research/` controller for a new full-cycle project or when the
+user wants its structured audit. Existing projects can keep their native records.
+Before a controller transition, read the relevant gate criteria. Recover existing
+evidence; do not mark historical gates passed merely because a draft exists.
+
+`<SKILL_DIR>` is the directory containing this file, not the research workspace.
+Claude Code may expose it as `${CLAUDE_SKILL_DIR}`. The scripts use local files
+and Python's standard library; the optional symbolic verification runner needs
+SymPy. Host-specific UI metadata is optional.
+
+```text
+python "<SKILL_DIR>/scripts/init_research_project.py" <project> --mode full-cycle
+python "<SKILL_DIR>/scripts/research_cycle.py" status <project>
+python "<SKILL_DIR>/scripts/research_cycle.py" checkpoint <project> --help
+python "<SKILL_DIR>/scripts/research_cycle.py" transition <project> --help
+python "<SKILL_DIR>/scripts/audit_research_state.py" <project>
+```
+
+The controller keeps evidence paths, decisions, blockers, next actions, and
+acceptance conditions. Use `--merge` only to add missing templates; existing
+contracts stay intact. New projects use evidence coverage for literature review;
+numerical quotas remain configurable and existing projects retain their policy.
+The audits check records and invariants, not novelty or scientific truth.
+
+## Finish at the requested boundary
+
+Deliver the changed artifacts and checks that establish their usability. State
+the supported conclusion, scientific limitations, and any exact missing input.
+Do not stop at a plan when executable work remains authorized. A blocked experiment
+need not block a literature audit or a scoped manuscript correction. A falsified
+claim should end in an honest rejection, supported narrowing, or explicitly
+exploratory redesign, not a stronger sales pitch.
+
+For formal revisions use `audit_revision_package.py --strict`; for a deliberate
+artifact package use `seal_artifacts.py create` then `verify --strict`; for generic
+release use `scan_release.py --generic-release` with a private denylist. Detailed
+commands and evidence requirements live in the corresponding references.
+
+
+## references/theory-and-claim-audit.md
+# Theory and claim audit
+
+Use for mathematical claims, model-dependent guarantees, or a theory-heavy
+review. Record statement, quantifiers, assumptions, proof obligations,
+counterexamples, allowed wording, and downstream locations in a claim contract.
+
+For claims depending on algebra, transforms, limits, or matrix properties, use
+[machine verification](machine-theory-verification.md) when it can resolve a
+proof obligation. Tie outputs to the exact theorem contract; symbolic passes
+and finite cases do not automatically close the proof. For communication-system
+research, also use the [domain playbook](wireless-research-playbook.md).
+
+## Audit the whole chain
+
+`physical object → model → assumptions → result → algorithm → metric → abstract`
+
+Read the strongest exposed statement alongside the precise theorem. A correct
+theorem does not rescue an unqualified abstract. Distinguish incorrect proof,
+incorrect extension, missing condition, inaccurate summary, and implementation
+defect.
+
+| Reviewer question | Decisive check | False reassurance |
+|---|---|---|
+| What is quantified? | Fixed/worst-case target? Average over which distribution? Uniform over which domain? | One favorable instance |
+| What happens at degeneracy? | Zero variance/rank, deterministic components outside random support, repeated eigenvalues, boundaries | Only nonsingular random draws |
+| Does transformation preserve the property? | Required factorization/invertibility; row scaling versus entrywise weights | All coefficients are positive |
+| Which mixture term controls the limit? | Retain deterministic/random terms; state fixed parameters and order of limits | Extending a pure-component law to a mixture |
+| Is the claimed order two-sided? | Matching lower/upper bounds with the same quantity and quantifiers | A tight-looking upper-bound curve |
+| Does a surrogate certify the target? | Transfer bound or direct discrepancy measurement in the stated domain | Surrogate improvement |
+| Is an optimizer a bound? | Global certificate or exhaustive finite domain with stated error | Local solution labeled upper bound |
+| Is validation independent? | Different derivation, full model, exact small case, independent measurement | Same approximation in formula and simulator |
+| Are rare events resolved? | Counts, intervals, tolerances, analytic/empirical labels | Smooth curves below sampling resolution |
+| Is it novel and useful? | Prior-art delta and a decision that changes after costs | New notation for standard tools |
+
+### Synthetic sanity examples
+
+These are generic mathematical checks, not source-project results.
+
+- `L(b) <= c/b^2` permits `L(b)=0`: an `O` upper bound does not establish a
+  universal `Theta` rate. A lower bound needs its own conditions.
+- The all-ones 2-by-2 matrix has rank one. Elementwise positive weights with
+  rows `(1, 1)` and `(1, 3)` can yield rank two. Positivity alone does not imply
+  a common invertible row transformation.
+- `Z=a+X`, with deterministic `a>0` and `X>=0`, has a positive support lower
+  bound. Low-threshold event probability may be zero, unlike a positive
+  probability floor. Transforms must retain the factor due to `a`.
+- A local maximizer of a continuous relaxation need not upper-bound the best
+  discrete feasible point. The true continuous global maximum does.
+
+Run the relevant counterexample against the statement and, where useful, the
+implementation. A prose defect does not prove all code wrong; a code pass does
+not prove generality. Retain both findings.
+
+## Validation with scientific value
+
+Use figures to distinguish competing explanations. Combine redundant identity
+checks; test where approximations diverge, assumptions fail, or decisions change.
+Report numerical-rank threshold sensitivity when small eigenvalues matter.
+Separate exact calculation, simulation, extrapolation, and measured data.
+
+Specify information acquisition: observations, actions, noise, sample count,
+stationarity, calibration, and costs. An estimator must not assume unavailable
+observations. Adaptive/nonadaptive designs, same-realization/independent-block
+observations, and known/unknown means can change identifiability.
+
+Disambiguate domain terms. An information-theoretic low-SNR expansion is not
+automatically a frequency-selective wideband system result; an asymptotic order
+is not a finite-regime gain; a sample or configuration count is not net throughput.
+An illustrative comparator is not a reproduced published baseline.
+
+## Remediation priority
+
+Fix correctness and invalid inference, then contribution/value, then exposition.
+Keep reviewer claims and independently verified findings distinct. Praise is
+prose unless an actual recommendation is supplied; do not infer acceptance votes.
+
+Choose a supported disposition: retain, narrow conditions, replace proof, repair
+implementation, invalidate, or open a new study. Reopen dependent claims and
+regenerate affected artifacts. Do not make every requested extension a new main
+contribution; explain justified scope limits with evidence.
+
+
+## references/experiment-and-evidence.md
+# Experiment and Evidence Protocol
+
+## Contents
+
+1. Design from claims
+2. Contract theory
+3. Plan fair experiments
+4. Build reproducible execution
+5. Pilot the brittle path
+6. Execute without result repair
+7. Audit and interpret results
+
+## Design from claims
+
+For every headline claim, specify:
+
+- exact wording and claim type;
+- falsifier;
+- strongest relevant baseline;
+- comparison unit and valid denominator;
+- minimum meaningful effect or equivalence margin;
+- sample size, power, confidence interval, and multiplicity handling;
+- confounds, controls, and alternative explanations;
+- expected evidence tier;
+- explicit non-claims.
+
+Predefine confirmatory claims before test inspection. Discoveries from existing
+results can motivate a versioned exploratory claim, but do not relabel them as
+preplanned confirmation. Do not treat non-significance as equivalence without
+an equivalence design.
+
+## Contract theory
+
+Before naming a theorem or using it in the paper:
+
+1. define every object and domain;
+2. list all assumptions and the physical or statistical meaning of each;
+3. verify dimensions, invariances, limiting cases, and degenerate cases;
+4. search for counterexamples and known special cases;
+5. obtain an independent symbolic or numerical oracle;
+6. run Monte Carlo or exhaustive checks where applicable;
+7. separate exact results, bounds, approximations, heuristics, and empirical observations;
+8. ensure the narrative does not claim more than the formal statement.
+
+Do not transfer a guarantee from a surrogate to a target metric without proof. Do not turn an effective-rank, heuristic, or coding-gain quantity into a diversity order or causal mechanism.
+
+For support/degeneracy, mixture limits, two-sided orders, global bounds, and
+independent mathematical validation, use [theory and claim audit](theory-and-claim-audit.md).
+
+## Plan fair experiments
+
+Freeze:
+
+- dataset version, license, sample IDs, split, mask, and preprocessing;
+- models, checkpoints, prompts, graders, sampling, and inference budgets;
+- selection metric and validation rule;
+- test-set access rule;
+- random seeds and repeated-run protocol;
+- baselines under matched data, compute, tuning, and information access;
+- ablations that remove or replace each claimed mechanism;
+- raw-scale metrics plus task-relevant tail, calibration, subgroup, spatial, temporal, trajectory, or peak diagnostics;
+- failure taxonomy and missingness policy.
+
+Expand the frozen claims into `04_EXPERIMENT_MATRIX.csv`. Every required cell
+must name its claim, scientific role, method, comparator, metric, valid
+denominator, pass threshold, redesign or kill threshold, and planned artifact.
+The matrix is the executable coverage contract; a prose protocol alone is not.
+
+Use a common evaluation interface. Do not rank heterogeneous models with a metric that only some models define. Report coverage together with interval width, accuracy together with calibration, and aggregate results together with critical slices.
+
+Construct the strongest baseline in the same feasible action space. Do not forbid revisits, information, tuning, or resources for a baseline merely to manufacture an advantage. Separate scheduler-, model-, data-, and backbone-level gains.
+
+For transformed or generative targets, inspect inverse-transform tails, clipping, overflow, samples, intervals, trajectories, and peak behavior before trusting averages.
+
+Fit preprocessing, feature selection, normalization, masks, thresholds, and spatial or temporal region selection on training data only. Use identical valid units and windows across methods. If exploratory work already used test results for selection, label it exploratory and require a fresh locked test block for confirmatory claims.
+
+## Build reproducible execution
+
+Record and verify:
+
+- source commit and dirty state;
+- data, model, prompt, config, and environment hashes;
+- hardware and software versions;
+- deterministic sample IDs and ordering;
+- run ID, seed, start and finish time;
+- raw outputs, logs, failures, and completion markers;
+- parent artifact hashes for every derived table or figure.
+
+Make runs append-only. A resume must:
+
+1. identify the same approved environment and source;
+2. validate the existing prefix row by row;
+3. confirm no premature completion manifest exists;
+4. resume at the next frozen ID;
+5. preserve the original prefix and its hash;
+6. seal only after the full contract passes.
+
+Use corruption, leakage, provenance, and tamper tests. A cached or templated backend may prove pipeline plumbing, but it is not scientific evidence unless the claim explicitly concerns that backend.
+
+Physically separate template, toy, smoke, partial, legacy, invalid, and scientific artifacts. Reject a checkpoint or cache that lacks the matching run contract, completion marker, source state, or data fingerprint.
+
+Exercise the real integration surface before full execution. Stub tokenizers, template backends, tiny synthetic data, and unit tests can preserve the same wrong assumption; use a bounded live pilot with the actual model, data schema, device, parser, and external runtime.
+
+## Pilot the brittle path
+
+Pilot the most failure-prone chain, including parsing, validity, pairing, fitting, metric, uncertainty, and reporting. Include strong baselines and the most extreme planned condition.
+
+Pre-write:
+
+- minimum coverage and class balance;
+- minimum paired denominator;
+- pass, redesign, defer, and kill thresholds;
+- runtime, cost, and thermal or stability limits;
+- tolerated parser, grader, or measurement error;
+- structural undefined states.
+
+Use the same schema and analysis code as the full run. If observations motivate a design change, preserve the pilot, increment the protocol version, and validate on fresh held-out evidence.
+
+## Execute without result repair
+
+During a frozen run:
+
+- monitor coverage and integrity before effects;
+- keep planned, partial, failed, invalid, and complete states distinct;
+- do not retry only unfavorable cells;
+- do not change a prompt, filter, metric, seed, model, split, or grader silently;
+- do not replace requested compute with a weaker fallback without approval;
+- do not remove failures from the denominator;
+- stop on leakage, canary failure, corruption, provenance mismatch, or contract violation.
+
+Engineering faults may be fixed under a versioned protocol if the change cannot select on outcomes. Scientific redesign creates a new protocol and requires new confirmation data.
+
+Classify the failure before changing anything:
+
+- environment or transient tool failure: preserve logs, repair the environment,
+  and retry the unchanged frozen cell;
+- implementation defect: quarantine dependent artifacts, add a regression test,
+  fix the code, and regenerate from unchanged upstream inputs;
+- measurement or protocol defect: create a versioned
+  `04_PROTOCOL_AMENDMENTS.csv` row, identify invalidated artifacts, obtain the
+  required authorization, and validate on fresh held-out evidence;
+- valid scientific failure: preserve it and fail, narrow, defer, or kill the
+  affected claim; do not “repair” the outcome;
+- resource, authority, privacy, or external-state block: record the blocker and
+  exact handoff without substituting a different scientific question.
+
+For the complete routing and gate-reopen procedure, follow
+`full-cycle-execution.md`.
+
+When an implementation bug is found, preserve raw upstream artifacts, quarantine affected derived outputs, fix the code, add a regression test for the observed pattern, and regenerate derived artifacts from unchanged raw inputs. Do not edit reported rows in place. Distinguish a code defect from a valid structural failure such as undefined output or a model that never reaches an answer.
+
+When time or compute shrinks, reduce breadth only through an explicit scope amendment. Preserve per-cell rigor, denominators, signals, seeds, and validation rules. Report incomplete coverage rather than weakening each cell or stopping early to protect a cleaner story.
+
+## Audit and interpret results
+
+First audit:
+
+- planned versus completed cells;
+- parse, grade, validity, pairing, and green rates;
+- common valid denominator;
+- missingness and failure reasons;
+- split, model, and artifact provenance;
+- whether any test evidence influenced selection.
+
+Then evaluate:
+
+- validation-selected checkpoint;
+- raw-scale primary and secondary metrics;
+- confidence intervals and practical magnitude;
+- strongest baseline and matched-budget comparisons;
+- tail, calibration, trajectory, subgroup, and boundary sanity checks;
+- ablations, counterexamples, sensitivity, and robustness;
+- cross-seed and cross-condition consistency;
+- runtime, memory, and cost.
+
+Classify evidence:
+
+- measured and directly reproducible;
+- controlled simulation;
+- replay or profile-based;
+- diagnostic or proxy;
+- hypothetical envelope;
+- unsupported or future work.
+
+Write claims at the weakest applicable tier. Preserve a strong competing result or failed ablation as a limitation. A valid negative result can be valuable; a broken measurement cannot.
+
+Audit the observation process itself. Similar missingness percentages across
+conditions do not prove ignorable missingness; compare available characteristics,
+failure mechanisms, and the population the observed denominator supports.
+Distinguish structural undefined metrics, policy exclusions, implementation
+failures, and uncomputed cells. Report effect sizes and intervals on the same
+eligible rows as headline counts, with explicit metric direction.
+
+Measure actual treatment/compression/budget compliance instead of assuming the
+nominal condition took effect. Separate within-condition performance from
+cross-condition transfer. A model's ability to generate outputs does not prove
+that its downstream grading, feature, split, fitting, and metric path works.
+
+Never smooth, envelope, reorder, censor, or post-process a curve to force monotonicity or a preferred trend. Explain finite-run or finite-sample irregularities and retain the raw values.

@@ -1,0 +1,14 @@
+{
+  "client_date": "2026-10-11",
+  "timezone": "Asia/Kuala_Lumpur",
+  "cli_version": "codex-cli 0.162.0-alpha.17.2",
+  "sampling": "model defaults; sampling seed not controllable; plan seed affects order only",
+  "schema_mode": "Codex structured output for candidates; JSON-only instruction for graders",
+  "runner_sha256": "97d21367dbff317e53dcc19ceb196567a3fa9877e797b3378469563f1aa165dd",
+  "tools_policy": "closed-book; empty temporary cwd; ignore-user-config; ephemeral; shell_tool and apps disabled; skip_host_skill_discovery enabled",
+  "host_research_rigor_installed": false,
+  "grader": "same model and effort, separate context, condition labels hidden; no independent human raters",
+  "skill_source": "working-tree update, exact treatment content and hashes frozen in plan",
+  "snapshot_scope": "captured at grading/publication; CLI generation logic unchanged from start; export excludes self-manifest",
+  "suite_version": "1.0.1"
+}

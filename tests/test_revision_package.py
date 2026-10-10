@@ -18,7 +18,7 @@ class RevisionPackageTests(unittest.TestCase):
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory(prefix="revision-package-test-")
         self.project = Path(self.temporary.name) / "synthetic-study"
-        self.run_cli(INIT, self.project, "--title", "Synthetic Revision Study")
+        self.run_cli(INIT, self.project, "--mode", "guided", "--title", "Synthetic Revision Study")
         self.control = self.project / ".research"
 
     def tearDown(self) -> None:

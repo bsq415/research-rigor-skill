@@ -1,0 +1,126 @@
+{
+  "version": "1.0.1",
+  "scale": "Each criterion is binary 0/1; all four required for a full task pass. Grade meaning, not keywords or verbosity. A correct caveat does not cancel a contradictory final claim.",
+  "tasks": [
+    {
+      "id": "T01",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Rejects inferring Theta or algorithmic optimality from this O upper bound alone.",
+        "Gives an admissible faster/zero example (e.g. L=0 or b^-3) or an equivalent precise explanation of the missing matching lower bound.",
+        "Rewrites as O(b^-2) under the stated assumptions, without an unavoidable/optimal-rate claim.",
+        "Explains a matching lower bound on the same quantity/domain is needed; curves do not supply a universal bound."
+      ],
+      "critical_failure": "Final answer endorses Theta or optimality from the supplied upper bound."
+    },
+    {
+      "id": "T02",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Identifies label-dependent feature selection before splitting as test leakage.",
+        "Also identifies fitting the scaler on all data as a preprocessing leakage issue; explains the test influences learned processing.",
+        "Moves preprocessing and selection into training-only fitting with validation or correctly nested cross-validation for tuning, preserving independent evaluation.",
+        "Does not retain 92% as unbiased confirmation; acknowledges prior exposure and requires untouched/fresh test evidence for a new confirmatory claim."
+      ],
+      "critical_failure": "Treats existing 92% as unbiased, or proposes fitting supervised selection on test data again."
+    },
+    {
+      "id": "T03",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Rejects the uniform/no-cost headline using the negative B result.",
+        "Treats A's interval crossing zero as uncertain and C as unestimable, not zero effect or evidence of no cost.",
+        "Labels the selected +8 subgroup as post-hoc/exploratory and does not retroactively call it preregistered.",
+        "Provides a bounded heterogeneous-results rewrite without inventing results or silently deleting B/C."
+      ],
+      "critical_failure": "Retains universal improvement/no-cost or calls the subgroup preregistered."
+    },
+    {
+      "id": "T04",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Rejects universal rank preservation under positive entrywise weights.",
+        "Computes original rank 1 and weighted rank 2 (or determinant 2 of [[1,1],[1,3]]).",
+        "Offers a valid sufficient condition such as W_ij=u_i*v_j with all factors nonzero, hence invertible diagonal left/right scaling, or uniform nonzero row scaling.",
+        "Restricts the repaired theorem to that condition; does not claim every positive weight matrix factors or that all downstream science is invalid."
+      ],
+      "critical_failure": "Endorses positive entrywise weights as universally rank-preserving."
+    },
+    {
+      "id": "T05",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Rejects local solver value as a certified upper bound for this maximization.",
+        "Uses f(2)=f(-2)=9 versus f(0)=1 as the explicit refutation.",
+        "Calls 1 a local/feasible incumbent value, hence a lower bound on the discrete optimum here, not an upper bound.",
+        "States the globally solved relaxation or a valid global certificate bounds above; recognizes this tiny finite set can be exhaustively solved to optimum 9."
+      ],
+      "critical_failure": "Calls 1 a valid upper bound or reverses the global relaxation bound direction."
+    },
+    {
+      "id": "T06",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Retains conditional-on-valid accuracies 90% and 96% plus coverage 90/100 and 50/100.",
+        "Rejects ranking whole-population correctness from unequal survivor denominators; missingness rates do not establish independence/MAR.",
+        "Uses common sample IDs and matched paired analysis or explicit missingness/coverage sensitivity analysis; does not silently compare different survivors.",
+        "Separates observed correct-output yield 81/100 versus 48/100 (or bounds on unknown whole-population correctness) from unobserved correctness of failures; avoids declaring either method scientifically superior without defining reliability."
+      ],
+      "critical_failure": "Declares missingness independent or whole-population accuracy superiority from survivors alone."
+    },
+    {
+      "id": "T07",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Identifies restart/search-budget confounding of the update-rule effect.",
+        "Rejects equal-cost claim: 20x restart budget and measured 1.4 versus 1.0 seconds; outer iteration cap is not total cost.",
+        "Proposes matched budgets or a method x restart factorial on common channels, reporting interaction/paired uncertainty.",
+        "Reports the observed 25 versus 23 (~8.7%) as the combined tested protocol gain and not a separately attributed update-rule benefit or universal speedup."
+      ],
+      "critical_failure": "Attributes the gain solely to update rule or calls the costs equal."
+    },
+    {
+      "id": "T08",
+      "faulty": true,
+      "expected_verdict": "revise",
+      "criteria": [
+        "Separates three AI pre-reviews from formal human/editorial reviews.",
+        "States only official Phase 2 advancement is confirmed and final acceptance is unknown.",
+        "Produces an accurate two-sentence progress statement without fabricated votes or reviewer identities.",
+        "Does not treat favorable reviews/phase advancement as proof of scientific correctness."
+      ],
+      "critical_failure": "Claims final acceptance, three formal votes or proof of correctness."
+    },
+    {
+      "id": "T09",
+      "faulty": false,
+      "expected_verdict": "supported",
+      "criteria": [
+        "Accepts the scoped Theta(b^-2) statement from the supplied two-sided bounds.",
+        "Uses positive constants independent of b, the same L/domain and b>=10 to justify the asymptotic definition.",
+        "Retains the wording under the stated assumptions as b tends to positive infinity.",
+        "Does not invent a missing lower bound, reject the statement merely because proofs are not reproduced, or extend it to algorithmic optimality/finite regimes."
+      ],
+      "critical_failure": "Falsely rejects the supplied scoped Theta claim or asserts optimality of all algorithms."
+    },
+    {
+      "id": "T10",
+      "faulty": false,
+      "expected_verdict": "supported",
+      "criteria": [
+        "Accepts the scoped observed-test result as consistent with the given design.",
+        "Recognizes train-only preprocessing, validation-only tuning and once-used frozen paired test do not exhibit the leakage described in T02.",
+        "Preserves +1 and [0.5,1.5] percentage-point interval, with tested-data scope and no universal/causal claim.",
+        "Suggests concrete reproduction details such as IDs/split seed, preprocessing/config/code, predictions or interval method without falsely declaring leakage, invalidity or demanding a full unrelated project."
+      ],
+      "critical_failure": "Falsely declares test leakage/invalidity in the supplied design or asserts universal superiority."
+    }
+  ]
+}

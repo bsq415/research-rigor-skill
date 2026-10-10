@@ -5,3 +5,4 @@ Thumbs.db
 .research/
 private-denylist.txt
 *.local
+*.local.json

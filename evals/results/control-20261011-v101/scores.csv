@@ -1,0 +1,3 @@
+run_id,task_id,repeat,condition,status,points,full_pass,detection,critical_failure,seconds
+run001,T10,1,baseline,completed,4,True,True,False,19.703
+run002,T10,1,skill,completed,4,True,True,False,20.344

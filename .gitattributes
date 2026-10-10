@@ -8,3 +8,5 @@
 .gitattributes text eol=lf
 .gitignore text eol=lf
 LICENSE text eol=lf
+# Frozen evaluation evidence is hashed byte-for-byte; never normalize it in Git.
+evals/results/** -text

@@ -1,192 +1,41 @@
-# Paper, Review, and Submission Protocol
+# Paper writing, audit and submission
 
-## Contents
+Write from audited evidence. Preserve the distinction between an executable package, a scientific claim, a local submission bundle and the venue's actual decision.
 
-1. Draft from sealed facts
-2. Create trustworthy tables and figures
-3. Audit the manuscript
-4. Address reviewer feedback
-5. Build and verify the submission
-6. Archive safely
+## Build the argument from facts
 
-Use [figures-and-layout.md](figures-and-layout.md) for final-size figure, table,
-equation, response-letter, and page-layout checks. Use
-[reviewer-red-team-and-resubmission.md](reviewer-red-team-and-resubmission.md)
-for the eleven-lens reviewer battery, decision-letter triage, point-by-point
-responses, changed-result provenance, revision highlights, and cover letters.
+Start with a one-page argument: question, closest work, precise contribution, evidence, non-claims and limitations. Map manuscript statements to `03_CLAIM_EVIDENCE_MATRIX.csv` and sealed `06_RESULT_FACTS.csv` fact IDs, versions and denominators. State uncertainty, failures, missingness and contrary outcomes. Do not upgrade empirical behavior to universal guarantees or an upper bound to tightness. Use [theory audit](theory-and-claim-audit.md) for theorem-bearing prose.
 
-## Draft from sealed facts
+Separate confirmatory and exploratory work. Preserve frozen comparisons, baselines, resource budgets and protocol amendments. Abstract, introduction, theorem statements, figures, tables, conclusion and response must share the same claim boundary. A weak result requires narrowing or new valid evidence, not inflated prose.
 
-Use `06_RESULT_FACTS.csv` and `07_PAPER_CLAIM_MAP.csv` as the quantitative source of truth. Do not retype values from memory, logs, screenshots, or earlier drafts.
+## Generate tables and figures
 
-For each claim:
+Generate from canonical data/code with input hashes, environment and configuration. Record fact IDs and final artifact hashes in `07_FIGURE_AUDIT.csv`; use [figure integrity guidance](figures-and-layout.md) when applicable. A figure from another data version invalidates its linked statement even if it looks plausible.
 
-- cite fact IDs and evidence tier;
-- state the valid denominator and uncertainty;
-- preserve contrary rows and limitations;
-- distinguish measured, simulated, replayed, diagnostic, and hypothetical evidence;
-- avoid causal, deployment, optimality, safety, robustness, or generalization language that exceeds the design.
+Keep units, directions, sample sizes, denominators, uncertainty and unavailable cells explicit. Do not bold a winner when budgets, metrics or statistical support are incompatible. Do not turn missing/failed runs into zero or silently omit them.
 
-Add regression checks for superseded claims and known invalid formulations. A later rewrite, merge, or reviewer response must not reintroduce language that earlier evidence disproved.
+Inspect actual column width and final-size panels, typography, legend/axis consistency, vector fonts and raster resolution. Show honest ranges and failures; justify log scales or truncation, retain raw curves and disclose aggregation. Never smooth or reshape a convergence curve to match an expected story.
 
-Write the paper around the scientific question and evidence, not around the implementation chronology. Keep the main contribution narrow enough to defend.
+## Audit the whole manuscript
 
-Before full drafting, prepare a one-page paper containing:
+Use `07_MANUSCRIPT_AUDIT.csv`: finding ID, severity, source/version, location, affected claim, evidence, correction, disposition and regression check. Open fatal/major findings block G9. Check theory domain, notation, novelty, baseline fidelity, measurement, leakage, denominators, statistics, units, citations, wording, reproducibility, privacy, disclosure and venue requirements.
 
-- problem and exact delta;
-- a small coherent set of supported contributions;
-- strongest baseline;
-- expected main figure and denominator;
-- strongest limitation;
-- venue fit;
-- three likely reviewer profiles and rejection reasons.
+Use [manuscript checks](manuscript-checks.md) for citation metadata and explicitly mapped numeric literals. A database match is not primary-text verification, and a matching literal is not a valid inference. Macro-generated text, plotted numbers and rendered pages need additional checks. Structural audit passes do not resolve semantic findings.
 
-## Create trustworthy tables and figures
+Use [reviewer red-team](reviewer-red-team-and-resubmission.md) for adversarial review and formal point-by-point revisions. Distinguish real reports from AI pre-review; retain original sources and exact reviewed versions. Resolve upstream scientific problems across every dependent manuscript surface.
 
-Generate tables and figures mechanically from sealed inputs. Store source hashes and generation commands.
+## Build, render and package
 
-For figures:
+Build from an isolated copy of the intended source package, retaining source hashes, environment, compilation logs and warnings. Reconcile citations, labels, cross-references, unresolved references, page limits and included assets. Inspect every rendered page, including supplements and response documents; compilation success alone is insufficient.
 
-- choose the visual form that answers a claim;
-- choose the intended single- or double-column placement before export and audit
-  the asset at that final physical size;
-- show uncertainty and denominators where relevant;
-- distinguish methods by more than color alone;
-- keep legends off data and captions concise;
-- avoid decorative complexity, misleading axes, and crowded panels;
-- prefer venue-supported vector output for plots, diagrams, line art, and text;
-  record effective DPI for every raster asset;
-- verify embedded fonts, crop boxes, final-size text and line weight, and honest
-  full-range or explicitly justified axes;
-- keep comparable panels at consistent sizes;
-- preserve raw numerical data beside rendered outputs;
-- render the final document and inspect every page.
+Keep clean and marked versions aligned with the exact previously submitted baseline. Record how the diff was produced. Audit file paths, author identity requirements, metadata, comments, tracked changes, private notes, acknowledgments and embedded data. Only human-confirmed declarations may appear in external forms or letters.
 
-Do not force a trend through smoothing, monotone envelopes, selective omission, or visual rescaling. Show and explain genuine non-monotonicity or instability.
+Run the existing state/revision/privacy audits for the selected workflow and preserve their reports. Create a deliberate dedicated artifact package with `seal_artifacts.py create`, then `verify --strict`. The manifest checks bytes and completeness, not scientific validity. A registered Claude plugin guard can block subsequent tool edits; see host setup documentation. It does not make files immutable outside the host.
 
-For tables:
+Record the exact manuscript, supplement, response, cover, data/code release and upload field mapping in the release checklist. The authorized human controls submission, required policy attestations and dissemination. A locally prepared package is not proof that the portal received it; record actual receipt and later decisions separately.
 
-- state metric direction, unit, split, and aggregation;
-- distinguish unavailable, undefined, failed, and not run;
-- do not bold a “winner” that violates a calibration, validity, or fairness gate;
-- do not mix validation-selected and test-selected results.
+## Accepted papers and archives
 
-## Audit the manuscript
+Freeze scientific results after acceptance. Regenerate publication graphics only from unchanged canonical data and document rendering changes; changes to data, topology, method or conclusions are substantive. Escalate material errors through the authorized authors/editor correction process. Proofs, license choices, copyright and publication records remain distinct from acceptance.
 
-Run separate audits for:
-
-- claim-to-evidence traceability;
-- citations and nearest-neighbor positioning;
-- notation, assumptions, and theorem boundaries;
-- baseline fidelity and experimental fairness;
-- numbers, units, denominators, and uncertainty;
-- limitations and non-claims;
-- anonymity, privacy, ethics, conflicts, and disclosure;
-- compilation logs, references, floats, fonts, page limits, and visual layout.
-
-Write every checked surface or finding to `07_MANUSCRIPT_AUDIT.csv`, including
-location, audit type, severity, evidence IDs, required action, status, and
-resolution evidence. An audit with no defect should still record the checked
-surface as `not_applicable`; otherwise the absence of rows is not evidence that
-the audit happened. Open `fatal` or `major` findings block G9.
-
-A polished PDF is presentation evidence, not scientific evidence.
-
-## Address reviewer feedback
-
-Create one remediation row per actionable point. Record:
-
-- exact request;
-- raw review source and stable response anchor;
-- underlying reviewer intent and validity assessment;
-- type: evidence, analysis, clarification, presentation, citation, policy, or out-of-scope;
-- validity and severity;
-- proposed action;
-- evidence needed;
-- evidence IDs and changed-result provenance;
-- changed artifact;
-- exact manuscript locations;
-- regression checks;
-- response text;
-- unresolved limitation.
-
-Answer evidence requests with evidence or a transparent scope boundary. Do not simulate an official baseline implementation, hardware test, dataset, or deployment and describe it as real. If a same-profile translation or diagnostic is useful, label it precisely.
-
-Preserve all earlier reviewer fixes. Run a no-regression matrix after each revision. Improve layout and language without changing data or claims unless a new evidence gate is completed.
-
-For a formal rejection/resubmission or revise-and-resubmit package, prepare the
-bundled response letter, revision highlights, and cover-letter artifacts. Explain
-materially changed results through a common-input component and protocol
-decomposition. Disclose valid reviewer-found defects and self-initiated fairness
-corrections instead of hiding them in the revised manuscript.
-
-Run the strict revision audit before handoff:
-
-```powershell
-python "<SKILL_DIR>/scripts/audit_revision_package.py" <project-directory> --strict
-```
-
-For a human-operated external AI pre-review, follow `external-ai-reviewers.md`. Preserve the exact reviewed manuscript hash and raw review before extracting comments. Never optimize for an AI score or rewrite presentation solely to game an AI reviewer.
-
-## Build and verify the submission
-
-Use an isolated temporary directory:
-
-1. copy only required source and assets;
-2. build using the venue's required sequence;
-3. scan logs for errors, unresolved references, rerun requests, overfull content, and font problems;
-4. render every page and inspect figures, tables, equations, captions, and references;
-5. compare extracted text or hashes with the canonical PDF;
-6. verify clean, conventional upload names;
-7. create and verify a portable manifest;
-8. run privacy and anonymity scans;
-9. check existing author-confirmed authorship, affiliation, funding, conflict,
-   ethics, and disclosure records; request only missing or changed attestations.
-
-Do not infer missing author or policy metadata.
-
-For a marked revision, compare against the manuscript actually reviewed, identified
-by archive/hash and equation or section anchors. An intermediate draft may hide
-the most consequential changes. Compare clean and marked scientific content;
-extraction-order artifacts need visual checking rather than blind text equality.
-Follow the current case-specific editorial request when it differs from an older
-upload guide, and check current venue policy for any unresolved conflict.
-
-## Accepted final files and production
-
-Treat the accepted version as a scientific baseline. Reconcile it with the
-submitted archive before changing filenames, formats, or figure assets. Re-export
-plots from unchanged data rather than rerun simulations for a graphics request.
-Check that a purported vector file contains vectors, embedded fonts, and legible
-final-size labels. For a redrawn system diagram, verify connection topology,
-counts, and labels against the original, not just appearance.
-
-Rebuild the exact source package in isolation, inspect all pages, and verify the
-archive contents/manifest. Record permitted presentation changes separately from
-scientific changes. Material errors discovered after acceptance need an explicit
-correction record and the appropriate author/editor handling, not silent repair.
-
-Record local package completion, portal upload, final submission, copyright or
-license paperwork, proofs, and publication as separate states. Do not claim the
-latter steps from a local build. Use the actual decision's deadline and required
-formats; do not bake one journal's instructions into this reusable workflow.
-
-## Archive safely
-
-Keep:
-
-- canonical source package and PDF;
-- sealed evidence and manifests;
-- generation code and environment lock;
-- final review-remediation and decision records;
-- a concise revision history.
-
-Before cleanup:
-
-- independently rebuild the canonical package;
-- verify hashes and completeness;
-- audit which archives, caches, extracted datasets, and environments remain active;
-- calculate recoverable size;
-- ask before deleting material data or history.
-
-Do not infer a failed cleanup from workspace size alone. Large retained datasets or archive layers may dominate while the paper package is already clean.
+Archive source, environment, data access policy, code, manifests, fact tables, rendered outputs, decision provenance and released versions. Verify the archive before any cleanup. Obtain authorization for material deletions and preserve failed or invalidated runs with their status. The archive must reconstruct which inputs support which claim and what was actually submitted or published.

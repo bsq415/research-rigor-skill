@@ -1,0 +1,5 @@
+{
+  "name": "research-rigor-marketplace",
+  "owner": {"name": "Research Rigor contributors"},
+  "plugins": [{"name": "research-rigor", "source": "./", "description": "Experience-derived research audits and result protection."}]
+}

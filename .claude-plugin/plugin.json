@@ -1,0 +1,7 @@
+{
+  "name": "research-rigor",
+  "version": "0.3.0",
+  "description": "Experience-derived research audits, reproducible checks and explicit result seals.",
+  "author": {"name": "Research Rigor contributors"},
+  "repository": "https://github.com/bsq415/research-rigor-skill"
+}

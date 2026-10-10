@@ -1,0 +1,117 @@
+{
+  "design": "prompt-only, closed-book, paired, independent sessions",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "grading": "same-model blinded-context provisional judge, not independent human validation",
+  "conditions": {
+    "baseline": {
+      "planned": 10,
+      "completed": 10,
+      "points": 40,
+      "max_points": 40,
+      "full_pass": 10,
+      "trap_detection": 8,
+      "trap_count": 8,
+      "clean_acceptance": 2,
+      "clean_count": 2,
+      "critical_failures": 0,
+      "seconds": 165.796
+    },
+    "skill": {
+      "planned": 10,
+      "completed": 10,
+      "points": 40,
+      "max_points": 40,
+      "full_pass": 10,
+      "trap_detection": 8,
+      "trap_count": 8,
+      "clean_acceptance": 2,
+      "clean_count": 2,
+      "critical_failures": 0,
+      "seconds": 162.15800000000002
+    }
+  },
+  "pairs": [
+    {
+      "task_id": "T01",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T02",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T03",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T04",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T05",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T06",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T07",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T08",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T09",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "T10",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    }
+  ]
+}

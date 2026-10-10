@@ -1,0 +1,143 @@
+{
+  "version": 1,
+  "status": "frozen",
+  "created_utc": "2026-10-10T17:49:23.509193+00:00",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "seed": 20261011,
+  "design": "prompt-only, closed-book, paired, independent sessions",
+  "skill_files": {
+    "SKILL.md": "4b7781fdfca14d49c1a3bb416eca14a138423229f8f5f1b59bba5f2e9aac8e5e",
+    "references/theory-and-claim-audit.md": "acbeae7f76b337ecc2788f8ca3f3764dbe9fbaf927cbff1fb6160bd3fe9d8fcb",
+    "references/experiment-and-evidence.md": "12369abbdd5a0c54fbc6db21391342e99863fb168fadca2dad6bb3e33ab649bd"
+  },
+  "frozen_hashes": {
+    "tasks.json": "3e654dcb5db12e8441e8ee6ed270181516ba5a841ed41d67c82e71a5821399f1",
+    "rubric.private.json": "9c1d5525528125efdea8fd1a9ce84a32abdad598058466bb787871de9f1312e2",
+    "answer-schema.json": "8abc13d14474e010175d51493d8e24806a75d1c7eb62ae20a3be15fd57ca3947",
+    "skill-context.txt": "82ed474a27e866f70a6f756486fdc612c66b3eb4a6723e89f83db01608b71187"
+  },
+  "rows": [
+    {
+      "run_id": "run001",
+      "task_id": "T04",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run002",
+      "task_id": "T04",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run003",
+      "task_id": "T09",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run004",
+      "task_id": "T09",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run005",
+      "task_id": "T02",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run006",
+      "task_id": "T02",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run007",
+      "task_id": "T05",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run008",
+      "task_id": "T05",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run009",
+      "task_id": "T01",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run010",
+      "task_id": "T01",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run011",
+      "task_id": "T07",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run012",
+      "task_id": "T07",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run013",
+      "task_id": "T03",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run014",
+      "task_id": "T03",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run015",
+      "task_id": "T10",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run016",
+      "task_id": "T10",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run017",
+      "task_id": "T06",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run018",
+      "task_id": "T06",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run019",
+      "task_id": "T08",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run020",
+      "task_id": "T08",
+      "repeat": 1,
+      "condition": "baseline"
+    }
+  ]
+}

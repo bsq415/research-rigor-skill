@@ -12,6 +12,7 @@ import sys
 
 SKILL_ROOT = Path(__file__).resolve().parents[1]
 SCAFFOLD_ROOT = SKILL_ROOT / "assets" / "project-scaffold"
+LIGHT_FILES = {"03_CLAIM_EVIDENCE_MATRIX.csv", "05_RUN_LEDGER.csv", "DECISION_LOG.md"}
 
 
 def _relative_control_dir(raw: str) -> Path:
@@ -24,7 +25,11 @@ def _relative_control_dir(raw: str) -> Path:
 def _render(source: Path, replacements: dict[str, str]) -> str:
     text = source.read_text(encoding="utf-8")
     for token, value in replacements.items():
+        if source.suffix == ".json":
+            value = json.dumps(value, ensure_ascii=False)[1:-1]
         text = text.replace(token, value)
+    if source.suffix == ".json":
+        json.loads(text)
     return text
 
 
@@ -38,6 +43,10 @@ def initialize(args: argparse.Namespace) -> int:
 
     if control.exists() and not control.is_dir():
         raise FileExistsError(f"control path exists and is not a directory: {control}")
+    if args.upgrade:
+        args.mode, args.merge = "full-cycle", True
+        if not control.is_dir():
+            raise FileNotFoundError("--upgrade requires an existing control layer")
     if control.exists() and not args.merge:
         raise FileExistsError(
             f"research control layer already exists: {control}; "
@@ -65,6 +74,8 @@ def initialize(args: argparse.Namespace) -> int:
     skipped: list[str] = []
     for source in sorted(path for path in SCAFFOLD_ROOT.rglob("*") if path.is_file()):
         relative = source.relative_to(SCAFFOLD_ROOT)
+        if args.mode == "light" and relative.as_posix() not in LIGHT_FILES:
+            continue
         destination = control / relative
         if destination.exists():
             if args.merge:
@@ -105,9 +116,9 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--independent-audit-fraction", type=float, default=0.0)
     parser.add_argument(
         "--mode",
-        choices=("guided", "full-cycle"),
-        default="guided",
-        help="guided waits for requested units; full-cycle continues through authorized gates",
+        choices=("light", "guided", "full-cycle"),
+        default="light",
+        help="light creates only claim/evidence, run ledger and decision log; full-cycle adds the controller",
     )
     parser.add_argument(
         "--classification",
@@ -120,6 +131,7 @@ def build_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="add missing scaffold files while preserving every existing file",
     )
+    parser.add_argument("--upgrade", action="store_true", help="add the full scaffold to an existing layer without overwriting records or passing gates")
     return parser
 
 
