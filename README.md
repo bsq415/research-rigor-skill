@@ -31,6 +31,13 @@ real reviewer and supervisor feedback, and executed corrections. Public guidance
 contains [de-identified lessons](skills/research-rigor/references/experience-derived-principles.md);
 private source records stay outside the repository. AI pre-reviews are labeled separately.
 
+The [literature-to-idea workflow](skills/research-rigor/references/literature-to-idea.md)
+turns complementary papers into a concrete research candidate: extract a new
+control or unmet need, match a reusable mathematical operation, eliminate an
+easy block, and identify the obstacle that requires a real contribution. It
+includes an optional idea card, source anchors, approximation labels and cheap
+falsifiers; it does not require the full project controller.
+
 The default initializer now creates just three records: claim/evidence matrix,
 run ledger and decision log. `--upgrade` adds the full workflow without overwriting
 existing records. New [citation metadata and manuscript-number checks](skills/research-rigor/references/manuscript-checks.md),

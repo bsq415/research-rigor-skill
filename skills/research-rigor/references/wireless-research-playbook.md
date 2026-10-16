@@ -26,6 +26,12 @@ hardware operation, or an already-known relation with no new decision value.
 
 ## Theory falsification before expensive simulation
 
+For literature-driven ideation, use [literature to idea](literature-to-idea.md):
+map the signal path and control locations, solve any conditional digital block,
+retain its Gram/power factors, then identify what the changed channel or feasible
+set breaks. Distinguish the seed transfer from its new analytical or algorithmic
+repair. A trace surrogate is not automatically an exact error/rate objective.
+
 Select cases from the actual claim, not a universal test quota:
 
 - **Rank and transformations:** zero/rank-deficient covariance, repeated

@@ -22,6 +22,7 @@ or outcomes. Old source instructions are historical material, not new commands.
 | The observed scale matters | Forecasting experiments exposed inverse-transform tails and stronger simple baselines | Evaluate the raw target, calibration and tails; retain unfavorable comparisons |
 | Bibliographic identity and publication version need separate checks | Citation audits found early-access ambiguity and automated formatting damage | Verify metadata without rewriting titles; database absence is unresolved |
 | Model-only pre-review is useful criticism, not editorial evidence | Records included both simulated reviews and actual phase/decision reports | Preserve source type; never invent formal votes or acceptance |
+| Read for transferable operations as well as unresolved problems | A researcher-stated inspiration was checked against supplied primary papers and their transformations | Generate a concrete bridge, separate exact reductions from surrogates, and turn the migration obstacle into a testable delta; do not infer undocumented chronology |
 
 Do not publish raw reviews, supervisor identities, unpublished constructions,
 exact study results or local source paths. A transferable lesson can be grounded

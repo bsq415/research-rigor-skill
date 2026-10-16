@@ -26,6 +26,11 @@
 公开说明只保留[脱敏后的经验](skills/research-rigor/references/experience-derived-principles.md)，
 私有来源索引留在本地；AI 预审、转述总结与原始评审分开标注。
 
+新增[从文献得到 idea](skills/research-rigor/references/literature-to-idea.md)：
+分别提取“新问题/可控变量”和“可迁移的数学操作”，建立公式对应，先消去易解变量，
+再把迁移后暴露的障碍转成真正需要验证的贡献。提供按需使用的 idea 卡，明确等价、
+条件、下界与代理的区别，并给出最小否证实验；单次构思不必初始化完整项目。
+
 默认初始化只创建“主张–证据矩阵、实验运行记录、决策日志”三件套；`--upgrade`
 再补完整流程并保留旧记录。新增[引用元数据与论文数字核查](skills/research-rigor/references/manuscript-checks.md)、
 SymPy 有限反例搜索和数值检查、[通用领域 playbook 模板](skills/research-rigor/references/domain-playbook-template.md)，

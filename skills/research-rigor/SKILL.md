@@ -47,6 +47,7 @@ unresolved scientific question. Read only the matching reference(s):
 | Task | Reference |
 |---|---|
 | Choose or challenge an idea; establish novelty | [Idea and literature](references/idea-and-literature.md) |
+| Derive an idea from papers; explain or test a method transfer | [Literature to idea](references/literature-to-idea.md) |
 | Design/run experiments; debug; interpret statistics | [Experiment and evidence](references/experiment-and-evidence.md) |
 | Check theorem scope, counterexamples, or a theory-heavy rejection | [Theory and claim audit](references/theory-and-claim-audit.md) |
 | Execute symbolic checks or formalize a core lemma | [Machine theory verification](references/machine-theory-verification.md) |

@@ -10,6 +10,12 @@
 
 ## Start from a decision-relevant failure
 
+When asked to generate an idea from papers or explain an idea's origin, first
+use [literature to idea](literature-to-idea.md) to produce a source-linked bridge,
+reduction and concrete candidate. Then audit the candidate here. Do not replace
+idea generation with only rejection criteria or require a full scaffold for a
+focused literature-transfer explanation.
+
 Write the problem before the method. Record:
 
 - who makes the affected decision;
