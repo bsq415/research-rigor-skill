@@ -53,6 +53,14 @@ Keep landscape discovery separate from verified deep reading. Count a paper as a
 
 Leave uncertain fields null. Never infer a missing detail merely to complete a table. Never invent a source.
 
+Retrieve permitted primary full texts locally before substantive citation use
+by default, preserving source identity and version. Record metadata-only,
+abstract-screened, section-read and full-text-read states separately; neither a
+download nor a keyword extraction establishes a full read. Honor an explicit
+all-papers/full-text requirement rather than silently applying a cheaper tier.
+For proposal-specific reading and correction decisions, see
+[research proposals](research-proposals.md#read-sources-before-relying-on-them).
+
 For new projects, stop searching when coverage is justified relative to the
 actual novelty question, not when a universal paper count is reached. Record
 search scope, saturation evidence, exact delta, strongest counterargument,
@@ -90,6 +98,13 @@ Search not only for the same keywords, but also:
 - same evaluation object under different terminology;
 - work whose title and abstract hide the relevant result;
 - negative results, replications, and baseline papers.
+
+Include older methodological ancestors, not only the newest application label.
+When results are suspiciously empty, test the query with a known relevant
+source before treating zero hits as evidence. State the search scope and cutoff;
+non-discovery supports a bounded finding, not universal absence. A counterexample
+reopens the gap and every dependent claim; adding qualifiers does not establish
+that a new combination contributes more than existing methods already provide.
 
 ## Attack novelty
 

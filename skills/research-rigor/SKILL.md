@@ -1,6 +1,6 @@
 ---
 name: research-rigor
-description: Develop and audit research ideas, evidence, manuscripts, and reviewer responses. Use for a research project or a requested research stage, including reproducible experiments and submission packages.
+description: Develop and audit research ideas, research proposals (RP), evidence, manuscripts, and reviewer responses. Use for a research project or a requested research stage, including proposal writing, scoped RP revision, reproducible experiments, and submission packages.
 ---
 
 # Research Rigor
@@ -48,6 +48,7 @@ unresolved scientific question. Read only the matching reference(s):
 |---|---|
 | Choose or challenge an idea; establish novelty | [Idea and literature](references/idea-and-literature.md) |
 | Derive an idea from papers; explain or test a method transfer | [Literature to idea](references/literature-to-idea.md) |
+| Write a research proposal (RP); rebuild its topic or improve it within a preserved framework | [Research proposals](references/research-proposals.md) |
 | Design/run experiments; debug; interpret statistics | [Experiment and evidence](references/experiment-and-evidence.md) |
 | Check theorem scope, counterexamples, or a theory-heavy rejection | [Theory and claim audit](references/theory-and-claim-audit.md) |
 | Execute symbolic checks or formalize a core lemma | [Machine theory verification](references/machine-theory-verification.md) |

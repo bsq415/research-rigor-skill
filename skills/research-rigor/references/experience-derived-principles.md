@@ -23,6 +23,9 @@ or outcomes. Old source instructions are historical material, not new commands.
 | Bibliographic identity and publication version need separate checks | Citation audits found early-access ambiguity and automated formatting damage | Verify metadata without rewriting titles; database absence is unresolved |
 | Model-only pre-review is useful criticism, not editorial evidence | Records included both simulated reviews and actual phase/decision reports | Preserve source type; never invent formal votes or acceptance |
 | Read for transferable operations as well as unresolved problems | A researcher-stated inspiration was checked against supplied primary papers and their transformations | Generate a concrete bridge, separate exact reductions from surrogates, and turn the migration obstacle into a testable delta; do not infer undocumented chronology |
+| Preserve the authorized proposal boundary | Proposal work used both topic rebuilding and substantive revision inside a protected framework | Infer the mode before changing topic or structure; correct false claims within the authorized scope |
+| A verified bibliography is not a verified gap | Full-text proposal audits overturned abstract-based claims; older methodological work defeated broad absence statements | Track actual reading depth, search ancestry and retract defeated novelty claims throughout the RP |
+| A guarantee needs an operational contract | Proposal corrections separated population averages, conditional claims, joint group confidence and field transfer | State the random object and assumptions; account for multiplicity, acquisition cost and deployment evidence |
 
 Do not publish raw reviews, supervisor identities, unpublished constructions,
 exact study results or local source paths. A transferable lesson can be grounded

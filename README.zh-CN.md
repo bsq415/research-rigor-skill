@@ -31,6 +31,11 @@
 再把迁移后暴露的障碍转成真正需要验证的贡献。提供按需使用的 idea 卡，明确等价、
 条件、下界与代理的区别，并给出最小否证实验；单次构思不必初始化完整项目。
 
+新增[研究计划 RP 的撰写与优化](skills/research-rigor/references/research-proposals.md)：
+区分“允许重建选题”和“保留框架深度优化”，把原文核查后的 gap 接到研究问题、工作包、
+公平评估、个人能力与可行时间表。保留精读纠错的教训，核查保证类型、实际数据与部署成本，
+并在新证据推翻主张后同步修正全文。附可选证据映射表与合成行为检查题；尚未进行新的模型对照评测。
+
 默认初始化只创建“主张–证据矩阵、实验运行记录、决策日志”三件套；`--upgrade`
 再补完整流程并保留旧记录。新增[引用元数据与论文数字核查](skills/research-rigor/references/manuscript-checks.md)、
 SymPy 有限反例搜索和数值检查、[通用领域 playbook 模板](skills/research-rigor/references/domain-playbook-template.md)，
