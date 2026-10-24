@@ -65,9 +65,16 @@ Final files: [paper protocol](paper-review-submission.md).
 
 ## Empirical study: idea selection to evidence-driven manuscript
 
+For the complete selection route, use [empirical idea discovery](empirical-idea-discovery.md).
+It reconstructs the constraints, competing scouts, candidate elimination,
+interface assumption, evaluation object and pilot decision from actual records.
+The steps below carry that question through execution and writing.
+
 1. **Choose by question and feasibility.** Scan the field, then attack shortlisted
    ideas with exact nearest neighbors. Keep a kill log. Verify actual resources
    and the hardest integration path. Predicted headline numbers are hypotheses.
+   Separate the selected question from its hoped-for answer; an operational
+   continue decision does not certify unresolved pilot measurements.
 2. **Define an observable intervention.** A nominal prompt, budget, treatment, or
    policy label does not establish behavior change. Measure realized exposure
    and compliance. Post-hoc compliance subgroups are descriptive unless the

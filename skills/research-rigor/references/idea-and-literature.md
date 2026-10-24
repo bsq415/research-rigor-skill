@@ -10,11 +10,14 @@
 
 ## Start from a decision-relevant failure
 
-When asked to generate an idea from papers or explain an idea's origin, first
-use [literature to idea](literature-to-idea.md) to produce a source-linked bridge,
-reduction and concrete candidate. Then audit the candidate here. Do not replace
-idea generation with only rejection criteria or require a full scaffold for a
-focused literature-transfer explanation.
+Choose the idea route before auditing it. For a mathematical method transfer,
+use [literature to idea](literature-to-idea.md). For an empirical question formed
+across research lines, use [empirical idea discovery](empirical-idea-discovery.md):
+map changing practice and an assumed invariant, retain competing candidates,
+challenge closest work, and make the question visible in an experiment. When
+reconstructing history, check raw project artifacts instead of trusting a
+retrospective. Generate a concrete candidate; do not replace ideation with only
+rejection criteria, require a new solver, or impose a full scaffold on a focused task.
 
 Write the problem before the method. Record:
 

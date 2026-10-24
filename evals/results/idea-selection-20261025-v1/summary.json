@@ -1,0 +1,77 @@
+{
+  "design": "old-skill versus updated-skill, prompt-only, synthetic development tasks, paired independent sessions",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "grading": "same-model blinded-context provisional judge, not independent human validation",
+  "conditions": {
+    "baseline": {
+      "planned": 5,
+      "completed": 5,
+      "points": 18,
+      "max_points": 20,
+      "full_pass": 2,
+      "trap_detection": 4,
+      "trap_count": 4,
+      "clean_acceptance": 1,
+      "clean_count": 1,
+      "critical_failures": 0,
+      "seconds": 159.843
+    },
+    "skill": {
+      "planned": 5,
+      "completed": 5,
+      "points": 20,
+      "max_points": 20,
+      "full_pass": 4,
+      "trap_detection": 4,
+      "trap_count": 4,
+      "clean_acceptance": 1,
+      "clean_count": 1,
+      "critical_failures": 0,
+      "seconds": 154.905
+    }
+  },
+  "pairs": [
+    {
+      "task_id": "I01",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "I02",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 1,
+      "baseline_pass": false,
+      "skill_pass": true
+    },
+    {
+      "task_id": "I03",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": true,
+      "skill_pass": true
+    },
+    {
+      "task_id": "I04",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 0,
+      "baseline_pass": false,
+      "skill_pass": false
+    },
+    {
+      "task_id": "I05",
+      "repeat": 1,
+      "complete": true,
+      "points_delta": 1,
+      "baseline_pass": false,
+      "skill_pass": true
+    }
+  ]
+}

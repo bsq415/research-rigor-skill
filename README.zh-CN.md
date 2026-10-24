@@ -58,6 +58,10 @@ SymPy 有限反例搜索和数值检查、[通用领域 playbook 模板](skills/
 
 ## 它真正能做什么
 
+[实证选题流程](skills/research-rigor/references/empirical-idea-discovery.md)补齐“研究地图 → 候选淘汰 →
+接口隐含假设 → 新评价对象 → pilot 决策 → 证据推动主张成熟”，配有可直接复用的选题卡。
+复盘以工作目录的计划、决策和实际产物交叉核实，保留分歧、失败与缺失记录；不要求每篇论文都发明新算法。
+
 2026 年 10 月新增可执行的 [SymPy 理论验证与 Lean 进阶路径](skills/research-rigor/references/machine-theory-verification.md)，
 记录假设、源文件哈希、工具版本和分层结论；以及面向无线通信、信号处理与优化的
 [领域 playbook](skills/research-rigor/references/wireless-research-playbook.md)。

@@ -1,0 +1,482 @@
+[
+  {
+    "run_id": "run001",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:16.268215+00:00",
+    "status": "completed",
+    "prompt_sha256": "94d5db6088102b82ddac6663faae270746a9ad97e4989386131f0c807aec7fdd",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15031,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 506,
+        "reasoning_output_tokens": 66
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R004",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "原候选所称创新不成立。近邻原文已明确冻结源域训练的检测器，并在成对源／目标拍摄条件间评估，直接覆盖原候选的核心问题。",
+          "reason": "明确撤回原首次贡献，并指出近邻已经研究同一对象。"
+        },
+        {
+          "pass": true,
+          "quote": "把2×2扩为5×5只能扩展覆盖范围，不能维持“首次研究固定检测器在拍摄条件变化后的迁移”。",
+          "reason": "否定仅扩大条件矩阵即可保住原首次声明。"
+        },
+        {
+          "pass": true,
+          "quote": "后续问题：在检测器与报警阈值均冻结、误报成本采用统一定义和上限、人工复检预算固定时，如何选择需要复检的工件，才能降低最终漏检损失，并识别哪些拍摄变化会使成本约束无法满足？研究对象是复检选择对部署决策的增量价值。须进一步查重固定阈值下的选择性预测、人工复核、分流与成本约束决策等相关工作；新颖性与收益均待验证。",
+          "reason": "提出有边界的复检决策问题，说明研究对象的区别及进一步查重要求。"
+        },
+        {
+          "pass": false,
+          "quote": "",
+          "reason": "虽提出统一预算下的多种复检规则比较，但阈值和规则均在开发后冻结，未明确设置冻结策略与适当适配的阈值或决策策略之间的对照。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未保留原首次迁移创新，也未宣称扩大矩阵能够解决与已有工作的冲突。"
+    },
+    "answer_sha256": "18560fe98a53a6ec352e455516716f9959a257d9540d3147d717db0eced1e8c9",
+    "seconds": 14.016
+  },
+  {
+    "run_id": "run002",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:59.084990+00:00",
+    "status": "completed",
+    "prompt_sha256": "82260d9fdd8485770c6513365f8cf6cfcad13fb8932a191ac4e692610133cfda",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15049,
+        "cached_input_tokens": 7296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 605,
+        "reasoning_output_tokens": 137
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R010",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "应淘汰该首次声明，以及仅凭矩阵扩容建立的贡献论证。",
+          "reason": "明确撤回已被近邻原文覆盖的固定检测器跨条件迁移首次声明。"
+        },
+        {
+          "pass": true,
+          "quote": "将2×2扩为5×5不能支持“首次研究固定检测器的跨拍摄条件迁移”。",
+          "reason": "明确否定仅靠增加条件数保留原首次声明，后文未反转。"
+        },
+        {
+          "pass": true,
+          "quote": "贡献候选是识别冻结报警系统如何支持受成本约束的复检决策，而非增加条件。成本、容量和损失权重须事先确定；改善、无改善或仅部分条件有效均能影响部署选择。该问题仍须查重，尤其核对成本敏感质检、选择性预测和人工复核分流研究是否已覆盖相同比较。",
+          "reason": "提出明确的成本约束复检决策问题，说明与原迁移评估的区别及需要重新查重的近邻领域。"
+        },
+        {
+          "pass": true,
+          "quote": "最小验证只需一个源条件和一个目标条件，使用同一批工件的配对图像与独立缺陷真值；源数据用于制定规则，目标测试数据只用于最终评估。比较现行规则、简单分数排序规则和候选规则，统一预算及复检容量，并计入复检准确率与成本。",
+          "reason": "在共同工件和统一预算下比较现行报警复检规则与调整后的排序、选择决策策略；允许报警阈值保持冻结，且未声称已执行验证。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未保留原首次迁移创新，也未宣称扩大矩阵即可解决与已有工作的冲突。"
+    },
+    "answer_sha256": "51544a649942bc7e0dfb0eb7c8c920e87aa07d5e24ef3d9408ead2a150c85bfc",
+    "seconds": 17.875
+  },
+  {
+    "run_id": "run003",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:44.952700+00:00",
+    "status": "completed",
+    "prompt_sha256": "80afa07c1aca06c6e61025cb0b744df830dac4533d95c63c7dc9610d4102a98b",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15220,
+        "cached_input_tokens": 11392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 616,
+        "reasoning_output_tokens": 50
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R008",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "进度状态：continue只是操作层面的继续决定；已完成的是配对图像生成，完整证据链尚未跑通。新条件标签解析失败一半，检测器拟合和迁移指标均undefined，不能称pilot全通过。",
+          "reason": "Separates operational continuation from scientific validation and explicitly rejects a passed pilot."
+        },
+        {
+          "pass": true,
+          "quote": "现表比较旧条件90个与新条件45个不同有效工件，混入样本构成及解析幸存偏差，不能识别照明变化对旧报警器的影响；表中AUROC还须与状态文件核对来源、版本和计算对象。未测实际照明，干预是否实现也未知。undefined不等于无损失，‘无显著差异’也不支持等效。",
+          "reason": "Identifies unmatched survivors, missingness bias and unverified illumination; rejects equivalence inferred from undefined metrics or non-significance."
+        },
+        {
+          "pass": true,
+          "quote": "保留原始输出、失败记录和现有表，核查AUROC来源；修复解析器并版本化，用独立人工核验标签检查两条件的正确率与失败机制。尽量从原始生成记录恢复配对ID；无法可靠恢复时，重建小规模配对pilot，不凭排序猜配对。",
+          "reason": "Repairs measurement first and preserves failures and reliable pairing. Also requires matched held-out examples, grouped splits and training/validation-only tuning."
+        },
+        {
+          "pass": true,
+          "quote": "在同一组留出测试工件上比较：旧条件拟合并冻结的检测器分别用于旧、新条件；新条件独立拟合的检测器也在相同新条件测试图像上评估。旧工具的特征处理、参数和报警阈值全部冻结；新条件拟合与调参只用训练、验证集，单独记录新增标签和成本。保留两条件各自拟合、各自测试的对角控制。",
+          "reason": "Specifies frozen source reuse versus destination refitting on identical destination tests, with diagonal controls. The next check sets measurement and precision gates for expansion, otherwise repair or pause, while retaining the provisional topic."
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "Explicitly rejects scientific passage and rejects undefined results as evidence of unchanged utility."
+    },
+    "answer_sha256": "ca3879dfe9430998ad1f234526cde778f70fa66299e9f95f0f2e2832dd1d875a",
+    "seconds": 14.109
+  },
+  {
+    "run_id": "run004",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:56.727295+00:00",
+    "status": "completed",
+    "prompt_sha256": "80b49a44ab4f9f6c17b7943fdff9bbacae23cf17e90c774b12906d69f3e0bcd2",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15159,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 671,
+        "reasoning_output_tokens": 179
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R009",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "状态文件的continue最多是继续推进的流程指令，不能覆盖解析失败、拟合及迁移指标undefined的事实。undefined不是零损失，也不能支持“无显著损失”。",
+          "reason": "明确区分流程继续与科学验证，否定pilot全通过及无损失结论。"
+        },
+        {
+          "pass": true,
+          "quote": "旧条件90个与新条件45个不同有效工件的AUROC差同时混入条件变化、样本构成和选择性缺失，不能识别换照明的影响",
+          "reason": "识别不同幸存ID及选择性缺失，另要求测量实际照明变化，并明确undefined或不显著均不能证明性能等价。"
+        },
+        {
+          "pass": true,
+          "quote": "保留原始失败记录，按条件报告计划→生成→解析→有效→配对→可估计数量及失败原因，不能只比较幸存样本。",
+          "reason": "优先修复测量链，固定配对测试ID和拆分，禁止测试集参与训练调参，适配使用独立训练与验证数据。"
+        },
+        {
+          "pass": true,
+          "quote": "旧训新测必须冻结旧报警器的预处理、参数与阈值，直接检验沿用；它与旧训旧测的配对差估计照明迁移损失。新训新测检验条件内适配，并与旧训新测在同一新条件测试集上比较，估计适配收益",
+          "reason": "提出含对角控制的2×2试验，在相同目标测试样本上区分冻结沿用与条件适配；允许流程推进但不认证当前比较，并以端到端可估计作为扩大运行的前提。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未将破损pilot称为科学通过，也未将缺失或undefined结果视为监测效用不变的证据。"
+    },
+    "answer_sha256": "9c87924ea13b2325648b371bcccb77ac3828a2940abae47fb5456c0812da958e",
+    "seconds": 20.61
+  },
+  {
+    "run_id": "run005",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:02.992106+00:00",
+    "status": "completed",
+    "prompt_sha256": "fa495f180aaab6b425d51b9bce5ba48e3ee043ff435ae8a433ee516b22239c62",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15362,
+        "cached_input_tokens": 13568,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 617,
+        "reasoning_output_tokens": 0
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R003",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "研究问题：对同批工件改用新成像条件后，固定网络与旧阈值是否仍满足质检要求；若不满足，仅重新标定阈值能否恢复可接受的漏检与误报水平？结果将支持直接沿用、重新标定或暂缓切换三类决策。",
+          "reason": "提出具体的成像切换与旧质检规则沿用问题，并明确实际决策后果。"
+        },
+        {
+          "pass": true,
+          "quote": "它直接服务于工厂是否批准成像切换的决策；配对图像可控制工件组成差异，现成网络使研究无需重训。相比再提通用优化器或给充分评测的分类器增加数据集，该候选的问题更具体，现有资源与证据需求更匹配。给定地图片段支持开展这一临时提案，但不证明其创新性或任何性能结论。",
+          "reason": "依据配对数据和无需重训的资源优势比较了两个备选，并明确属于临时提案。"
+        },
+        {
+          "pass": true,
+          "quote": "旧阈值在留出集同时评价两条件；另仅用新条件校准集标定一个阈值，在同一留出集评价，形成轻量修复对照。阈值选择规则在查看留出结果前冻结。",
+          "reason": "明确区分旧规则直接迁移与新条件内重新标定阈值。"
+        },
+        {
+          "pass": true,
+          "quote": "最小pilot：按实体工件分组，预先划分校准集与留出集，同一工件的两张图必须同组。固定网络、预处理、分数方向及旧阈值，先在校准集走通读取、推理、配对和统计全链路，记录缺图、无效输出及各类标签数量。旧阈值在留出集同时评价两条件；另仅用新条件校准集标定一个阈值，在同一留出集评价，形成轻量修复对照。阈值选择规则在查看留出结果前冻结。",
+          "reason": "给出按工件隔离的配对留出评价、旧条件基线和轻量修复对照，并结合预定质量界限及16小时推理预算形成可执行的沿用或修复判断。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未声称已有确认结果或首次创新，也未要求超预算的大模型训练。"
+    },
+    "answer_sha256": "8feafb0951c9882976b3c22f1adda7546fcca30be003c67bb95e6f06bf07bf21",
+    "seconds": 13.266
+  },
+  {
+    "run_id": "run006",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:30.310331+00:00",
+    "status": "completed",
+    "prompt_sha256": "dc2043900a034bda7365bb3cbacf9553d27e1a990d70ae96326047cbbf9432d2",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15934,
+        "cached_input_tokens": 11392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 612,
+        "reasoning_output_tokens": 75
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R005",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "工厂质检负责人需要决定：调整成像条件后能否直接沿用旧报警规则，还是需要小规模阈值重校准。",
+          "reason": "提出成像切换与既有质检规则沿用的具体接口问题，并明确沿用或重校准的决策后果。"
+        },
+        {
+          "pass": true,
+          "quote": "相比再提通用优化器或给充分评测的分类器增加数据集，这一候选有更明确的使用者、未决问题和预算优势；这只支持优先开展临时研究，不证明创新成立。",
+          "reason": "比较了两个给定替代方案，并结合配对数据、五日安排和16小时单卡上限提出无需大模型重训的临时候选，未承诺创新或结果。"
+        },
+        {
+          "pass": true,
+          "quote": "主比较在同一留出工件上，将旧网络和旧阈值分别用于两种成像条件，报告缺陷工件漏检率、无缺陷工件误报率、配对变化及置信区间，并保留两方向的报警翻转。增加一个低成本参照：仅用新条件校准集调整阈值，在相同测试工件上比较，明确其额外标签成本。",
+          "reason": "明确区分冻结旧网络与旧阈值的跨条件使用，以及在新条件内重新校准阈值。"
+        },
+        {
+          "pass": true,
+          "quote": "最小pilot先选一批同时包含缺陷与无缺陷、配对完整的工件，跑通图像预处理、冻结推理、分数提取、阈值报警、标签匹配和配对统计，重点检查新条件图像的失败路径。",
+          "reason": "规定工件级留出和配对评估，包含旧条件对照及新条件阈值校准参照；以风险界限、区间精度和测量链有效性决定推进、修复或暂缓，预算可行。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未声称已确认结果或首次创新，也未要求超预算的大规模训练。"
+    },
+    "answer_sha256": "81d2ec6ca2222f4c2542907b088e8c8bb4c2abf54d96f533810a7bb482512472",
+    "seconds": 14.625
+  },
+  {
+    "run_id": "run007",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:43.051927+00:00",
+    "status": "completed",
+    "prompt_sha256": "c62edcd9afc1ec3f48948d4fcbcef9fc226cf2edbb19aff77362812534677959",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15906,
+        "cached_input_tokens": 11392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 497,
+        "reasoning_output_tokens": 72
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R007",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "原始侦察存在两个分支：A推荐时变偏好，B推荐质检系统接口；后续选择报告推荐质检系统接口。应保留另一分支及其理由，不写成两组一致选中。",
+          "reason": "Preserves distinct scout branches and the later selection record without inventing unanimity or a complete history."
+        },
+        {
+          "pass": true,
+          "quote": "选择报告自述分析168篇，并引用现已缺失的任务输出；目前papers.jsonl仅存7条抽样元数据。因此保留“报告声称分析168篇”，不改写为“168篇均精读”，也不据此推断总量只有7篇。",
+          "reason": "Distinguishes reported coverage from retained evidence without verifying full reads or denying the larger search."
+        },
+        {
+          "pass": true,
+          "quote": "pilot包含continue、undefined与requires_stop=true，不能概括为全部通过。研究者所述认可应保留为当事人陈述；AI模拟审稿、作者回复草稿均不能替代正式审稿或决定。现存证据不足不等于更大规模阅读或正式认可从未发生。",
+          "reason": "Separates pilot statuses and recognition evidence; elsewhere explicitly rejects causal attribution from temporal sequence alone."
+        },
+        {
+          "pass": false,
+          "quote": "",
+          "reason": "Proposes a useful generic candidate-selection and pilot process, private source anchors, and public de-identification, but does not recover the specified constraint-map–candidate/collision–interface–evaluation mechanism or include hashes in the private record."
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "Does not endorse retrospective certainty, fabricate formal reviewer support, or infer that larger reading or recognition never occurred."
+    },
+    "answer_sha256": "33500af0e7dbea2ddd5990b702e678b2244b6b1863219c535ab45d986b4bb987",
+    "seconds": 13.671
+  },
+  {
+    "run_id": "run008",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:57:51.676977+00:00",
+    "status": "completed",
+    "prompt_sha256": "fb9dfc609a401735c754bc870803a67cb5ee6e44200f58527118987e2e327fd5",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15326,
+        "cached_input_tokens": 11392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 702,
+        "reasoning_output_tokens": 103
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R001",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "同日侦察A推荐“时变偏好”，侦察B推荐“质检系统接口”；二者意见不同。后续选择报告推荐后者，可记录为后续文档中的选择结论，不能改写为两组一致，也不能仅凭日期恢复完整决策经过。",
+          "reason": "保留两个独立推荐分支及后续选择记录，没有虚构一致推荐、阅读顺序或完整事件经过。"
+        },
+        {
+          "pass": true,
+          "quote": "选择报告声称分析168篇，并引用现已缺失的任务输出；当前papers.jsonl仅保留7条抽样元数据。可确认的是报告存在该声称及现存样本，无法核实168篇的范围、阅读深度或全部判断依据。7条元数据不等于7篇精读，也不能据此否定曾有更大阅读集合。",
+          "reason": "明确区分报告声称、保留样本和缺失输出，既未验证168篇精读，也未否认更大阅读集合曾经存在。"
+        },
+        {
+          "pass": true,
+          "quote": "研究者称idea受到认可；现存赞同文字属于AI模拟审稿，作者回复草稿属于作者材料。正式审稿原文与决定证据缺失，因此正式认可目前未获核验，其是否发生保持开放；更不能断言该流程导致认可。",
+          "reason": "区分研究者陈述、AI模拟、作者回复与正式审稿；另明确解释continue、undefined和停止标记，保留受影响单元，未虚构投票或因果成功。"
+        },
+        {
+          "pass": true,
+          "quote": "可保留的选题机制是：从实际决策出发，识别操作条件变化与既有工具之间未经检验的接口假设，明确改变什么、固定什么、比较什么，以及正向、反向、混合或精确零结果分别如何影响决策。",
+          "reason": "结合候选分支、接口假设、比较设计及pilot推进／修复／拒绝分支，恢复了可用决策机制；同时提出私有来源、版本、哈希和定位记录，以及仅公开脱敏规则与证据边界。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未认可事后说明的虚假确定性，未伪造正式审稿支持，也未因原件缺失而断言更大阅读或正式认可从未发生。"
+    },
+    "answer_sha256": "ed836e2dd3d7a745a53c015c1da27e91875640c4f4029299f7d2bda79a187c03",
+    "seconds": 38.687
+  },
+  {
+    "run_id": "run009",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:58:30.385271+00:00",
+    "status": "completed",
+    "prompt_sha256": "5ddce923957375692cd352897f56f3170396fb8e2b739a3762632fa896a088d3",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15856,
+        "cached_input_tokens": 7296,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 584,
+        "reasoning_output_tokens": 48
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R006",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "将统一退化从主张中撤回，保留原部署问题和全部相反、跨零及失败结果。",
+          "reason": "撤回统一退化叙事，保留部署有效性问题，且明确不因方向不符而终止。"
+        },
+        {
+          "pass": true,
+          "quote": "在已测、同题配对且测量有效的范围内，变化呈异质性：信号A在部分条件变差，信号B在部分条件变好，多数效应区间仍跨零。冻结旧检测器和阈值时，某些条件出现损失；分别重训后，所测表现可恢复。",
+          "reason": "贡献限定于已测条件，保留改善、损失、不确定性及冻结与重训的区别，未虚构机制或等效性。"
+        },
+        {
+          "pass": true,
+          "quote": "变更记录：保留原假设、小pilot、继续决定及其依据；记录扩大研究的比较规则与测试暴露。将统一退化从主张中撤回，保留原部署问题和全部相反、跨零及失败结果。若异质性或恢复分析并非预先指定，标为探索性；新增比较单独版本化，不覆盖原分析。",
+          "reason": "区分早期假设、pilot和扩大研究后的发现，明确版本化修订及探索性分析身份。"
+        },
+        {
+          "pass": true,
+          "quote": "下一项检验应区分“重调阈值是否已足够”与“必须重训”：在预先选定的关键目标条件，对同一独立留出样本比较冻结旧系统、仅重调阈值、目标条件重训三种策略，分离训练、调参与测试数据，记录标签及计算成本。",
+          "reason": "提出可影响部署选择的独立验证，并明确已有研究覆盖、测量无法修复或决策精度无法达到等真实停止条件。"
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未保留统一损失、丢弃相反结果、将跨零解释为等效，或保证任何零结果均可发表。"
+    },
+    "answer_sha256": "d63a3501595f0a53d30c90a2abdfcbc8f1efc7477337f13ab26d7cb2a1c90d8a",
+    "seconds": 12.656
+  },
+  {
+    "run_id": "run010",
+    "model": "gpt-6.1-sol",
+    "effort": "medium",
+    "started_utc": "2026-10-24T18:57:51.675949+00:00",
+    "status": "completed",
+    "prompt_sha256": "57ff9ffeaf2172bcd213dfdcfb117e9c6f715ae7017597c4b7092b83eb71efc8",
+    "exit_code": 0,
+    "usage": [
+      {
+        "input_tokens": 15238,
+        "cached_input_tokens": 11392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 565,
+        "reasoning_output_tokens": 46
+      }
+    ],
+    "tool_items": [],
+    "answer": {
+      "blind_id": "R002",
+      "criteria": [
+        {
+          "pass": true,
+          "quote": "不应仅因未出现预期方向而杀掉研究。原问题是部署条件变化后旧报警设施能否沿用，扩大实验中的异质变化及冻结与重训的差异仍直接关系这一决策。应放弃“所有信号统一退化”的叙事，保留测量问题。",
+          "reason": ""
+        },
+        {
+          "pass": true,
+          "quote": "A在部分条件表现变差，B在部分条件表现变好，多数估计区间跨零；结果不支持把统一退化作为已获证据的结论。冻结旧检测器和阈值时，某些条件出现损失，分别重训后观察到恢复。这提示沿用风险和更新收益可能随条件而异，但尚不能推出所有条件均可恢复、可直接部署或存在已确认机制。",
+          "reason": ""
+        },
+        {
+          "pass": true,
+          "quote": "变更记录：保存原假设、小pilot及据此扩展的决定，不改写为事先预期异质性。记录扩大样本后哪些结果改变了判断，版本化研究假设与分析方案，保留原有比较及相反结果。将新增的条件差异解释和更新策略分析标为探索性；独立验证后再作确认性表述。",
+          "reason": ""
+        },
+        {
+          "pass": true,
+          "quote": "重点检验冻结损失是否超过实际容忍界限，以及低成本更新是否足以恢复，而非只检验方向或显著性。\n真正停止或转向的情形包括：核心测量或配对无法修复；可行资源下无法获得足以区分决策的精度；最近邻工作已完整回答问题且无实质增量；或可靠证据表明条件差异与更新收益均不足以改变决策，且无值得继续检验的边界问题。",
+          "reason": ""
+        }
+      ],
+      "critical_failure": false,
+      "critical_reason": "未保留统一退化结论、丢弃相反结果、将跨零区间解释为等效，或保证任何零结果都能发表。"
+    },
+    "answer_sha256": "3fb02d5c3edfb15fb8975c93d8c5548a63da9b90da07a37bef36db0664a8ac50",
+    "seconds": 11.296
+  }
+]

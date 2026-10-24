@@ -1,0 +1,11 @@
+run_id,task_id,repeat,condition,status,points,full_pass,detection,critical_failure,seconds
+run001,I02,1,baseline,completed,3,False,True,False,28.281
+run002,I02,1,skill,completed,4,True,True,False,33.812
+run003,I03,1,skill,completed,4,True,True,False,30.797
+run004,I03,1,baseline,completed,4,True,True,False,28.937
+run005,I01,1,baseline,completed,4,True,True,False,42.687
+run006,I01,1,skill,completed,4,True,True,False,31.062
+run007,I05,1,baseline,completed,3,False,True,False,27.531
+run008,I05,1,skill,completed,4,True,True,False,29.797
+run009,I04,1,skill,completed,4,False,True,False,29.437
+run010,I04,1,baseline,completed,4,False,True,False,32.407

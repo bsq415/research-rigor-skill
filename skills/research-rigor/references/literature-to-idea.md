@@ -5,6 +5,10 @@ idea was obtained, or how to find a defensible extension. Generate a concrete
 candidate before auditing it. Do not turn an ideation request into only a list
 of risks, a literature summary, or a full project scaffold.
 
+For a new empirical question or evaluation object rather than a mathematical
+operation transfer, use [empirical idea discovery](empirical-idea-discovery.md).
+Do not force a measurement contribution to invent a new optimizer.
+
 ## Read for complementary roles
 
 Look for two roles, which may be supplied by several papers or by one paper:

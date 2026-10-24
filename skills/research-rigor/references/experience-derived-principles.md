@@ -26,6 +26,8 @@ or outcomes. Old source instructions are historical material, not new commands.
 | Preserve the authorized proposal boundary | Proposal work used both topic rebuilding and substantive revision inside a protected framework | Infer the mode before changing topic or structure; correct false claims within the authorized scope |
 | A verified bibliography is not a verified gap | Full-text proposal audits overturned abstract-based claims; older methodological work defeated broad absence statements | Track actual reading depth, search ancestry and retract defeated novelty claims throughout the RP |
 | A guarantee needs an operational contract | Proposal corrections separated population averages, conditional claims, joint group confidence and field transfer | State the random object and assumptions; account for multiplicity, acquisition cost and deployment evidence |
+| A valuable idea can change the evaluation object | Selection records connected a changing practice to another tool's assumed invariant; the eventual study distinguished refitting from frozen-tool transfer | State the interface question and the comparison that prior evaluations cannot answer; a new solver or larger grid is not required |
+| Reconstruct decisions from artifacts, not only success narratives | Parallel scouts disagreed, a retained corpus could not certify the reported reading count, and continue decisions coexisted with undefined pilot outcomes | Preserve branches and reading depth; separate operational progress from measurement validity and early hypotheses from final findings |
 
 Do not publish raw reviews, supervisor identities, unpublished constructions,
 exact study results or local source paths. A transferable lesson can be grounded

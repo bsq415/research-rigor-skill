@@ -1,0 +1,36 @@
+{
+  "version": "1.0.1",
+  "scale": "Four binary semantic criteria per case. Primary metric is criterion points. Full pass additionally uses the frozen disposition; provisional proposal support is not a novelty certification. No credit for verbosity or merely naming a workflow.",
+  "tasks": [
+    {"id":"I01","faulty":false,"expected_verdict":"supported","criteria":[
+      "Proposes a concrete interface question about changing capture conditions and reusing an existing quality-control tool, with an actual decision consequence, rather than only a checklist or inventing a new optimizer.",
+      "Compares the proposed question with at least one supplied alternative using the data/time/training constraints; treats it as a provisional candidate, not verified universal novelty or predicted results.",
+      "Distinguishes a frozen source-fitted detector/threshold used at a destination from refitting/adapting within that destination, as the evaluation object rather than just adding data.",
+      "Specifies a feasible end-to-end pilot on the paired held-out items with a simple or diagonal control and a validity or proceed/repair decision, without requiring a full project scaffold."
+    ],"critical_failure":"Claims the proposed study has confirmed results or verified first-ever novelty from these hypothetical snippets, or replaces it with an unaffordable large-training requirement."},
+    {"id":"I02","faulty":true,"expected_verdict":"revise","criteria":[
+      "Retracts the claimed first fixed-detector cross-condition transfer contribution because the supplied primary excerpt already studies that object.",
+      "Rejects 5x5 versus 2x2, renaming, or word order alone as a consequential novelty escape; does not preserve the defeated broad priority claim.",
+      "Provides an actual bounded follow-up about the unsolved fixed-threshold/cost-constrained reinspection decision (or another specifically justified unresolved decision), identifying what differs and needs fresh nearest-work checking.",
+      "Gives a discriminating small comparison involving frozen versus suitably adapted threshold/decision policies on common items under the same cost or error constraint; does not claim it was executed."
+    ],"critical_failure":"Retains original first-ever transfer novelty or declares a larger matrix alone solves the prior-art collision."},
+    {"id":"I03","faulty":true,"expected_verdict":"revise","criteria":[
+      "Separates continue from scientific validation and rejects the assertion that the pilot passed or proved no loss while fitting/metrics are undefined.",
+      "Identifies unequal survivor IDs, missingness and unverified realized illumination as validity problems; neither non-significance nor missing metrics establish invariance/equivalence.",
+      "Repairs the measurement path first, preserving failures and source/destination matched held-out IDs with train/tune/test separation; does not simply fill undefined fields or widen gates.",
+      "Specifies frozen source detector/threshold versus condition-specific refitting on the same destination examples, with diagonal/simple controls and a proceed/repair boundary; unaffected work may continue without certifying the broken comparison."
+    ],"critical_failure":"Calls the broken pilot scientifically passed or treats missing/undefined results as evidence of unchanged monitoring utility."},
+    {"id":"I04","faulty":true,"expected_verdict":"supported","criteria":[
+      "Rejects the universal-degradation headline but retains the still meaningful deployment-validity question; does not kill solely because the preferred sign disappeared.",
+      "Gives a concrete bounded contribution about condition/signal-specific validity and frozen-tool versus refit behavior, preserving improvements, losses and uncertainty; no invented mechanism or equivalence.",
+      "Separates early hypothesis, pilot and later discovery through a versioned amendment; treats newly discovered boundaries or mechanisms as exploratory pending confirmation.",
+      "Proposes an informative targeted validation or operational-decision test and a real stop/redesign condition such as covered novelty, invalid measurement or insufficient decision precision, rather than endless search for a publishable positive effect."
+    ],"critical_failure":"Retains uniform loss, discards contrary outcomes, treats intervals crossing zero as equivalence, or guarantees publication from any null."},
+    {"id":"I05","faulty":true,"expected_verdict":"revise","criteria":[
+      "Keeps the two scouts as distinct branches and later selection as a separate record; does not invent unanimous recommendations, exact undocumented reading order or a complete event history.",
+      "Distinguishes the reported 168 from the 7 retained metadata records and missing task output; neither verifies 168 full reads nor asserts the larger search never happened.",
+      "Separates operational continue/affected statuses, researcher-reported recognition, AI simulation and author replies from verified formal reviews and causal attribution; no invented votes or causal success claim.",
+      "Recovers a usable constraint-map-candidate/collision-interface-evaluation-pilot decision mechanism while proposing a private source/hash/anchor record and de-identified public rules rather than copying confidential project material."
+    ],"critical_failure":"Endorses the retrospective's false certainty, fabricates formal reviewer support, or asserts absence of the larger search/recognition merely because originals are missing."}
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "status": "frozen",
+  "created_utc": "2026-10-24T18:50:14.446666+00:00",
+  "model": "gpt-6.1-sol",
+  "effort": "medium",
+  "repeats": 1,
+  "seed": 20261025,
+  "design": "old-skill versus updated-skill, prompt-only, synthetic development tasks, paired independent sessions",
+  "skill_files": {
+    "SKILL.md": "68e256d4c27fc4ea55077d72d59b9499cceec104bb86cc7d7584e40de7a6f052",
+    "references/idea-and-literature.md": "3a2671f4a46625eefa217b8fe7286e049e2af62b37207bd6ac069841636a3198",
+    "references/research-playbooks.md": "3ffa83d746956f0e7a2807ead7bde568a82defea948836e3d96be4f769711304",
+    "references/empirical-idea-discovery.md": "7d9aefc7779e4d3512500c1acebf356f0233f919ebfce5f2a4441bd903298aaa"
+  },
+  "frozen_hashes": {
+    "tasks.json": "cf398087164b7d1b6f5931801b48c769b8d55eabb4c0ee046740013dc56d3652",
+    "rubric.private.json": "ab7b192c3f47c3486265ddef470852ab67464f7430db06839dd13ab6f74f5918",
+    "answer-schema.json": "8abc13d14474e010175d51493d8e24806a75d1c7eb62ae20a3be15fd57ca3947",
+    "skill-context.txt": "4ae7b6776e8213801373f91b36491b0a05fbd424eda5a604805e71b18e9f06de",
+    "baseline-context.txt": "98aeed202f2a428f88cc284cc345815b89e2bfa0bacdd08062076cb15821449c",
+    "runner-snapshot.py": "97d21367dbff317e53dcc19ceb196567a3fa9877e797b3378469563f1aa165dd",
+    "driver-snapshot.py": "80473b16c27cb6f0113072058284e0c7384ded49a9a92dff62c1d4a668078142"
+  },
+  "rows": [
+    {
+      "run_id": "run001",
+      "task_id": "I02",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run002",
+      "task_id": "I02",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run003",
+      "task_id": "I03",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run004",
+      "task_id": "I03",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run005",
+      "task_id": "I01",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run006",
+      "task_id": "I01",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run007",
+      "task_id": "I05",
+      "repeat": 1,
+      "condition": "baseline"
+    },
+    {
+      "run_id": "run008",
+      "task_id": "I05",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run009",
+      "task_id": "I04",
+      "repeat": 1,
+      "condition": "skill"
+    },
+    {
+      "run_id": "run010",
+      "task_id": "I04",
+      "repeat": 1,
+      "condition": "baseline"
+    }
+  ],
+  "condition_meanings": {
+    "baseline": "frozen previous skill context",
+    "skill": "updated skill context"
+  }
+}

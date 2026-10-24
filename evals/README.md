@@ -25,6 +25,8 @@
 
 ## 可复制任务与评分
 
+2026-10-25 新增[实证选题开发集](idea-selection-v1/README.md)，专门比较旧 skill 与新选题流程：五题临时评分为 18/20 与 20/20，完整答案与 I04 标签问题均保留在[结果说明](idea-selection-v1/RESULTS.md)。这个小型开发集不证明实际选题质量或评审认可提高，不改变下面的十题审计基线。
+
 当前 [tasks.json](../skills/research-rigor/assets/rigor-eval/tasks.json) / [rubric.json](../skills/research-rigor/assets/rigor-eval/rubric.json) 是 v1.0.1。十题覆盖界的强度、泄漏、过度主张、变换秩、松弛优化证书、失败分母、预算公平、评审来源，以及两个有效对照。每题四项语义评分；关键错误单列，不能靠措辞或关键词得分。人工评分空表随 skill 打包。
 
 详细生成、盲评和导出命令见 [评测协议](../skills/research-rigor/references/skill-evaluation.md)。运行会消耗用户已登录模型额度，计划冻结后不静默重试；失败也保留。模型名称需由运行者明确指定。

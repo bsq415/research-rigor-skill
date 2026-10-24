@@ -72,6 +72,12 @@ It does more than return a plan. In **full-cycle mode**, it is instructed to ins
 
 ## What it can actually do
 
+For empirical topic selection, the [idea discovery workflow](skills/research-rigor/references/empirical-idea-discovery.md)
+turns a research map into competing candidates, an interface assumption, a
+distinct evaluation object and an evidence-based pilot decision. It is grounded
+in project artifacts rather than a retrospective alone; an optional selection
+card preserves alternatives and the difference between plans and observations.
+
 The entrypoint loads only the protocol needed for the requested stage. A narrow
 edit does not require the full controller. Existing projects can keep their own
 records, and authorization already given remains valid.

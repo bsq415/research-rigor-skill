@@ -1,0 +1,27 @@
+{
+  "client_date": "2026-10-25",
+  "timezone": "Asia/Kuala_Lumpur",
+  "cli_version": "codex-cli 0.164.0-alpha.11.1",
+  "comparison": "previous skill versus updated skill, not unassisted model versus skill",
+  "previous_skill_commit": "4c28423",
+  "updated_skill_source": "working tree, exact text frozen in skill-context.txt",
+  "baseline_files": [
+    "SKILL.md",
+    "references/idea-and-literature.md",
+    "references/research-playbooks.md"
+  ],
+  "updated_files": [
+    "SKILL.md",
+    "references/idea-and-literature.md",
+    "references/research-playbooks.md",
+    "references/empirical-idea-discovery.md"
+  ],
+  "sampling": "model defaults; random seed affects order only",
+  "output_budget": "1600 Chinese characters, same instruction in both conditions",
+  "grading": "same-model blinded independent contexts, provisional; no human raters",
+  "scope": "synthetic public development tasks; all raw private project artifacts excluded from model prompts",
+  "length_control": "not token matched; extra guidance length is part of treatment",
+  "tools_policy": "closed-book, empty temporary cwd, shell/apps disabled, host skill discovery skipped; traces checked",
+  "runner_sha256": "97d21367dbff317e53dcc19ceb196567a3fa9877e797b3378469563f1aa165dd",
+  "driver_sha256": "80473b16c27cb6f0113072058284e0c7384ded49a9a92dff62c1d4a668078142"
+}

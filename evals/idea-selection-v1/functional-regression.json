@@ -1,0 +1,47 @@
+{
+  "suite": "functional-regression-v1",
+  "client_date": "2026-10-25",
+  "scientific_effect": "not_measured",
+  "before_all_passed": true,
+  "after_all_passed": true,
+  "comparison": {
+    "citation_authenticity": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "number_consistency": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "light_upgrade": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "sealed_hook": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "theory_search": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "plugin_and_references": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    },
+    "default_light_footprint": {
+      "before": true,
+      "after": true,
+      "same_test": true
+    }
+  },
+  "runtime_test_count": 77,
+  "test_scope": "repository integration plus evaluation isolation; does not certify idea quality",
+  "source_snapshot": "4c28423 baseline context reconstructed from Git blobs and matched exactly"
+}

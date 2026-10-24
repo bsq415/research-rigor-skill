@@ -47,6 +47,7 @@ unresolved scientific question. Read only the matching reference(s):
 | Task | Reference |
 |---|---|
 | Choose or challenge an idea; establish novelty | [Idea and literature](references/idea-and-literature.md) |
+| Select or reconstruct an empirical idea; bridge research lines through a new question or evaluation | [Empirical idea discovery](references/empirical-idea-discovery.md) |
 | Derive an idea from papers; explain or test a method transfer | [Literature to idea](references/literature-to-idea.md) |
 | Write a research proposal (RP); rebuild its topic or improve it within a preserved framework | [Research proposals](references/research-proposals.md) |
 | Design/run experiments; debug; interpret statistics | [Experiment and evidence](references/experiment-and-evidence.md) |
